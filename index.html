@@ -1,0 +1,946 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ayoub Braou</title>
+<meta name="description" content="Ayoub Braou, technicien en infrastructure digitale et cybersécurité, chef d'équipe technique à CCL Marrakech. Réseau, support, matériel, plateforme e-learning. Objectif : Ausbildung Fachinformatiker für Systemintegration.">
+<meta property="og:title" content="Ayoub Braou · Technicien infrastructure &amp; chef d'équipe technique">
+<meta property="og:description" content="Réseau, support, matériel, e-learning. Marrakech → Deutschland.">
+<meta property="og:image" content="img/ayoub.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Editorial, print-like page: ink and paper sections alternate, one signal-orange accent, ruled lines
+   instead of cards, big grotesk headlines with a serif italic for the one word that matters. The hero
+   carries a Three.js globe tracing Marrakech → Deutschland; GSAP handles the preloader, line reveals,
+   the ticker, counters, the drawn timeline and the pinned horizontal gallery. Everything degrades to
+   a plain readable page when motion is reduced or scripts fail. */
+:root{
+  --ink:#0E0F12; --ink-2:#15171C; --paper:#F2EDE4; --paper-2:#E8E1D4; --bone:#ECE7DD;
+  --mute-d:#8F8B84; --mute-p:#6A665E; --line-d:rgba(236,231,221,.14); --line-p:rgba(14,15,18,.16);
+  --acc:#FF4D1C; --acc-ink:#140A05;
+  --disp:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ser:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --mono:"Geist Mono","JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gut:clamp(18px,4.5vw,64px); --max:1320px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--ink)}
+body{margin:0;background:var(--ink);color:var(--bone);font:400 17px/1.55 var(--disp);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video,canvas{max-width:100%;display:block}
+[hidden]{display:none!important}
+[data-lang="en"] .fr, :root:not([data-lang="en"]) .en{display:none!important}
+h1,h2,h3,h4,p,ul,figure{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+em{font:italic 1.04em/1 var(--ser);letter-spacing:0}
+.ink{background:var(--ink);color:var(--bone);--mute:var(--mute-d);--line:var(--line-d);--surface:var(--ink-2)}
+.paper{background:var(--paper);color:var(--ink);--mute:var(--mute-p);--line:var(--line-p);--surface:var(--paper-2)}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--gut)}
+.mono{font-family:var(--mono)}
+.lab{font:500 12px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 22px;border:1px solid currentColor;border-radius:2px;text-decoration:none;font:500 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;background:transparent;color:inherit;transition:background .25s,color .25s,border-color .25s}
+.btn:hover{background:currentColor}
+.btn:hover span,.btn:hover svg{color:var(--paper)}
+.ink .btn:hover span,.ink .btn:hover svg{color:var(--ink)}
+.btn.primary{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.btn.primary:hover{background:var(--bone);border-color:var(--bone)}
+.btn.primary:hover span,.btn.primary:hover svg{color:var(--ink)}
+.btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* grain */
+.grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:55;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* preloader */
+#loader{position:fixed;inset:0;z-index:80;background:var(--ink);color:var(--bone);display:grid;place-items:center;padding:var(--gut)}
+#loader .ld{width:min(92vw,900px)}
+#loader .ld-name{font:500 clamp(40px,9vw,120px)/1.2 var(--disp);letter-spacing:-.04em;overflow:hidden;white-space:nowrap}
+#loader .ld-name .ch{display:inline-block;will-change:transform}
+#loader .ld-bar{height:1px;background:var(--line-d);margin-top:18px;position:relative}
+#loader .ld-bar i{position:absolute;inset:0;background:var(--acc);transform:scaleX(0);transform-origin:left}
+#loader .ld-row{display:flex;justify-content:space-between;margin-top:12px;font:400 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute-d)}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:40;mix-blend-mode:difference;color:#fff;padding:18px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:16px;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.nav.hide{transform:translateY(-110%)}
+.nav .brand{font:500 14px var(--mono);letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:26px}
+.nav ul a{text-decoration:none;font:400 13px var(--mono);letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.nav ul a:hover{opacity:1}
+.nav .right{display:flex;align-items:center;gap:12px}
+.lang{display:inline-flex;border:1px solid currentColor;border-radius:2px}
+.lang button{all:unset;cursor:pointer;font:500 11.5px var(--mono);letter-spacing:.08em;padding:7px 10px}
+.lang button[aria-pressed="true"]{background:#fff;color:#000}
+.lang button:focus-visible{outline:2px solid #fff;outline-offset:1px}
+.nav .cvb{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font:500 11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;background:#fff;color:#000;padding:8px 12px;border-radius:2px}
+.nav .cvb svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+@media (max-width:980px){.nav ul{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;grid-template-rows:1fr auto;padding:calc(var(--gut) + 64px) var(--gut) var(--gut);overflow:hidden;isolation:isolate}
+.globe-wrap{position:absolute;z-index:0;right:-6vw;top:50%;transform:translateY(-50%);width:min(58vw,780px);aspect-ratio:1;pointer-events:none}
+#globe{width:100%;height:100%}
+.hero-main{position:relative;z-index:2;align-self:center;max-width:min(100%,1120px);padding-top:4vh}
+.hero .lab{color:var(--mute-d)}
+.hero .lab b{color:var(--acc);font-weight:500}
+.hl{font:500 clamp(42px,7.1vw,112px)/.98 var(--disp);letter-spacing:-.04em;margin-top:18px;max-width:11.5ch;text-wrap:balance}
+.hl > span{display:block}
+.hl em{color:var(--acc);font-size:1.02em}
+.role{margin-top:26px;font:500 clamp(15px,1.35vw,19px)/1.4 var(--disp);max-width:52ch}
+.pitch{margin-top:14px;max-width:56ch;color:var(--mute-d);font-size:clamp(16px,1.25vw,18px)}
+.pitch strong{color:var(--bone);font-weight:500}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.hero-foot{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;border-top:1px solid var(--line-d);padding-top:16px;margin-top:40px;font:400 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute-d)}
+.hero-foot .r{text-align:right}.hero-foot .c{text-align:center}
+.hero-foot .c b{color:var(--bone);font-weight:500}
+@media (max-width:900px){
+  .globe-wrap{right:auto;left:50%;top:38%;transform:translate(-50%,-50%);width:min(120vw,620px);opacity:.55}
+  .hero-foot{grid-template-columns:1fr 1fr}.hero-foot .c{display:none}
+  .hl{max-width:none}
+}
+
+/* ticker */
+.ticker{border-block:1px solid var(--line-d);padding:16px 0;overflow:hidden;white-space:nowrap}
+.tk{display:inline-flex;gap:0;will-change:transform}
+.tk span{display:inline-flex;align-items:center;gap:28px;padding-right:28px;font:500 14px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.tk span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--acc);display:inline-block}
+
+/* sections */
+.sec{padding-block:clamp(72px,10vw,140px)}
+.sh{display:grid;grid-template-columns:72px 1fr;gap:12px 24px;align-items:end;padding-top:14px;border-top:1px solid var(--line);margin-bottom:clamp(36px,5vw,64px)}
+.sh .idx{font:500 13px var(--mono);color:var(--acc);letter-spacing:.1em;align-self:start}
+.st{grid-column:2;font:500 clamp(34px,5vw,74px)/.98 var(--disp);letter-spacing:-.035em;text-wrap:balance;max-width:16ch}
+.st > span{display:block}
+.st em{color:var(--acc)}
+.sd{grid-column:2;max-width:62ch;color:var(--mute);font-size:17px;margin-top:4px}
+@media (max-width:700px){.sh{grid-template-columns:1fr}.st,.sd{grid-column:1}}
+
+/* profil */
+.pf{display:grid;grid-template-columns:minmax(240px,.8fr) 1.2fr;gap:clamp(28px,6vw,96px);align-items:start}
+.fig{position:relative;max-width:420px}
+.fig .ph{overflow:hidden;background:var(--paper-2)}
+.fig img{width:100%;aspect-ratio:7/9;object-fit:cover;object-position:top;transform:scale(1.08);filter:saturate(.9) contrast(1.04)}
+.fig .cap{display:flex;justify-content:space-between;gap:12px;margin-top:10px;font:400 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.stamp{position:absolute;right:-22px;top:-22px;width:128px;height:128px;border:2px solid var(--acc);border-radius:50%;color:var(--acc);display:grid;place-items:center;text-align:center;padding:14px;font:500 10.5px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.12em;background:var(--paper);transform:rotate(-12deg)}
+.lede{font:500 clamp(22px,2.3vw,32px)/1.25 var(--disp);letter-spacing:-.02em;text-wrap:pretty}
+.lede em{color:var(--acc)}
+.pf p+p{margin-top:16px}
+.pf .txt{font-size:17px;max-width:62ch;margin-top:24px}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);margin-top:44px;border-top:1px solid var(--line)}
+.num{padding:20px 16px 18px 0;border-right:1px solid var(--line)}
+.num:last-child{border-right:0}
+.num+.num{padding-left:16px}
+.num b{display:block;font:500 clamp(40px,4.6vw,68px)/1 var(--disp);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.num span{display:block;margin-top:8px;font:400 12.5px/1.4 var(--mono);color:var(--mute)}
+@media (max-width:860px){.pf{grid-template-columns:1fr}.fig{max-width:300px}.nums{grid-template-columns:1fr 1fr}.num:nth-child(2){border-right:0}.num:nth-child(3){padding-left:0;border-top:1px solid var(--line)}.num:nth-child(4){border-top:1px solid var(--line)}}
+
+/* skills ledger */
+.ledger{border-top:1px solid var(--line)}
+.row{position:relative;isolation:isolate;display:grid;grid-template-columns:64px 1fr 1.1fr;gap:12px 28px;padding:28px 0;border-bottom:1px solid var(--line);align-items:start;transition:color .3s}
+.row::before{content:"";position:absolute;inset:0 calc(var(--gut) * -1);background:var(--ink);transform:scaleY(0);transform-origin:bottom;transition:transform .4s cubic-bezier(.2,.7,.2,1);z-index:-1}
+.row:hover::before{transform:scaleY(1);transform-origin:top}
+.row:hover{color:var(--bone)}
+.row:hover .n,.row:hover .what,.row:hover .tools{color:#B8B3AA}
+.row .n{font:500 13px/1.6 var(--mono);color:var(--mute);letter-spacing:.08em;transition:color .3s}
+.row h3{font:500 clamp(22px,2.5vw,34px)/1.05 var(--disp);letter-spacing:-.025em}
+.row .what{margin-top:8px;color:var(--mute);font-size:15.5px;max-width:40ch;transition:color .3s}
+.row .ev{font-size:15.5px;line-height:1.5;max-width:52ch}
+.row .ev b{display:block;font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:8px}
+.row .tools{margin-top:10px;font:400 12.5px/1.6 var(--mono);color:var(--mute);transition:color .3s}
+@media (max-width:760px){.row{grid-template-columns:40px 1fr}.row .ev{grid-column:2}}
+
+/* experience */
+.xg{display:grid;grid-template-columns:1fr 2fr;gap:clamp(28px,5vw,80px)}
+.xg .stick{position:sticky;top:110px;align-self:start}
+.xg .stick p{color:var(--mute);font-size:16px;max-width:34ch;margin-top:14px}
+.xg .stick .lab{margin-top:28px}
+.tl{position:relative;padding-left:36px}
+.tl::before{content:"";position:absolute;left:0;top:6px;bottom:0;width:1px;background:var(--line)}
+.tl .prog{position:absolute;left:0;top:6px;width:1px;height:calc(100% - 6px);background:var(--acc);transform:scaleY(0);transform-origin:top}
+.ent{position:relative;padding-bottom:44px}
+.ent:last-child{padding-bottom:0}
+.ent::before{content:"";position:absolute;left:-40px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink)}
+.ent .when{font:500 12.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.ent h3{font:500 clamp(22px,2.4vw,30px)/1.1 var(--disp);letter-spacing:-.025em;margin-top:8px}
+.ent .org{color:var(--mute);margin-top:4px;font-size:15.5px}
+.ent ul{padding-left:18px;margin-top:12px;max-width:66ch}
+.ent li{margin-bottom:5px;font-size:16px}
+.ent li::marker{color:var(--acc)}
+.role-b{margin-top:20px;padding-left:18px;border-left:2px solid var(--acc)}
+.role-b+.role-b{margin-top:24px;border-left-color:var(--line)}
+.role-b h4{font:500 19px/1.2 var(--disp);letter-spacing:-.01em}
+.role-b h4 small{display:block;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin-top:5px}
+.ent.min h3{font-size:clamp(19px,2vw,24px)}
+.ent.min p{font-size:15.5px;color:var(--mute);margin-top:6px;max-width:62ch}
+@media (max-width:860px){.xg{grid-template-columns:1fr}.xg .stick{position:static}}
+
+/* work gallery: stacked by default, pinned horizontal strip when JS adds .hz on wide screens */
+.work{overflow:hidden}
+.work .pin{display:flex;flex-direction:column}
+.work .whead{padding-top:0;width:100%}
+.work .whead .sh{margin-bottom:0}
+.wprog{display:none;height:1px;background:var(--line-d);margin-top:24px;position:relative;max-width:var(--max);margin-inline:auto}
+.wprog i{position:absolute;inset:0;background:var(--acc);transform:scaleX(0);transform-origin:left}
+.track{display:flex;flex-direction:column;align-items:stretch;gap:52px;padding:40px var(--gut) 0;will-change:transform}
+.panel{flex:0 0 auto}
+.panel .ph{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:16px}
+.panel h3{font:500 clamp(24px,2.8vw,40px)/1 var(--disp);letter-spacing:-.03em;flex:none}
+.panel .ph p{color:var(--mute);font-size:14px;max-width:46ch;line-height:1.45}
+.work.hz .pin{height:100vh}
+.work.hz .whead{padding-top:calc(var(--gut) + 56px)}
+.work.hz .wprog{display:block}
+.work.hz .track{flex:1;flex-direction:row;align-items:center;gap:5vw;padding:24px var(--gut) 24px;width:max-content}
+.work.hz .panel{width:min(80vw,1120px,calc((100vh - 300px) * 5))}
+.work.hz .panel.p6{width:min(80vw,1120px,calc((100vh - 300px) * 4.3))}
+.work.hz .panel.p3{width:min(62vw,760px,calc((100vh - 300px) * 2.3))}
+.work.hz .panel.pr{width:min(58vw,720px,calc((100vh - 300px) * 2.15))}
+.work.hz .panel.pt{width:min(42vw,520px)}
+.work.hz .panel .ph{flex-direction:row;justify-content:space-between;align-items:flex-end;gap:28px}
+.g{display:grid;gap:12px}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.g figure{min-width:0}
+.g img{width:100%;border-radius:2px;background:var(--ink-2)}
+.g figcaption{font:400 11.5px/1.35 var(--mono);color:var(--mute);margin-top:8px;letter-spacing:.02em}
+.hv{cursor:pointer}
+.hv .media{position:relative;overflow:hidden;border-radius:2px;background:var(--ink-2)}
+.hv .media img,.hv .media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0}
+.hv .media video{opacity:0;transition:opacity .35s}
+.hv:hover .media video,.hv:focus-visible .media video{opacity:1}
+.r169{aspect-ratio:16/9}.r916{aspect-ratio:9/16}
+.hv .play{position:absolute;right:10px;bottom:10px;width:28px;height:28px;border-radius:50%;background:rgba(14,15,18,.75);border:1px solid rgba(236,231,221,.25);display:grid;place-items:center}
+.hv .play::after{content:"";border-left:8px solid var(--bone);border-top:5px solid transparent;border-bottom:5px solid transparent;margin-left:2px}
+.more{margin-top:14px}
+.panel.pt p{font-size:15px;color:var(--mute);line-height:1.5}
+.panel.pt p+p{margin-top:12px}
+.work:not(.hz) .track{max-width:var(--max);margin-inline:auto}
+.work:not(.hz) .panel.pt{max-width:60ch}
+.work:not(.hz) .panel.pr .g4{max-width:820px}
+.work:not(.hz) .panel.p3 .g3{max-width:900px}
+@media (max-width:899px){
+  .g6{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:480px){.g3{grid-template-columns:1fr 1fr}.g6{grid-template-columns:1fr 1fr}}
+
+/* education */
+.eg{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(28px,5vw,80px)}
+.dip{border-top:1px solid var(--line);padding-top:18px}
+.dip .big{font:500 clamp(64px,8vw,120px)/.9 var(--disp);letter-spacing:-.05em}
+.dip .big em{color:var(--acc);font-size:.5em;vertical-align:top;margin-left:.1em}
+.dip h3{font:500 clamp(20px,2vw,26px)/1.15 var(--disp);letter-spacing:-.02em;margin-top:14px;max-width:26ch}
+.dip p{color:var(--mute);margin-top:8px;font-size:15.5px}
+.dip .sub{margin-top:28px;padding-top:16px;border-top:1px solid var(--line)}
+.dip .sub b{display:block;font-weight:500}
+.dip .sub span{color:var(--mute);font-size:15px}
+.dip .sub+.sub{margin-top:14px}
+.certs{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.certs li{display:grid;grid-template-columns:20px 1fr auto;gap:8px 14px;align-items:start;padding:16px 0;border-bottom:1px solid var(--line)}
+.certs i{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--acc);margin-top:7px;display:block}
+.certs .done i{background:var(--acc)}
+.certs b{font-weight:500;font-size:17px;line-height:1.3;display:block}
+.certs small{display:block;color:var(--mute);font-size:14px;margin-top:3px;line-height:1.4}
+.certs .state{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);padding-top:6px;white-space:nowrap}
+.certs .done .state{color:var(--acc)}
+.certs a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--acc);text-underline-offset:3px;font-weight:500}
+@media (max-width:860px){.eg{grid-template-columns:1fr}}
+
+/* deutsch */
+.dg{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(28px,5vw,80px);align-items:start}
+.de-txt{font:400 clamp(19px,1.9vw,26px)/1.4 var(--disp);letter-spacing:-.01em;max-width:30em;text-wrap:pretty}
+.de-txt strong{font-weight:500;color:var(--acc)}
+.dg .btn{margin-top:28px}
+.langs{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.langs li{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);font-size:16px}
+.langs li span{color:var(--mute);text-align:right;font:400 13px var(--mono)}
+.langs li.de span{color:var(--acc)}
+.fiche{margin-top:28px;border:1px solid var(--line);padding:18px 20px}
+.fiche .lab{margin-bottom:12px}
+.fiche dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 18px;font-size:15px}
+.fiche dt{color:var(--mute);font:400 12.5px/1.6 var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.fiche dd{margin:0}
+@media (max-width:860px){.dg{grid-template-columns:1fr}}
+
+/* contact */
+.ct{padding-top:clamp(72px,10vw,140px);padding-bottom:clamp(48px,6vw,80px)}
+.ct .mail{display:inline-block;margin-top:34px;font:500 clamp(26px,5.4vw,84px)/1 var(--disp);letter-spacing:-.045em;text-decoration:none;position:relative;overflow-wrap:anywhere}
+.ct .mail::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.ct .mail:hover::after{transform:scaleX(1)}
+.ct .cg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;border-top:1px solid var(--line);padding-top:20px}
+.ct .cg div{display:flex;flex-direction:column;gap:8px}
+.ct .cg b{font-weight:500;font-size:17px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ct .cg a{text-decoration:underline;text-decoration-color:var(--acc);text-underline-offset:4px}
+.copy{all:unset;cursor:pointer;font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line);padding:5px 8px;border-radius:2px;color:var(--mute);transition:background .2s,color .2s}
+.copy:hover,.copy.ok{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+.copy:focus-visible{outline:2px solid var(--acc)}
+@media (max-width:760px){.ct .cg{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line-d);padding:22px var(--gut) calc(22px + env(safe-area-inset-bottom));display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute-d)}
+
+/* lightbox */
+#lb{position:fixed;inset:0;z-index:60;background:rgba(10,11,13,.94);color:var(--bone);display:flex;flex-direction:column;padding:var(--gut)}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:16px}
+.lb-title{font:500 clamp(16px,1.6vw,22px)/1.2 var(--disp);letter-spacing:-.01em}
+.lb-top .acts{display:flex;gap:8px}
+.lb-btn{all:unset;cursor:pointer;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line-d);padding:9px 12px;border-radius:2px}
+.lb-btn:hover{background:var(--bone);color:var(--ink)}
+.lb-body{flex:1;min-height:0;overflow:auto}
+.lb-single{height:100%;display:grid;place-items:center}
+.lb-single video,.lb-single img{max-width:100%;max-height:100%;width:auto;height:auto;border-radius:2px;background:#000}
+.lb-single img{object-fit:contain;max-height:calc(100vh - 2 * var(--gut) - 60px)}
+.lb-single video{max-height:calc(100vh - 2 * var(--gut) - 60px)}
+.lb-grid{display:grid;gap:14px;padding-bottom:20px}
+.lb-grid.g6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.lb-grid.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.lb-grid figure{cursor:pointer}
+.lb-grid img{width:100%;border-radius:2px}
+.lb-grid figcaption{font:400 11.5px/1.35 var(--mono);color:var(--mute-d);margin-top:8px}
+@media (max-width:900px){.lb-grid.g6{grid-template-columns:repeat(3,minmax(0,1fr))}.lb-grid.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.lb-grid.g6{grid-template-columns:1fr 1fr}}
+</style>
+<noscript><style>#loader{display:none}</style></noscript>
+</head>
+<body>
+
+<div id="loader" aria-hidden="true">
+  <div class="ld">
+    <div class="ld-name" id="ld-name">Ayoub Braou</div>
+    <div class="ld-bar"><i></i></div>
+    <div class="ld-row"><span>Marrakech → Deutschland</span><span>Portfolio · 2026</span></div>
+  </div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top">A. Braou</a>
+  <ul>
+    <li><a href="#profil"><span class="fr">Profil</span><span class="en">Profile</span></a></li>
+    <li><a href="#competences"><span class="fr">Compétences</span><span class="en">Skills</span></a></li>
+    <li><a href="#experience"><span class="fr">Expérience</span><span class="en">Experience</span></a></li>
+    <li><a href="#realisations"><span class="fr">Réalisations</span><span class="en">Work</span></a></li>
+    <li><a href="#formation"><span class="fr">Formation</span><span class="en">Education</span></a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="right">
+    <div class="lang" role="group" aria-label="Langue / Language">
+      <button type="button" id="btn-fr" data-set="fr" aria-pressed="true">FR</button>
+      <button type="button" id="btn-en" data-set="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="cvb" href="cv/CV_Ayoub_Braou_FR.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v12m0 0 4-4m-4 4-4-4M5 20h14"/></svg>CV</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero ink" id="hero">
+  <div class="globe-wrap" aria-hidden="true"><canvas id="globe"></canvas></div>
+  <div class="hero-main">
+    <p class="lab"><span class="fr">Ayoub Braou · Marrakech <b>→</b> Deutschland · Ausbildung 2027</span><span class="en">Ayoub Braou · Marrakech <b>→</b> Germany · apprenticeship 2027</span></p>
+    <h1 class="hl">
+      <span class="fr" data-split-hero>Le réseau <em>tient</em>, l'équipe <em>avance</em>, la plateforme <em>reste en ligne</em>.</span>
+      <span class="en" data-split-hero>The network <em>holds</em>, the team <em>moves</em>, the platform <em>stays online</em>.</span>
+    </h1>
+    <p class="role" data-hero><span class="fr">Technicien en infrastructure digitale &amp; cybersécurité · Chef d'équipe technique à CCL, Marrakech</span><span class="en">Digital infrastructure &amp; cybersecurity technician · Technical team lead at CCL, Marrakech</span></p>
+    <p class="pitch" data-hero><span class="fr">Trois ans de terrain en réseau, support et matériel. Depuis mars 2025, j'encadre <strong>une équipe de dix personnes</strong> qui produit les formations en ligne de CCL. Prochaine étape : une <strong>Ausbildung Fachinformatiker für Systemintegration</strong> en Allemagne.</span><span class="en">Three years of hands-on work in networks, support and hardware. Since March 2025 I lead <strong>a team of ten</strong> that produces CCL's online training. Next step: a <strong>Fachinformatiker für Systemintegration</strong> apprenticeship in Germany.</span></p>
+    <div class="cta" data-hero>
+      <a class="btn primary mag" href="#contact"><span class="fr">Me contacter</span><span class="en">Get in touch</span></a>
+      <a class="btn mag" href="cv/CV_Ayoub_Braou_FR.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v12m0 0 4-4m-4 4-4-4M5 20h14"/></svg><span class="fr">CV français</span><span class="en">CV (French)</span></a>
+      <a class="btn mag" href="cv/Lebenslauf_Ayoub_Braou_DE.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v12m0 0 4-4m-4 4-4-4M5 20h14"/></svg><span>Lebenslauf</span></a>
+    </div>
+  </div>
+  <div class="hero-foot" data-hero>
+    <span>31.6295° N · 7.9811° W</span>
+    <span class="c"><span class="fr">Marrakech · </span><span class="en">Marrakech · </span><b id="clock">--:--</b></span>
+    <span class="r"><span class="fr">Défiler ↓</span><span class="en">Scroll ↓</span></span>
+  </div>
+</section>
+
+<div class="ticker ink" aria-hidden="true">
+  <div class="tk" id="tk">
+    <span><span class="fr">3 ans de terrain IT</span><span class="en">3 years hands-on IT</span></span><span><span class="fr">Équipe de 10 personnes</span><span class="en">Team of 10</span></span><span><span class="fr">7 postes et stages</span><span class="en">7 positions &amp; internships</span></span><span><span class="fr">6 certifications</span><span class="en">6 certifications</span></span><span>Deutsch A2 → B2</span><span>Ausbildung 2027</span><span><span class="fr">Réseau · Support · Matériel</span><span class="en">Network · Support · Hardware</span></span>
+    <span><span class="fr">3 ans de terrain IT</span><span class="en">3 years hands-on IT</span></span><span><span class="fr">Équipe de 10 personnes</span><span class="en">Team of 10</span></span><span><span class="fr">7 postes et stages</span><span class="en">7 positions &amp; internships</span></span><span><span class="fr">6 certifications</span><span class="en">6 certifications</span></span><span>Deutsch A2 → B2</span><span>Ausbildung 2027</span><span><span class="fr">Réseau · Support · Matériel</span><span class="en">Network · Support · Hardware</span></span>
+  </div>
+</div>
+
+<!-- ================= 01 PROFIL ================= -->
+<section class="sec paper" id="profil">
+  <div class="wrap">
+    <div class="sh" data-rv>
+      <span class="idx">01</span>
+      <h2 class="st"><span class="fr" data-split>Un technicien de <em>terrain</em>, pas un profil de papier.</span><span class="en" data-split>A <em>hands-on</em> technician, not a paper profile.</span></h2>
+    </div>
+    <div class="pf">
+      <div class="fig" data-rv>
+        <div class="ph"><img src="img/ayoub.jpg" alt="Ayoub Braou" id="portrait"></div>
+        <div class="stamp" id="stamp"><span class="fr">Disponible · Ausbildungs&shy;beginn 2027</span><span class="en">Available · apprenticeship start 2027</span></div>
+        <div class="cap"><span>Ayoub Braou</span><span><span class="fr">né en 2002 · Marrakech</span><span class="en">b. 2002 · Marrakech</span></span></div>
+      </div>
+      <div data-rv>
+        <p class="lede"><span class="fr">Technicien de terrain depuis fin 2022. J'ai commencé par réparer des postes et câbler des réseaux ; aujourd'hui je fais tourner l'infrastructure d'un centre de formation et <em>j'encadre dix personnes</em>.</span><span class="en">Hands-on technician since late 2022. I started by repairing workstations and cabling networks; today I run a training centre's infrastructure and <em>lead ten people</em>.</span></p>
+        <div class="txt">
+          <p><span class="fr">À CCL, mes journées mêlent le réseau de l'entreprise, le support direct aux employés, la maintenance du matériel et le suivi d'une équipe qui produit des formations en ligne : capsules, vidéos, voix off, brochures, modération de la plateforme.</span><span class="en">At CCL my days mix the company network, direct staff support, hardware maintenance and the follow-up of a team that produces online training: capsules, videos, voice-overs, brochures, platform moderation.</span></p>
+          <p><span class="fr">Je prépare une Ausbildung Fachinformatiker für Systemintegration en Allemagne : allemand A2 aujourd'hui, Goethe-Zertifikat B2 en préparation, mobile dans toute l'Allemagne dès la prochaine rentrée.</span><span class="en">I am preparing for a Fachinformatiker für Systemintegration apprenticeship in Germany: German A2 today, Goethe-Zertifikat B2 in preparation, mobile anywhere in Germany from the next intake.</span></p>
+        </div>
+        <div class="nums">
+          <div class="num"><b data-count="3">3</b><span class="fr">ans de terrain en infrastructure IT</span><span class="en">years hands-on in IT infrastructure</span></div>
+          <div class="num"><b data-count="10">10</b><span class="fr">personnes dans l'équipe que j'encadre</span><span class="en">people on the team I lead</span></div>
+          <div class="num"><b data-count="7">7</b><span class="fr">postes et stages depuis déc. 2022</span><span class="en">positions &amp; internships since Dec 2022</span></div>
+          <div class="num"><b data-count="6">6</b><span class="fr">certifications obtenues, 4 en cours</span><span class="en">certifications earned, 4 in progress</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 COMPÉTENCES ================= -->
+<section class="sec paper" id="competences" style="padding-top:0">
+  <div class="wrap">
+    <div class="sh" data-rv>
+      <span class="idx">02</span>
+      <h2 class="st"><span class="fr" data-split>Huit compétences, chacune avec sa <em>preuve</em>.</span><span class="en" data-split>Eight skills, each with its <em>evidence</em>.</span></h2>
+      <p class="sd"><span class="fr">Pas de barres de niveau. Pour chaque compétence : le poste, l'entreprise ou le certificat qui la justifie.</span><span class="en">No skill bars. For each skill: the job, the employer or the certificate that backs it.</span></p>
+    </div>
+    <div class="ledger" data-rv-group>
+      <div class="row"><span class="n">01</span><div><h3><span class="fr">Support IT, 1er et 2e niveau</span><span class="en">IT support, 1st and 2nd level</span></h3><p class="what"><span class="fr">Diagnostic et résolution des incidents, formation des utilisateurs, documentation.</span><span class="en">Incident diagnosis and resolution, user training, documentation.</span></p></div><div class="ev"><b><span class="fr">Preuve</span><span class="en">Evidence</span></b><span class="fr">Support direct des employés de CCL depuis mai 2024 ; support des agents au centre d'appels France Communication.</span><span class="en">Direct support for CCL staff since May 2024; agent support at the France Communication call centre.</span><p class="tools">Microsoft 365 · Google Classroom · CRM · Vicidial</p></div></div>
+      <div class="row"><span class="n">02</span><div><h3><span class="fr">Réseaux et systèmes</span><span class="en">Networks and systems</span></h3><p class="what"><span class="fr">TCP/IP, LAN/WLAN, routage et commutation, pare-feu, Windows Server, Active Directory.</span><span class="en">TCP/IP, LAN/WLAN, routing and switching, firewalls, Windows Server, Active Directory.</span></p></div><div class="ev"><b><span class="fr">Preuve</span><span class="en">Evidence</span></b><span class="fr">Administration du réseau CCL ; serveurs Active Directory et règles de pare-feu à la Commune urbaine de Marrakech ; CCNA 1 et 2 en cours.</span><span class="en">CCL network administration; Active Directory servers and firewall rules at Marrakech city council; CCNA 1 and 2 in progress.</span><p class="tools">Active Directory · Windows Server · Cisco</p></div></div>
+      <div class="row"><span class="n">03</span><div><h3><span class="fr">Matériel</span><span class="en">Hardware</span></h3><p class="what"><span class="fr">Installation, maintenance et réparation de postes, périphériques, caméras, caisses et antivol.</span><span class="en">Installation, maintenance and repair of workstations, peripherals, cameras, tills and anti-theft systems.</span></p></div><div class="ev"><b><span class="fr">Preuve</span><span class="en">Evidence</span></b><span class="fr">Caméras de surveillance installées à CCL ; serveurs HP Z620 maintenus ; caisses et antivol Sensormatic chez AKMS TECH.</span><span class="en">CCTV cameras installed at CCL; HP Z620 servers maintained; tills and Sensormatic anti-theft at AKMS TECH.</span></div></div>
+      <div class="row"><span class="n">04</span><div><h3><span class="fr">Cybersécurité</span><span class="en">Cybersecurity</span></h3><p class="what"><span class="fr">Tests d'intrusion, gestion des risques, forensics, durcissement des systèmes.</span><span class="en">Penetration testing, risk management, forensics, system hardening.</span></p></div><div class="ev"><b><span class="fr">Preuve</span><span class="en">Evidence</span></b><span class="fr">Diplôme Bac+2 option cybersécurité ; Foundations of Cybersecurity (Google, 2026) ; tests d'intrusion OpenClassrooms.</span><span class="en">Bac+2 diploma, cybersecurity option; Foundations of Cybersecurity (Google, 2026); OpenClassrooms penetration testing.</span><p class="tools">Nmap · Nessus · Metasploit</p></div></div>
+      <div class="row"><span class="n">05</span><div><h3><span class="fr">Plateforme e-learning</span><span class="en">E-learning platform</span></h3><p class="what"><span class="fr">Comptes et droits, intégration des cours, quiz, certificats, suivi des apprenants.</span><span class="en">Accounts and rights, course integration, quizzes, certificates, learner tracking.</span></p></div><div class="ev"><b><span class="fr">Preuve</span><span class="en">Evidence</span></b><span class="fr">LearnWorlds et Vimeo administrés pour CCL depuis 2025 ; Google Classroom géré depuis 2024.</span><span class="en">LearnWorlds and Vimeo run for CCL since 2025; Google Classroom managed since 2024.</span><p class="tools">LearnWorlds · Vimeo · WordPress</p></div></div>
+      <div class="row"><span class="n">06</span><div><h3><span class="fr">Vidéo et production</span><span class="en">Video and production</span></h3><p class="what"><span class="fr">Capsules narrées, voix off, tournages, brochures et créatives, avec l'équipe.</span><span class="en">Narrated capsules, voice-overs, shoots, brochures and creatives, with the team.</span></p></div><div class="ev"><b><span class="fr">Preuve</span><span class="en">Evidence</span></b><span class="fr">Extraits de capsules, reels et cours vidéo dans la section Réalisations.</span><span class="en">Capsule excerpts, reels and video courses in the Work section.</span><p class="tools">Premiere Pro · Canva · ElevenLabs</p></div></div>
+      <div class="row"><span class="n">07</span><div><h3><span class="fr">Automatisation et IA</span><span class="en">Automation and AI</span></h3><p class="what"><span class="fr">Campagnes Meta, scénarios WhatsApp reliés au CRM, e-mailing, outils d'IA au quotidien.</span><span class="en">Meta campaigns, WhatsApp scenarios linked to the CRM, emailing, AI tools every day.</span></p></div><div class="ev"><b><span class="fr">Preuve</span><span class="en">Evidence</span></b><span class="fr">Scénarios Make.com en production à CCL ; Gemini, ChatGPT, Claude, DeepSeek, Genspark ; bases n8n.</span><span class="en">Make.com scenarios in production at CCL; Gemini, ChatGPT, Claude, DeepSeek, Genspark; n8n basics.</span><p class="tools">Make.com · n8n · Brevo · Meta Ads</p></div></div>
+      <div class="row"><span class="n">08</span><div><h3><span class="fr">Encadrement d'équipe</span><span class="en">Team leadership</span></h3><p class="what"><span class="fr">Répartition des tâches, suivi de l'avancement de chacun, contrôle qualité, respect des délais.</span><span class="en">Task allocation, tracking each person's progress, quality control, deadlines.</span></p></div><div class="ev"><b><span class="fr">Preuve</span><span class="en">Evidence</span></b><span class="fr">10 personnes encadrées à CCL depuis mars 2025 ; une équipe de maintenance encadrée en stage à l'ISTA.</span><span class="en">10 people led at CCL since March 2025; a maintenance team supervised during the ISTA internship.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 EXPÉRIENCE ================= -->
+<section class="sec paper" id="experience" style="padding-top:0">
+  <div class="wrap">
+    <div class="sh" data-rv>
+      <span class="idx">03</span>
+      <h2 class="st"><span class="fr" data-split>Sept postes, un même fil : faire <em>tourner</em> l'informatique.</span><span class="en" data-split>Seven positions, one thread: keeping IT <em>running</em>.</span></h2>
+    </div>
+    <div class="xg">
+      <div class="stick" data-rv>
+        <p class="lab"><span class="fr">Parcours · 2022 → 2026</span><span class="en">Track record · 2022 → 2026</span></p>
+        <p><span class="fr">Tout s'est passé à Marrakech : un institut, une commune, trois entreprises privées, un centre d'appels, puis CCL où je suis passé de technicien à chef d'équipe en dix mois.</span><span class="en">All of it in Marrakech: an institute, a city council, three private companies, a call centre, then CCL where I went from technician to team lead in ten months.</span></p>
+        <p class="lab"><span class="fr">Détails complets dans le CV</span><span class="en">Full details in the CV</span></p>
+      </div>
+      <div class="tl" id="tl">
+        <i class="prog" id="tlprog"></i>
+        <div class="ent" data-rv>
+          <p class="when"><span class="fr">mai 2024 – aujourd'hui · Marrakech</span><span class="en">May 2024 – present · Marrakech</span></p>
+          <h3>CCL – Centre de Compétences et Leadership</h3>
+          <p class="org"><span class="fr">Formations certifiantes en ligne · deux postes successifs</span><span class="en">Online certified training · two successive positions</span></p>
+          <div class="role-b">
+            <h4><span class="fr">Chef d'équipe technique</span><span class="en">Technical team lead</span><small><span class="fr">mars 2025 – aujourd'hui</span><span class="en">Mar 2025 – present</span></small></h4>
+            <ul>
+              <li><span class="fr">Gestion de l'infrastructure réseau de l'entreprise : administration, sécurité, disponibilité des services.</span><span class="en">Company network management: administration, security, service availability.</span></li>
+              <li><span class="fr">Support technique direct aux employés, du diagnostic à la résolution (1er et 2e niveau).</span><span class="en">Direct technical support for staff, from diagnosis to resolution (1st and 2nd level).</span></li>
+              <li><span class="fr">Maintenance et réparation du matériel : postes, périphériques, caméras, équipements réseau.</span><span class="en">Hardware maintenance and repair: workstations, peripherals, cameras, network equipment.</span></li>
+              <li><span class="fr">Encadrement de 10 personnes : répartition des tâches, suivi de l'avancement, contrôle qualité, dates de mise en ligne.</span><span class="en">Leading 10 people: task allocation, progress tracking, quality control, release dates.</span></li>
+              <li><span class="fr">Administration de la plateforme e-learning (LearnWorlds, Vimeo) : comptes, droits, cours, quiz, certificats.</span><span class="en">E-learning platform administration (LearnWorlds, Vimeo): accounts, rights, courses, quizzes, certificates.</span></li>
+              <li><span class="fr">Production e-learning avec l'équipe : capsules, voix off, tournages, brochures et créatives.</span><span class="en">E-learning production with the team: capsules, voice-overs, shoots, brochures and creatives.</span></li>
+              <li><span class="fr">Campagnes Meta, scénarios WhatsApp sur Make.com reliés au CRM, e-mailing Brevo.</span><span class="en">Meta campaigns, WhatsApp scenarios on Make.com linked to the CRM, Brevo emailing.</span></li>
+            </ul>
+          </div>
+          <div class="role-b">
+            <h4><span class="fr">Technicien informatique</span><span class="en">IT technician</span><small><span class="fr">mai 2024 – mars 2025</span><span class="en">May 2024 – Mar 2025</span></small></h4>
+            <ul>
+              <li><span class="fr">Administration du réseau, résolution des problèmes techniques et support aux employés.</span><span class="en">Network administration, troubleshooting and staff support.</span></li>
+              <li><span class="fr">Installation de caméras de surveillance.</span><span class="en">CCTV camera installation.</span></li>
+              <li><span class="fr">Sites WordPress de l'entreprise, Google Classroom, présentations et vidéos sous Canva.</span><span class="en">Company WordPress sites, Google Classroom, presentations and videos in Canva.</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="ent min" data-rv><p class="when"><span class="fr">avril – mai 2024 · stage</span><span class="en">Apr – May 2024 · internship</span></p><h3><span class="fr">Technicien informatique · France Communication</span><span class="en">IT technician · France Communication</span></h3><p><span class="fr">Centre d'appels · maintenance des serveurs HP Z620, des postes et des casques ; installation de Vicidial ; réseau, CRM, support.</span><span class="en">Call centre · maintenance of HP Z620 servers, workstations and headsets; Vicidial installation; network, CRM, support.</span></p></div>
+        <div class="ent min" data-rv><p class="when"><span class="fr">nov. 2023 – mars 2024</span><span class="en">Nov 2023 – Mar 2024</span></p><h3><span class="fr">Technicien informatique · AKMS TECH</span><span class="en">IT technician · AKMS TECH</span></h3><p><span class="fr">Installation de réseaux et systèmes IT, maintenance des équipements, caisses enregistreuses, antivol Sensormatic.</span><span class="en">Network and IT system installation, equipment maintenance, cash registers, Sensormatic anti-theft systems.</span></p></div>
+        <div class="ent min" data-rv><p class="when"><span class="fr">août – oct. 2023</span><span class="en">Aug – Oct 2023</span></p><h3><span class="fr">Technicien de maintenance informatique · Electro Amine</span><span class="en">IT maintenance technician · Electro Amine</span></h3><p><span class="fr">Maintenance, réinstallation des systèmes, vente d'équipements.</span><span class="en">Maintenance, system reinstalls, equipment sales.</span></p></div>
+        <div class="ent min" data-rv><p class="when"><span class="fr">mai 2023 · stage</span><span class="en">May 2023 · internship</span></p><h3><span class="fr">Technicien informatique · Commune urbaine de Marrakech</span><span class="en">IT technician · Marrakech city council</span></h3><p><span class="fr">Serveurs Active Directory, règles de pare-feu, configuration des postes utilisateurs, maintenance de l'infrastructure.</span><span class="en">Active Directory servers, firewall rules, user workstation setup, infrastructure maintenance.</span></p></div>
+        <div class="ent min" data-rv><p class="when"><span class="fr">déc. 2022 – avril 2023 · stage</span><span class="en">Dec 2022 – Apr 2023 · internship</span></p><h3><span class="fr">Chef d'équipe de maintenance · ISTA NTIC SYBA</span><span class="en">Maintenance team lead · ISTA NTIC SYBA</span></h3><p><span class="fr">Réseaux et incidents, encadrement d'une équipe de maintenance, initiation à l'informatique pour les étudiants de première année.</span><span class="en">Networks and incidents, supervision of a maintenance team, IT basics for first-year students.</span></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 RÉALISATIONS ================= -->
+<section class="work ink sec" id="realisations">
+  <div class="pin" id="pin">
+    <div class="whead">
+      <div class="wrap">
+        <div class="sh">
+          <span class="idx">04</span>
+          <h2 class="st"><span class="fr" data-split>Ce que l'équipe <em>livre</em> sous ma responsabilité.</span><span class="en" data-split>What the team <em>delivers</em> under my responsibility.</span></h2>
+          <p class="sd"><span class="fr">Produit par l'équipe technique et graphique de CCL pour CCL, Schoolaris et Up Skills. Survolez une vidéo pour la lancer, cliquez pour l'agrandir.</span><span class="en">Produced by CCL's technical and design team for CCL, Schoolaris and Up Skills. Hover a video to play it, click to enlarge.</span></p>
+        </div>
+      </div>
+      <div class="wprog"><i id="wprog"></i></div>
+    </div>
+    <div class="track" id="track">
+
+      <article class="panel">
+        <div class="ph"><h3><span class="fr">Capsules narrées</span><span class="en">Narrated capsules</span></h3><p><span class="fr">Montées à partir des slides et des enregistrements des formateurs, vérifiées image et audio avant mise en ligne.</span><span class="en">Cut from the trainers' slides and recordings, picture and audio checked before release.</span></p></div>
+        <div class="g g3">
+          <figure class="hv" tabindex="0" data-video="vid/qhse-capsule1.mp4" data-poster="vid/qhse-capsule1.jpg" data-title="QHSE Data-Driven · capsule 1"><div class="media r169"><img src="vid/qhse-capsule1.jpg" alt="" loading="lazy"><video src="vid/qhse-capsule1.mp4" poster="vid/qhse-capsule1.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">QHSE Data-Driven · capsule 1 · extrait</span><span class="en">QHSE Data-Driven · capsule 1 · excerpt</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/leadership-capsule1.mp4" data-poster="vid/leadership-capsule1.jpg" data-title="Leadership inspirant · capsule 1"><div class="media r169"><img src="vid/leadership-capsule1.jpg" alt="" loading="lazy"><video src="vid/leadership-capsule1.mp4" poster="vid/leadership-capsule1.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Leadership inspirant · capsule 1 · extrait</span><span class="en">Inspiring leadership · capsule 1 · excerpt</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/ccl-intro.mp4" data-poster="vid/ccl-intro.jpg" data-title="Générique CCL E-learning"><div class="media r169"><img src="vid/ccl-intro.jpg" alt="" loading="lazy"><video src="vid/ccl-intro.mp4" poster="vid/ccl-intro.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Générique CCL E-learning · 7 s</span><span class="en">CCL E-learning title sequence · 7 s</span></figcaption></figure>
+        </div>
+      </article>
+
+      <article class="panel p6">
+        <div class="ph"><h3><span class="fr">Affiches des formations</span><span class="en">Programme posters</span></h3><p><span class="fr">Une affiche par formation, déclinée pour la publicité Meta. Six ici, dix-huit en tout.</span><span class="en">One poster per programme, adapted for Meta ads. Six here, eighteen in total.</span></p></div>
+        <div class="g g6">
+          <figure><img src="img/ad-immuno.jpg" alt="Immunologie" loading="lazy"><figcaption><span class="fr">Immunologie</span><span class="en">Immunology</span></figcaption></figure>
+          <figure><img src="img/ad-cisa.jpg" alt="Audit SI CISA" loading="lazy"><figcaption>Audit SI · CISA</figcaption></figure>
+          <figure><img src="img/ad-qhse.jpg" alt="QHSE" loading="lazy"><figcaption>QHSE</figcaption></figure>
+          <figure><img src="img/ad-pmp.jpg" alt="Gestion de projet PMP" loading="lazy"><figcaption><span class="fr">Gestion de projet · PMP</span><span class="en">Project management · PMP</span></figcaption></figure>
+          <figure><img src="img/ad-mt1.jpg" alt="Médecine du travail" loading="lazy"><figcaption><span class="fr">Médecine du travail</span><span class="en">Occupational medicine</span></figcaption></figure>
+          <figure><img src="img/ad-echo2.jpg" alt="Échographie Doppler" loading="lazy"><figcaption><span class="fr">Échographie Doppler</span><span class="en">Doppler ultrasound</span></figcaption></figure>
+        </div>
+        <button type="button" class="btn more mag" data-gallery="posters"><span class="fr">Voir les 18 affiches</span><span class="en">See all 18 posters</span></button>
+      </article>
+
+      <article class="panel p3">
+        <div class="ph"><h3><span class="fr">Système de trois posts</span><span class="en">Three-post system</span></h3><p><span class="fr">Annonce, preuve sociale, relance : la même formation déclinée en trois publications.</span><span class="en">Announcement, social proof, reminder: one programme in three posts.</span></p></div>
+        <div class="g g3">
+          <figure><img src="img/camp-lead.jpg" alt="Post 1, annonce" loading="lazy"><figcaption><span class="fr">1 · Annonce</span><span class="en">1 · Announcement</span></figcaption></figure>
+          <figure><img src="img/ccl-lead2.jpg" alt="Post 2, preuve sociale" loading="lazy"><figcaption><span class="fr">2 · Preuve sociale</span><span class="en">2 · Social proof</span></figcaption></figure>
+          <figure><img src="img/ccl-lead3.jpg" alt="Post 3, relance" loading="lazy"><figcaption><span class="fr">3 · Relance</span><span class="en">3 · Reminder</span></figcaption></figure>
+        </div>
+      </article>
+
+      <article class="panel pr">
+        <div class="ph"><h3><span class="fr">Reels verticaux</span><span class="en">Vertical reels</span></h3><p><span class="fr">Deux vidéos animées par formation, programme et débouchés, plus le reel de lancement de Schoolaris.</span><span class="en">Two animated videos per programme, syllabus and careers, plus the Schoolaris launch reel.</span></p></div>
+        <div class="g g4">
+          <figure class="hv" tabindex="0" data-video="vid/ccl-gyn.mp4" data-poster="vid/ccl-gyn.jpg" data-title="Échographie gynécologique · programme"><div class="media r916"><img src="vid/ccl-gyn.jpg" alt="" loading="lazy"><video src="vid/ccl-gyn.mp4" poster="vid/ccl-gyn.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Échographie gynéco · programme</span><span class="en">Obstetric ultrasound · syllabus</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/ccl-lead.mp4" data-poster="vid/ccl-lead.jpg" data-title="Leadership stratégique · débouchés"><div class="media r916"><img src="vid/ccl-lead.jpg" alt="" loading="lazy"><video src="vid/ccl-lead.mp4" poster="vid/ccl-lead.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Leadership stratégique · débouchés</span><span class="en">Strategic leadership · careers</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/ccl-ifrs.mp4" data-poster="vid/ccl-ifrs.jpg" data-title="Normes IFRS · programme"><div class="media r916"><img src="vid/ccl-ifrs.jpg" alt="" loading="lazy"><video src="vid/ccl-ifrs.mp4" poster="vid/ccl-ifrs.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Normes IFRS · programme</span><span class="en">IFRS standards · syllabus</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/sc-reel.mp4" data-poster="vid/sc-reel.jpg" data-title="Schoolaris · reel de lancement"><div class="media r916"><img src="vid/sc-reel.jpg" alt="" loading="lazy"><video src="vid/sc-reel.mp4" poster="vid/sc-reel.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Schoolaris · reel de lancement</span><span class="en">Schoolaris · launch reel</span></figcaption></figure>
+        </div>
+        <button type="button" class="btn more mag" data-gallery="reels"><span class="fr">Voir les 8 vidéos</span><span class="en">See all 8 videos</span></button>
+      </article>
+
+      <article class="panel">
+        <div class="ph"><h3><span class="fr">Présentations</span><span class="en">Presentations</span></h3><p><span class="fr">Conçues slide par slide avant d'être narrées. Exemple : « Gestion des talents », 35 slides, pour Up Skills.</span><span class="en">Designed slide by slide before narration. Example: "Talent management", 35 slides, for Up Skills.</span></p></div>
+        <div class="g g4">
+          <figure><img src="img/slide-1.jpg" alt="Gestion des talents, couverture" loading="lazy"><figcaption><span class="fr">Couverture</span><span class="en">Cover</span></figcaption></figure>
+          <figure><img src="img/slide-2.jpg" alt="Plan du cours" loading="lazy"><figcaption><span class="fr">Plan du cours</span><span class="en">Course outline</span></figcaption></figure>
+          <figure><img src="img/slide-10.jpg" alt="Cartographie des métiers" loading="lazy"><figcaption><span class="fr">Cartographie des métiers</span><span class="en">Job mapping</span></figcaption></figure>
+          <figure><img src="img/slide-23.jpg" alt="Rétention des talents" loading="lazy"><figcaption><span class="fr">Rétention des talents</span><span class="en">Talent retention</span></figcaption></figure>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="ph"><h3><span class="fr">Cours vidéo narrés</span><span class="en">Narrated video courses</span></h3><p><span class="fr">Les mêmes présentations transformées en cours vidéo avec voix off IA, pour CCL et Up Skills.</span><span class="en">The same presentations turned into video courses with AI voice-over, for CCL and Up Skills.</span></p></div>
+        <div class="g g3">
+          <figure class="hv" tabindex="0" data-video="vid/up-talents.mp4" data-poster="vid/up-talents.jpg" data-title="Gestion des talents"><div class="media r169"><img src="vid/up-talents.jpg" alt="" loading="lazy"><video src="vid/up-talents.mp4" poster="vid/up-talents.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Gestion des talents</span><span class="en">Talent management</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/up-bi.mp4" data-poster="vid/up-bi.jpg" data-title="Panorama des outils BI"><div class="media r169"><img src="vid/up-bi.jpg" alt="" loading="lazy"><video src="vid/up-bi.mp4" poster="vid/up-bi.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Panorama des outils BI</span><span class="en">BI tools overview</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/up-ia.mp4" data-poster="vid/up-ia.jpg" data-title="Le rôle de l'IA et du machine learning"><div class="media r169"><img src="vid/up-ia.jpg" alt="" loading="lazy"><video src="vid/up-ia.mp4" poster="vid/up-ia.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Le rôle de l'IA et du machine learning</span><span class="en">The role of AI and machine learning</span></figcaption></figure>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="ph"><h3><span class="fr">Les outils derrière</span><span class="en">The tools behind it</span></h3><p><span class="fr">Un workflow n8n qui transforme les supports de cours en capsules narrées, et un générateur de cours assisté par IA. Captures floutées par confidentialité.</span><span class="en">An n8n workflow that turns course materials into narrated capsules, and an AI-assisted course generator. Screenshots blurred for confidentiality.</span></p></div>
+        <div class="g g4">
+          <figure><img src="img/auto-capsules.jpg" alt="Workflow n8n, flouté" loading="lazy"><figcaption><span class="fr">Workflow n8n · flouté</span><span class="en">n8n workflow · blurred</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/capsule-budget.mp4" data-poster="vid/capsule-budget.jpg" data-title="Capsule générée · Contraintes budgétaires"><div class="media r169"><img src="vid/capsule-budget.jpg" alt="" loading="lazy"><video src="vid/capsule-budget.mp4" poster="vid/capsule-budget.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Capsule générée · Contraintes budgétaires</span><span class="en">Generated capsule · Budget constraints</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/capsule-pilotage.mp4" data-poster="vid/capsule-pilotage.jpg" data-title="Capsule générée · Pilotage stratégique territorial"><div class="media r169"><img src="vid/capsule-pilotage.jpg" alt="" loading="lazy"><video src="vid/capsule-pilotage.mp4" poster="vid/capsule-pilotage.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Capsule générée · Pilotage stratégique</span><span class="en">Generated capsule · Strategic management</span></figcaption></figure>
+          <figure><img src="img/auto-generator.jpg" alt="Générateur de cours, flouté" loading="lazy"><figcaption><span class="fr">Générateur de cours · flouté</span><span class="en">Course generator · blurred</span></figcaption></figure>
+        </div>
+      </article>
+
+      <article class="panel pt">
+        <p class="lab" style="margin-bottom:14px"><span class="fr">Crédits</span><span class="en">Credits</span></p>
+        <p><span class="fr">Visuels, vidéos et outils produits par l'équipe technique et graphique de CCL, dont je suis l'avancement. Les contenus appartiennent à CCL, Schoolaris et Up Skills.</span><span class="en">Visuals, videos and tools produced by CCL's technical and design team, whose progress I track. The content belongs to CCL, Schoolaris and Up Skills.</span></p>
+        <p><span class="fr">Extraits courts, aucun chiffre interne. Les captures d'outils sont floutées.</span><span class="en">Short excerpts, no internal figures. Tool screenshots are blurred.</span></p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 FORMATION ================= -->
+<section class="sec paper" id="formation">
+  <div class="wrap">
+    <div class="sh" data-rv>
+      <span class="idx">05</span>
+      <h2 class="st"><span class="fr" data-split>Un diplôme en infrastructure, des certificats <em>vérifiables</em>.</span><span class="en" data-split>An infrastructure diploma, <em>verifiable</em> certificates.</span></h2>
+    </div>
+    <div class="eg">
+      <div class="dip" data-rv>
+        <p class="big">Bac<em>+2</em></p>
+        <h3><span class="fr">Technicien Spécialisé en infrastructure digitale, option cybersécurité</span><span class="en">Specialised technician in digital infrastructure, cybersecurity option</span></h3>
+        <p>ISTA NTIC SYBA, Marrakech · 2021 – 2023</p>
+        <div class="sub"><b><span class="fr">Baccalauréat, Sciences de la Vie et de la Terre</span><span class="en">Baccalaureate, life and earth sciences</span></b><span>Lycée Fatima El Mernissi, Marrakech · 2020</span></div>
+        <div class="sub"><b><span class="fr">Titres de compétences</span><span class="en">Competency titles</span></b><span><span class="fr">Administrateur réseaux et systèmes · Concepteur de contenus visuels et vidéos · Technicien informatique polyvalent</span><span class="en">Network and systems administrator · Visual and video content designer · All-round IT technician</span></span></div>
+      </div>
+      <ul class="certs" data-rv-group>
+        <li class="done"><i></i><div><b>Foundations of Cybersecurity</b><small>Google × Coursera · <span class="fr">avril 2026 · cours 1 du Google Cybersecurity Professional Certificate · </span><span class="en">April 2026 · course 1 of the Google Cybersecurity Professional Certificate · </span><a href="https://coursera.org/verify/PL68AKP0NBTF" target="_blank" rel="noopener"><span class="fr">vérifier</span><span class="en">verify</span></a></small></div><span class="state"><span class="fr">obtenu</span><span class="en">earned</span></span></li>
+        <li class="done"><i></i><div><b>PCAP – Programming Essentials in Python</b><small>Cisco Networking Academy · <span class="fr">février 2023</span><span class="en">February 2023</span></small></div><span class="state"><span class="fr">obtenu</span><span class="en">earned</span></span></li>
+        <li class="done"><i></i><div><b><span class="fr">Découvrir le monde de la cybersécurité · Réaliser un test d'intrusion · HTML &amp; CSS</span><span class="en">Discovering cybersecurity · Running a penetration test · HTML &amp; CSS</span></b><small>OpenClassrooms</small></div><span class="state"><span class="fr">obtenus</span><span class="en">earned</span></span></li>
+        <li class="done"><i></i><div><b>Microsoft Office Word</b><small>Microsoft</small></div><span class="state"><span class="fr">obtenu</span><span class="en">earned</span></span></li>
+        <li><i></i><div><b>CCNA 1 – Introduction to Networks · CCNA 2 – Switching, Routing, and Wireless Essentials</b><small>Cisco Networking Academy</small></div><span class="state"><span class="fr">en cours</span><span class="en">in progress</span></span></li>
+        <li><i></i><div><b>Google Cybersecurity Professional Certificate</b><small>Coursera × Google</small></div><span class="state"><span class="fr">en cours</span><span class="en">in progress</span></span></li>
+        <li><i></i><div><b>Goethe-Zertifikat B2 · Deutsch</b><small>Goethe-Institut · <span class="fr">niveau actuel A2</span><span class="en">current level A2</span></small></div><span class="state"><span class="fr">en préparation</span><span class="en">preparing</span></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 DEUTSCH ================= -->
+<section class="sec ink" id="deutsch">
+  <div class="wrap">
+    <div class="sh" data-rv>
+      <span class="idx">06</span>
+      <h2 class="st"><span class="fr" data-split>Kurz auf <em>Deutsch</em>.</span><span class="en" data-split>Kurz auf <em>Deutsch</em>.</span></h2>
+      <p class="sd"><span class="fr">Pour un recruteur ou un Ausbilder en Allemagne : l'essentiel en quelques lignes, et le Lebenslauf au format allemand.</span><span class="en">For a recruiter or Ausbilder in Germany: the essentials in a few lines, and the Lebenslauf in German format.</span></p>
+    </div>
+    <div class="dg">
+      <div data-rv>
+        <p class="de-txt" lang="de">IT-Techniker für digitale Infrastruktur mit Schwerpunkt Cybersicherheit, drei Jahre Praxis in Netzwerk, Support und Hardware. Seit März 2025 <strong>technischer Teamleiter bei CCL</strong> in Marrakesch mit zehn Mitarbeitenden: Firmennetzwerk, 1st- und 2nd-Level-Support, Hardware, E-Learning-Plattform. Ziel: <strong>Ausbildung zum Fachinformatiker für Systemintegration</strong>. Deutsch A2, Vorbereitung auf das Goethe-Zertifikat B2. Verfügbar zum nächsten Ausbildungsbeginn, bundesweit mobil.</p>
+        <a class="btn primary mag" href="cv/Lebenslauf_Ayoub_Braou_DE.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v12m0 0 4-4m-4 4-4-4M5 20h14"/></svg><span>Lebenslauf auf Deutsch · PDF</span></a>
+      </div>
+      <div data-rv>
+        <ul class="langs">
+          <li><b><span class="fr">Arabe</span><span class="en">Arabic</span></b><span><span class="fr">langue maternelle</span><span class="en">native</span></span></li>
+          <li><b><span class="fr">Français</span><span class="en">French</span></b><span><span class="fr">courant · études et travail</span><span class="en">fluent · study and work</span></span></li>
+          <li><b><span class="fr">Anglais</span><span class="en">English</span></b><span><span class="fr">intermédiaire · technique</span><span class="en">intermediate · technical</span></span></li>
+          <li class="de"><b><span class="fr">Allemand</span><span class="en">German</span></b><span>A2 → Goethe B2</span></li>
+        </ul>
+        <div class="fiche">
+          <p class="lab"><span class="fr">Fiche mobilité</span><span class="en">Mobility sheet</span></p>
+          <dl>
+            <dt><span class="fr">Objectif</span><span class="en">Goal</span></dt><dd>Ausbildung Fachinformatiker/-in für Systemintegration</dd>
+            <dt><span class="fr">Début</span><span class="en">Start</span></dt><dd><span class="fr">Prochaine rentrée, partout en Allemagne</span><span class="en">Next intake, anywhere in Germany</span></dd>
+            <dt>Visa</dt><dd><span class="fr">§ 16a AufenthG, demandé dès la promesse de contrat</span><span class="en">§ 16a AufenthG, applied for on contract offer</span></dd>
+            <dt><span class="fr">Documents</span><span class="en">Documents</span></dt><dd><span class="fr">Diplômes et certificats avec traduction assermentée</span><span class="en">Diplomas and certificates with sworn translation</span></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 CONTACT ================= -->
+<section class="ct ink" id="contact">
+  <div class="wrap">
+    <div class="sh" data-rv>
+      <span class="idx">07</span>
+      <h2 class="st"><span class="fr" data-split>Parlons réseau, plateforme ou <em>Ausbildung</em>.</span><span class="en" data-split>Let's talk network, platform or <em>Ausbildung</em>.</span></h2>
+      <p class="sd"><span class="fr">Je réponds en français, en anglais ou en arabe, et en allemand pour l'essentiel.</span><span class="en">I reply in French, English or Arabic, and in German for the essentials.</span></p>
+    </div>
+    <div data-rv>
+      <a class="mail" href="mailto:braouayoub@gmail.com">braouayoub@gmail.com</a>
+      <div class="cg">
+        <div><span class="lab"><span class="fr">Téléphone</span><span class="en">Phone</span></span><b>+212 775 330 704 <button type="button" class="copy" data-copy="+212775330704"><span class="fr">Copier</span><span class="en">Copy</span></button></b></div>
+        <div><span class="lab">LinkedIn</span><b><a href="https://www.linkedin.com/in/ayoub-braou-949150253/" target="_blank" rel="noopener">Braou Ayoub</a></b></div>
+        <div><span class="lab"><span class="fr">Ville · disponibilité</span><span class="en">City · availability</span></span><b><span class="fr">Marrakech · prochaine rentrée, sur place ou à distance</span><span class="en">Marrakech · next intake, on site or remote</span></b></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="ink">
+  <span>© 2026 Ayoub Braou</span>
+  <span><span class="fr">Portfolio et CV mis à jour en octobre 2026</span><span class="en">Portfolio and CV updated October 2026</span></span>
+</footer>
+
+<div id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
+  <div class="lb-top">
+    <span class="lb-title" id="lb-title"></span>
+    <div class="acts"><button type="button" class="lb-btn lb-back" hidden><span class="fr">← Retour</span><span class="en">← Back</span></button><button type="button" class="lb-btn lb-close"><span class="fr">Fermer</span><span class="en">Close</span></button></div>
+  </div>
+  <div class="lb-body">
+    <div class="lb-single" hidden><video controls playsinline preload="metadata"></video><img alt="" hidden></div>
+    <div class="lb-grid" hidden></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
+<script>
+(function(){
+  var root=document.documentElement, body=document.body;
+  var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var G=window.gsap&&window.ScrollTrigger&&!RM;
+  var FINE=window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if(G){ gsap.registerPlugin(ScrollTrigger); if(window.SplitText) gsap.registerPlugin(SplitText); }
+
+  /* ---------- language ---------- */
+  function L(){ return root.getAttribute('data-lang')==='en'?2:1 }
+  var splits=[], heroSplit=null;
+  function setLang(l,first){
+    root.setAttribute('data-lang',l); root.lang=l;
+    document.getElementById('btn-fr').setAttribute('aria-pressed',l==='fr');
+    document.getElementById('btn-en').setAttribute('aria-pressed',l==='en');
+    try{localStorage.setItem('ab-lang',l)}catch(e){}
+    if(!first && G){ rebuildSplits(true); ScrollTrigger.refresh(); }
+  }
+  var start='fr';
+  try{var s=localStorage.getItem('ab-lang'); if(s==='en'||s==='fr') start=s}catch(e){}
+  if(location.hash==='#en') start='en'; if(location.hash==='#fr') start='fr';
+  setLang(start,true);
+  document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click',function(){ setLang(b.dataset.set) }) });
+
+  /* ---------- clock (Marrakech) ---------- */
+  var ck=document.getElementById('clock');
+  function tick(){ try{ ck.textContent=new Intl.DateTimeFormat('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Africa/Casablanca'}).format(new Date()) }catch(e){ ck.textContent='' } }
+  tick(); setInterval(tick,20000);
+
+  /* ---------- copy buttons ---------- */
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=b.dataset.copy, done=function(){ b.classList.add('ok'); setTimeout(function(){b.classList.remove('ok')},1400) };
+      if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done,done); else done();
+    });
+  });
+
+  /* ---------- hover video + lightbox (single + grid) ---------- */
+  var POSTERS=[['immuno','Immunologie','Immunology'],['cisa','Audit SI · CISA','IS audit · CISA'],['qhse','QHSE','QHSE'],['pmp','Gestion de projet · PMP','Project management · PMP'],['mt1','Médecine du travail','Occupational medicine'],['echo2','Échographie Doppler','Doppler ultrasound'],['qualite','Management de la qualité','Quality management'],['cg','Contrôle de gestion 2.0','Management control 2.0'],['banque','Techniques bancaires','Banking techniques'],['rh','RH & audit social','HR & social audit'],['dialogue','Dialogue et influence','Dialogue & influence'],['bi','Excel & Power BI','Excel & Power BI'],['quali','Analyse qualitative','Qualitative analysis'],['urg1',"Échographie d'urgence",'Emergency ultrasound'],['urg3',"Échographie d'urgence · v2",'Emergency ultrasound · v2'],['gp1','Gestion de projet','Project management'],['erp2','Maîtrise des ERP','ERP mastery'],['mt3','Médecine du travail · v2','Occupational medicine · v2']];
+  var REELS=[['ccl-gyn','Échographie gynécologique · programme','Obstetric ultrasound · syllabus'],['ccl-lead','Leadership stratégique · débouchés','Strategic leadership · careers'],['ccl-ifrs','Normes IFRS · programme','IFRS standards · syllabus'],['sc-reel','Schoolaris · reel de lancement','Schoolaris · launch reel'],['ccl-doppler','Échographie Doppler · programme','Doppler ultrasound · syllabus'],['ccl-pmp','Gestion de projet PMP · programme','PMP project management · syllabus'],['ccl-geo','Géotechnique routière · débouchés','Road geotechnics · careers'],['ccl-nutri','Nutrition clinique · programme','Clinical nutrition · syllabus']];
+  var GAL={
+    posters:{cls:'g6',title:['','Affiches des formations CCL · 18','CCL programme posters · 18'],items:POSTERS.map(function(p){return {img:'img/ad-'+p[0]+'.jpg',cap:['',p[1],p[2]]}})},
+    reels:{cls:'g4',title:['','Reels et vidéos verticales · 8','Reels and vertical videos · 8'],items:REELS.map(function(r){return {video:'vid/'+r[0]+'.mp4',img:'vid/'+r[0]+'.jpg',cap:['',r[1],r[2]]}})}
+  };
+  var lb=document.getElementById('lb'), lbT=document.getElementById('lb-title'), lbBack=lb.querySelector('.lb-back'), lbClose=lb.querySelector('.lb-close'),
+      lbS=lb.querySelector('.lb-single'), lbV=lbS.querySelector('video'), lbI=lbS.querySelector('img'), lbGrid=lb.querySelector('.lb-grid');
+  var fromGrid=false, gridKey=null, lastFocus=null;
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;') }
+  function showLb(){
+    if(!lb.hidden) return;
+    lastFocus=document.activeElement; lb.hidden=false; body.style.overflow='hidden';
+    if(G) gsap.fromTo(lb,{autoAlpha:0},{autoAlpha:1,duration:.35,ease:'power2.out'});
+    lbClose.focus();
+  }
+  function stopV(){ lbV.pause(); lbV.removeAttribute('src'); lbV.load(); }
+  function single(src,poster,title,isVideo){
+    lbGrid.hidden=true; lbS.hidden=false; lbT.textContent=title||''; lbBack.hidden=!fromGrid;
+    if(isVideo){ lbI.hidden=true; lbV.hidden=false; lbV.poster=poster||''; lbV.src=src; lbV.load(); var p=lbV.play(); if(p&&p.catch) p.catch(function(){}); }
+    else { stopV(); lbV.hidden=true; lbI.hidden=false; lbI.src=src; }
+    if(G&&!lb.hidden) gsap.fromTo(lbS,{autoAlpha:0,y:12},{autoAlpha:1,y:0,duration:.35,ease:'power2.out'});
+    showLb();
+  }
+  function openCard(c){ fromGrid=false; single(c.dataset.video||c.dataset.poster, c.dataset.poster, c.dataset.title, !!c.dataset.video); }
+  function openGrid(key){
+    var d=GAL[key]; gridKey=key; var l=L();
+    lbGrid.className='lb-grid '+d.cls;
+    lbGrid.innerHTML=d.items.map(function(it){
+      if(it.video) return '<figure class="hv" tabindex="0" data-video="'+it.video+'" data-poster="'+it.img+'" data-title="'+esc(it.cap[l])+'"><div class="media r916"><img src="'+it.img+'" alt="" loading="lazy"><video src="'+it.video+'" poster="'+it.img+'" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption>'+esc(it.cap[l])+'</figcaption></figure>';
+      return '<figure tabindex="0" data-poster="'+it.img+'" data-title="'+esc(it.cap[l])+'"><img src="'+it.img+'" alt="'+esc(it.cap[l])+'" loading="lazy"><figcaption>'+esc(it.cap[l])+'</figcaption></figure>';
+    }).join('');
+    bindCards(lbGrid,function(c){ fromGrid=true; single(c.dataset.video||c.dataset.poster, c.dataset.poster, c.dataset.title, !!c.dataset.video); });
+    stopV(); lbS.hidden=true; lbGrid.hidden=false; lbBack.hidden=true; lbT.textContent=d.title[l];
+    showLb();
+    if(G) gsap.from(lbGrid.children,{autoAlpha:0,y:16,duration:.5,stagger:.03,ease:'power2.out',clearProps:'all'});
+  }
+  function back(){ stopV(); lbS.hidden=true; lbGrid.hidden=false; lbBack.hidden=true; lbT.textContent=GAL[gridKey].title[L()]; }
+  function closeLb(){
+    var done=function(){ lb.hidden=true; body.style.overflow=''; stopV(); lbGrid.innerHTML=''; if(lastFocus&&lastFocus.focus) lastFocus.focus(); };
+    if(G) gsap.to(lb,{autoAlpha:0,duration:.25,onComplete:done}); else done();
+  }
+  function bindCards(rootEl,onClick){
+    rootEl.querySelectorAll('figure').forEach(function(c){
+      if(!c.dataset.video&&!c.dataset.poster) return;
+      var v=c.querySelector('video');
+      if(v){ c.addEventListener('mouseenter',function(){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); }); c.addEventListener('mouseleave',function(){ v.pause(); }); }
+      c.addEventListener('click',function(){ onClick(c) });
+      c.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); onClick(c); } });
+    });
+  }
+  bindCards(document.getElementById('track'),openCard);
+  document.querySelectorAll('[data-gallery]').forEach(function(b){ b.addEventListener('click',function(){ openGrid(b.dataset.gallery) }) });
+  lbBack.addEventListener('click',back); lbClose.addEventListener('click',closeLb);
+  addEventListener('keydown',function(e){ if(lb.hidden) return; if(e.key==='Escape'){ if(fromGrid&&!lbS.hidden){ fromGrid=false; back(); } else closeLb(); } });
+
+  /* ---------- no motion: drop the loader and stop here ---------- */
+  var loader=document.getElementById('loader');
+  if(!G){ loader.remove(); document.querySelectorAll('[data-count]').forEach(function(el){ el.textContent=el.dataset.count }); return; }
+
+  /* ---------- GSAP ---------- */
+  var ease='power3.out';
+  function visible(el){ return el.offsetParent!==null && getComputedStyle(el).display!=='none' }
+
+  // hero initial state (hidden until the loader leaves)
+  gsap.set('[data-hero]',{autoAlpha:0,y:24});
+  gsap.set('.hl',{autoAlpha:0});
+  gsap.set('#globe',{autoAlpha:0,scale:.82,transformOrigin:'50% 50%'});
+
+  // preloader letters
+  var ln=document.getElementById('ld-name'); ln.innerHTML=ln.textContent.split('').map(function(ch){ return '<span class="ch">'+(ch===' '?'&nbsp;':ch)+'</span>' }).join('');
+  gsap.set('#loader .ch',{yPercent:110});
+
+  function heroIn(){
+    var h=[].slice.call(document.querySelectorAll('[data-split-hero]')).filter(visible)[0];
+    var tl=gsap.timeline();
+    if(h&&window.SplitText){ heroSplit=SplitText.create(h,{type:'lines',mask:'lines',linesClass:'ln'}); gsap.set('.hl',{autoAlpha:1}); tl.from(heroSplit.lines,{yPercent:110,duration:1.1,stagger:.09,ease:'expo.out',onComplete:function(){ if(heroSplit){ heroSplit.revert(); heroSplit=null; } }},0); }
+    else { tl.to('.hl',{autoAlpha:1,y:0,duration:.8,ease:ease},0); }
+    tl.to('[data-hero]',{autoAlpha:1,y:0,duration:.9,stagger:.09,ease:ease},.35)
+      .to('#globe',{autoAlpha:1,scale:1,duration:1.6,ease:'expo.out'},.1);
+    return tl;
+  }
+  function boot(){
+    var tl=gsap.timeline({defaults:{ease:ease}});
+    tl.to('#loader .ch',{yPercent:0,duration:.7,stagger:.035,ease:'power3.out'})
+      .to('#loader .ld-bar i',{scaleX:1,duration:.6,ease:'power2.inOut'},'-=.35')
+      .to('#loader',{yPercent:-100,duration:.9,ease:'expo.inOut',onComplete:function(){ loader.remove(); ScrollTrigger.refresh(); }},'+=.05')
+      .add(heroIn(),'-=.55');
+  }
+  var booted=false; function bootOnce(){ if(!booted){ booted=true; boot(); } }
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(bootOnce); setTimeout(bootOnce,2200);
+
+  // nav hide/show
+  var nav=document.getElementById('nav');
+  ScrollTrigger.create({start:'top -80',onUpdate:function(self){ nav.classList.toggle('hide',self.direction===1&&self.scroll()>240) }});
+
+  // ticker
+  gsap.to('#tk',{xPercent:-50,duration:30,ease:'none',repeat:-1});
+
+  // split section titles for the visible language, re-run on language change
+  function rebuildSplits(fromLang){
+    splits.forEach(function(s){ if(s.st) s.st.kill(); if(!s.done){ s.done=true; s.sp.revert(); } }); splits=[];
+    if(!window.SplitText) return;
+    [].slice.call(document.querySelectorAll('[data-split]')).filter(visible).forEach(function(el){
+      var sp=SplitText.create(el,{type:'lines',mask:'lines',linesClass:'ln'}), rec={sp:sp,done:false};
+      var tw=gsap.from(sp.lines,{yPercent:110,duration:1,stagger:.08,ease:'expo.out',onComplete:function(){ if(!rec.done){ rec.done=true; sp.revert(); } },scrollTrigger:{trigger:el,start:'top 88%',once:true}});
+      rec.st=tw.scrollTrigger; splits.push(rec);
+    });
+    if(fromLang&&heroSplit){ heroSplit.revert(); heroSplit=null; gsap.set('.hl',{autoAlpha:1}); }
+  }
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){ rebuildSplits(false) }); else rebuildSplits(false);
+
+  // generic reveals
+  gsap.utils.toArray('[data-rv]').forEach(function(el){
+    gsap.from(el,{y:30,autoAlpha:0,duration:1,ease:ease,scrollTrigger:{trigger:el,start:'top 90%',once:true}});
+  });
+  gsap.utils.toArray('[data-rv-group]').forEach(function(g){
+    gsap.from(g.children,{y:24,autoAlpha:0,duration:.8,stagger:.07,ease:ease,scrollTrigger:{trigger:g,start:'top 85%',once:true}});
+  });
+
+  // counters
+  gsap.utils.toArray('[data-count]').forEach(function(el){
+    var n=+el.dataset.count, o={v:0};
+    gsap.to(o,{v:n,duration:1.4,ease:'power2.out',snap:{v:1},onUpdate:function(){ el.textContent=o.v },scrollTrigger:{trigger:el,start:'top 90%',once:true}});
+  });
+
+  // portrait parallax + stamp spin
+  gsap.to('#portrait',{yPercent:-7,ease:'none',scrollTrigger:{trigger:'.fig',start:'top bottom',end:'bottom top',scrub:true}});
+  gsap.fromTo('#stamp',{rotate:-16},{rotate:6,ease:'none',scrollTrigger:{trigger:'.fig',start:'top bottom',end:'bottom top',scrub:true}});
+
+  // timeline line draws with scroll
+  gsap.to('#tlprog',{scaleY:1,ease:'none',scrollTrigger:{trigger:'#tl',start:'top 70%',end:'bottom 75%',scrub:.4}});
+
+  // horizontal gallery (desktop only)
+  var mm=gsap.matchMedia();
+  mm.add('(min-width: 900px)',function(){
+    var track=document.getElementById('track'), pin=document.getElementById('pin'), work=document.getElementById('realisations');
+    work.classList.add('hz');
+    var dist=function(){ return Math.max(0,track.scrollWidth-document.documentElement.clientWidth) };
+    var tween=gsap.to(track,{x:function(){ return -dist() },ease:'none',scrollTrigger:{trigger:pin,start:'top top',end:function(){ return '+='+dist() },pin:true,scrub:.7,anticipatePin:1,invalidateOnRefresh:true,onUpdate:function(s){ gsap.set('#wprog',{scaleX:s.progress}) }}});
+    gsap.utils.toArray('#track .panel').forEach(function(p,i){
+      if(i===0) return;
+      gsap.from(p,{autoAlpha:0,x:80,duration:.8,ease:ease,scrollTrigger:{trigger:p,containerAnimation:tween,start:'left 95%',once:true}});
+    });
+    return function(){ work.classList.remove('hz'); };
+  });
+  mm.add('(max-width: 899px)',function(){
+    gsap.utils.toArray('#track .panel').forEach(function(p){
+      gsap.from(p,{autoAlpha:0,y:30,duration:.9,ease:ease,scrollTrigger:{trigger:p,start:'top 90%',once:true}});
+    });
+  });
+
+  // globe follows the hero on scroll and sleeps when out of view
+  ScrollTrigger.create({trigger:'#hero',start:'top top',end:'bottom top',scrub:true,
+    onUpdate:function(s){ if(window.__globe) window.__globe.scroll=s.progress; gsap.set('.globe-wrap',{y:s.progress*160,opacity:1-s.progress*.8}); },
+    onToggle:function(s){ if(window.__globe) window.__globe.active=s.isActive }});
+
+  // magnetic buttons (pointer devices)
+  if(FINE){
+    document.querySelectorAll('.mag').forEach(function(b){
+      var xTo=gsap.quickTo(b,'x',{duration:.4,ease:'power3'}), yTo=gsap.quickTo(b,'y',{duration:.4,ease:'power3'});
+      b.addEventListener('mousemove',function(e){ var r=b.getBoundingClientRect(); xTo((e.clientX-r.left-r.width/2)*.22); yTo((e.clientY-r.top-r.height/2)*.3); });
+      b.addEventListener('mouseleave',function(){ xTo(0); yTo(0); });
+    });
+  }
+
+  addEventListener('load',function(){ ScrollTrigger.refresh() });
+})();
+</script>
+
+<script type="module">
+/* Three.js globe: a dotted sphere with the Marrakech → Deutschland arc, packets travelling along it. */
+import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.170.0/three.module.min.js';
+const cv=document.getElementById('globe');
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let renderer;
+try{ renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true,powerPreference:'high-performance'}); }catch(e){ cv.remove(); throw e; }
+renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));
+const scene=new THREE.Scene();
+const cam=new THREE.PerspectiveCamera(30,1,.1,20); cam.position.set(0,.15,3.6); cam.lookAt(0,0,0);
+const g=new THREE.Group(); scene.add(g);
+const R=1, ACC=0xff4d1c, BONE=0xece7dd;
+
+// fibonacci point cloud
+const N=2800, pos=new Float32Array(N*3);
+for(let i=0;i<N;i++){ const y=1-(i/(N-1))*2, r=Math.sqrt(1-y*y), th=i*2.399963; pos[i*3]=Math.cos(th)*r*R; pos[i*3+1]=y*R; pos[i*3+2]=Math.sin(th)*r*R; }
+const pg=new THREE.BufferGeometry(); pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
+g.add(new THREE.Points(pg,new THREE.PointsMaterial({color:0x9a958d,size:.012,sizeAttenuation:true,transparent:true,opacity:.7})));
+// faint wire + halo
+g.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(R*1.002,2)),new THREE.LineBasicMaterial({color:BONE,transparent:true,opacity:.06})));
+g.add(new THREE.Mesh(new THREE.SphereGeometry(R*.985,48,48),new THREE.MeshBasicMaterial({color:0x0e0f12,transparent:true,opacity:.92})));
+scene.add(new THREE.Mesh(new THREE.SphereGeometry(R*1.06,48,48),new THREE.MeshBasicMaterial({color:BONE,transparent:true,opacity:.035,side:THREE.BackSide})));
+// equator + a couple of meridians
+const ringMat=new THREE.LineBasicMaterial({color:BONE,transparent:true,opacity:.12});
+const circle=(n)=>{ const pts=[]; for(let i=0;i<=n;i++){ const a=i/n*Math.PI*2; pts.push(new THREE.Vector3(Math.cos(a)*R,0,Math.sin(a)*R)); } return new THREE.BufferGeometry().setFromPoints(pts); };
+const eq=new THREE.Line(circle(128),ringMat); g.add(eq);
+for(const rot of [0,Math.PI/3,2*Math.PI/3]){ const m=new THREE.Line(circle(128),ringMat); m.rotation.x=Math.PI/2; m.rotation.y=rot; g.add(m); }
+
+// lat/lon → vector
+const ll=(lat,lon,r=R)=>{ const p=(90-lat)*Math.PI/180, t=(lon+180)*Math.PI/180; return new THREE.Vector3(-r*Math.sin(p)*Math.cos(t), r*Math.cos(p), r*Math.sin(p)*Math.sin(t)); };
+const A=ll(31.63,-7.98), B=ll(51.1,10.4);
+const mid=A.clone().add(B).multiplyScalar(.5).normalize().multiplyScalar(R*1.38);
+const curve=new THREE.QuadraticBezierCurve3(A,mid,B);
+g.add(new THREE.Mesh(new THREE.TubeGeometry(curve,80,.0055,6,false),new THREE.MeshBasicMaterial({color:ACC})));
+const dot=(v,s)=>{ const m=new THREE.Mesh(new THREE.SphereGeometry(s,16,16),new THREE.MeshBasicMaterial({color:ACC})); m.position.copy(v); g.add(m); return m; };
+dot(A,.02); dot(B,.02);
+const ring=new THREE.Mesh(new THREE.RingGeometry(.03,.036,40),new THREE.MeshBasicMaterial({color:ACC,transparent:true,opacity:.8,side:THREE.DoubleSide}));
+ring.position.copy(B); ring.lookAt(B.clone().multiplyScalar(2)); g.add(ring);
+const ringA=ring.clone(); ringA.position.copy(A); ringA.lookAt(A.clone().multiplyScalar(2)); ringA.material=ring.material.clone(); g.add(ringA);
+const packets=[0,.33,.66].map(o=>{ const m=dot(A,.013); m.userData.o=o; return m; });
+
+// orient so the arc faces the camera
+const m2=mid.clone().normalize();
+const ry=-Math.atan2(m2.x,m2.z); g.rotation.y=ry;
+const v=m2.clone().applyAxisAngle(new THREE.Vector3(0,1,0),ry);
+const rx=Math.atan2(v.y,v.z)*.72; g.rotation.x=rx;
+const base={x:rx,y:ry};
+
+let tgt={x:0,y:0}, cur={x:0,y:0}, scroll=0, active=true;
+window.__globe={ set active(b){ active=b }, set scroll(p){ scroll=p } };
+addEventListener('pointermove',e=>{ tgt.x=e.clientX/innerWidth-.5; tgt.y=e.clientY/innerHeight-.5; },{passive:true});
+function size(){ const w=cv.clientWidth||600, h=cv.clientHeight||600; renderer.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); }
+size(); addEventListener('resize',size);
+
+const clock=new THREE.Clock();
+function frame(){
+  if(active && !document.hidden){
+    const t=clock.getElapsedTime();
+    cur.x+=(tgt.x-cur.x)*.05; cur.y+=(tgt.y-cur.y)*.05;
+    g.rotation.y=base.y+Math.sin(t*.16)*.26+cur.x*.35+scroll*1.1;
+    g.rotation.x=base.x+cur.y*.18+scroll*.35;
+    packets.forEach(m=>{ const u=(t*.11+m.userData.o)%1; m.position.copy(curve.getPointAt(u)); m.scale.setScalar(.6+.5*Math.sin(u*Math.PI)); });
+    const s=1+.3*(.5+.5*Math.sin(t*2.4)); ring.scale.setScalar(s); ring.material.opacity=.9-.7*((s-1)/.3);
+    const s2=1+.3*(.5+.5*Math.sin(t*2.4+Math.PI)); ringA.scale.setScalar(s2); ringA.material.opacity=.9-.7*((s2-1)/.3);
+    renderer.render(scene,cam);
+  }
+  requestAnimationFrame(frame);
+}
+if(RM){ renderer.render(scene,cam); } else frame();
+</script>
+
+</body>
+</html>
