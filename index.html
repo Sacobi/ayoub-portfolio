@@ -1,44 +1,47 @@
 <!doctype html>
-<html lang="fr">
+<html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Ayoub Braou</title>
-<meta name="description" content="Ayoub Braou, technicien en infrastructure digitale et cybersécurité, chef d'équipe technique à CCL Marrakech. Réseau, support, matériel, plateforme e-learning. Objectif : Ausbildung Fachinformatiker für Systemintegration.">
-<meta property="og:title" content="Ayoub Braou · Technicien infrastructure &amp; chef d'équipe technique">
-<meta property="og:description" content="Réseau, support, matériel, e-learning. Marrakech → Deutschland.">
+<meta name="description" content="Ayoub Braou, IT-Techniker für digitale Infrastruktur und Cybersicherheit, technischer Teamleiter bei CCL in Marrakesch. Netzwerk, Support, Hardware, E-Learning-Plattform. Ziel: Ausbildung zum Fachinformatiker für Systemintegration.">
+<meta property="og:title" content="Ayoub Braou · IT-Techniker &amp; technischer Teamleiter">
+<meta property="og:description" content="Netzwerk, Support, Hardware, E-Learning. Marrakesch → Deutschland.">
 <meta property="og:image" content="img/ayoub.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500&display=swap">
 <style>
-/* Editorial, print-like page: ink and paper sections alternate, one signal-orange accent, ruled lines
-   instead of cards, big grotesk headlines with a serif italic for the one word that matters. The hero
-   carries a Three.js globe tracing Marrakech → Deutschland; GSAP handles the preloader, line reveals,
+/* Terminal-flavoured editorial page: a dark green field with a faint "matrix" rain of network terms and
+   scanlines behind everything, one terminal-green accent, ruled lines instead of cards, big grotesk
+   headlines with a serif italic for the one word that matters. A typed terminal boot screen opens the
+   page; the hero carries a Three.js three-tier network with packets moving through it; GSAP handles line reveals,
    the ticker, counters, the drawn timeline and the pinned horizontal gallery. Everything degrades to
    a plain readable page when motion is reduced or scripts fail. */
 :root{
-  --ink:#0E0F12; --ink-2:#15171C; --paper:#F2EDE4; --paper-2:#E8E1D4; --bone:#ECE7DD;
-  --mute-d:#8F8B84; --mute-p:#6A665E; --line-d:rgba(236,231,221,.14); --line-p:rgba(14,15,18,.16);
-  --acc:#FF4D1C; --acc-ink:#140A05;
+  --ink:#030A06; --ink-2:#0A1D13; --paper:#0A1D13; --paper-2:#0C2117; --bone:#EAFFF1;
+  --mute-d:#9BC7AC; --mute-p:#9BC7AC; --line-d:rgba(65,255,138,.16); --line-p:rgba(65,255,138,.16);
+  --acc:#41FF8A; --acc-ink:#031008;
   --disp:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
   --ser:"Instrument Serif",Georgia,"Times New Roman",serif;
   --mono:"Geist Mono","JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
   --gut:clamp(18px,4.5vw,64px); --max:1320px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;background:var(--ink)}
-body{margin:0;background:var(--ink);color:var(--bone);font:400 17px/1.55 var(--disp);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* the gradient sits on <html> so the fixed rain canvas (z-index:-1) can show through a transparent body */
+html{scroll-behavior:smooth;scroll-padding-top:72px;background:radial-gradient(circle at 35% 0,rgba(65,255,138,.16),transparent 38%),linear-gradient(180deg,#07160F,#020504 85%) fixed #020504}
+body{margin:0;background:transparent;color:var(--bone);font:400 17px/1.55 var(--disp);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img,video,canvas{max-width:100%;display:block}
 [hidden]{display:none!important}
-[data-lang="en"] .fr, :root:not([data-lang="en"]) .en{display:none!important}
+[data-lang="en"] .de, :root:not([data-lang="en"]) .en{display:none!important}
 h1,h2,h3,h4,p,ul,figure{margin:0}
 a{color:inherit}
 button{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--acc);outline-offset:3px}
 em{font:italic 1.04em/1 var(--ser);letter-spacing:0}
-.ink{background:var(--ink);color:var(--bone);--mute:var(--mute-d);--line:var(--line-d);--surface:var(--ink-2)}
-.paper{background:var(--paper);color:var(--ink);--mute:var(--mute-p);--line:var(--line-p);--surface:var(--paper-2)}
+.ink{background:transparent;color:var(--bone);--mute:var(--mute-d);--line:var(--line-d);--surface:var(--ink-2)}
+.paper{background:rgba(8,25,17,.5);color:var(--bone);--mute:var(--mute-p);--line:var(--line-p);--surface:var(--paper-2)}
+::selection{background:var(--acc);color:var(--acc-ink)}
 .wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--gut)}
 .mono{font-family:var(--mono)}
 .lab{font:500 12px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
@@ -51,21 +54,27 @@ em{font:italic 1.04em/1 var(--ser);letter-spacing:0}
 .btn.primary:hover span,.btn.primary:hover svg{color:var(--ink)}
 .btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
-/* grain */
-.grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:55;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* background: falling network terms + CRT scanlines */
+#rain{position:fixed;inset:0;z-index:-1;opacity:.17;pointer-events:none}
+.scan{position:fixed;inset:0;pointer-events:none;z-index:55;background:linear-gradient(rgba(255,255,255,.018) 50%,transparent 50%);background-size:100% 4px}
 
-/* preloader */
-#loader{position:fixed;inset:0;z-index:80;background:var(--ink);color:var(--bone);display:grid;place-items:center;padding:var(--gut)}
-#loader .ld{width:min(92vw,900px)}
-#loader .ld-name{font:500 clamp(40px,9vw,120px)/1.2 var(--disp);letter-spacing:-.04em;overflow:hidden;white-space:nowrap}
-#loader .ld-name .ch{display:inline-block;will-change:transform}
-#loader .ld-bar{height:1px;background:var(--line-d);margin-top:18px;position:relative}
-#loader .ld-bar i{position:absolute;inset:0;background:var(--acc);transform:scaleX(0);transform-origin:left}
-#loader .ld-row{display:flex;justify-content:space-between;margin-top:12px;font:400 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute-d)}
+/* preloader: a terminal that types the boot sequence */
+#loader{position:fixed;inset:0;z-index:80;background:#000;color:var(--acc);display:grid;place-items:center;padding:var(--gut);cursor:pointer}
+#loader::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(255,255,255,.03) 50%,transparent 50%);background-size:100% 4px}
+.term{width:min(100%,860px);font:400 clamp(13px,1.6vw,16px)/1.6 var(--mono)}
+.term-bar{display:flex;align-items:center;gap:8px;padding:12px 14px;background:#0B1510;border:1px solid rgba(65,255,138,.3);border-radius:8px 8px 0 0}
+.term-bar i{width:12px;height:12px;border-radius:50%;background:#FF5F56}
+.term-bar i:nth-child(2){background:#F4D06F}.term-bar i:nth-child(3){background:#41FF8A}
+.term-bar b{margin-left:12px;font-weight:400;font-size:13px}
+.term-body{min-height:min(340px,60vh);padding:22px 24px;background:#000;border:1px solid rgba(65,255,138,.3);border-top:0;border-radius:0 0 8px 8px;text-shadow:0 0 8px rgba(65,255,138,.45)}
+.term-body p{margin:0 0 6px;min-height:1.6em;white-space:pre-wrap;overflow-wrap:anywhere}
+.term-cur{display:inline-block;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.term-skip{margin-top:14px;text-align:right;font:400 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute-d)}
 
 /* nav */
-.nav{position:fixed;top:0;left:0;right:0;z-index:40;mix-blend-mode:difference;color:#fff;padding:18px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:16px;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
-.nav.hide{transform:translateY(-110%)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:40;color:var(--bone);padding:14px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(2,8,5,.86);border-bottom:1px solid var(--line-d);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.nav ul a[aria-current="true"]{color:var(--acc);opacity:1}
 .nav .brand{font:500 14px var(--mono);letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
 .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:26px}
 .nav ul a{text-decoration:none;font:400 13px var(--mono);letter-spacing:.06em;text-transform:uppercase;opacity:.8}
@@ -73,15 +82,15 @@ em{font:italic 1.04em/1 var(--ser);letter-spacing:0}
 .nav .right{display:flex;align-items:center;gap:12px}
 .lang{display:inline-flex;border:1px solid currentColor;border-radius:2px}
 .lang button{all:unset;cursor:pointer;font:500 11.5px var(--mono);letter-spacing:.08em;padding:7px 10px}
-.lang button[aria-pressed="true"]{background:#fff;color:#000}
-.lang button:focus-visible{outline:2px solid #fff;outline-offset:1px}
-.nav .cvb{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font:500 11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;background:#fff;color:#000;padding:8px 12px;border-radius:2px}
+.lang button[aria-pressed="true"]{background:var(--acc);color:var(--acc-ink)}
+.lang button:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
+.nav .cvb{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font:500 11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;background:var(--acc);color:var(--acc-ink);padding:8px 12px;border-radius:2px}
 .nav .cvb svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
 @media (max-width:980px){.nav ul{display:none}}
 
 /* hero */
 .hero{position:relative;min-height:100svh;display:grid;grid-template-rows:1fr auto;padding:calc(var(--gut) + 64px) var(--gut) var(--gut);overflow:hidden;isolation:isolate}
-.globe-wrap{position:absolute;z-index:0;right:-6vw;top:50%;transform:translateY(-50%);width:min(58vw,780px);aspect-ratio:1;pointer-events:none}
+.globe-wrap{position:absolute;z-index:0;right:-2vw;top:calc(50svh + 30px);transform:translateY(-50%);width:min(52vw,760px,calc(100svh - 110px));aspect-ratio:1;pointer-events:none}
 #globe{width:100%;height:100%}
 .hero-main{position:relative;z-index:2;align-self:center;max-width:min(100%,1120px);padding-top:4vh}
 .hero .lab{color:var(--mute-d)}
@@ -96,8 +105,11 @@ em{font:italic 1.04em/1 var(--ser);letter-spacing:0}
 .hero-foot{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;border-top:1px solid var(--line-d);padding-top:16px;margin-top:40px;font:400 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute-d)}
 .hero-foot .r{text-align:right}.hero-foot .c{text-align:center}
 .hero-foot .c b{color:var(--bone);font-weight:500}
+/* small screens: the network becomes its own block above the headline instead of sitting behind the text */
 @media (max-width:900px){
-  .globe-wrap{right:auto;left:50%;top:38%;transform:translate(-50%,-50%);width:min(120vw,620px);opacity:.55}
+  .hero{grid-template-rows:auto 1fr auto;padding-top:calc(var(--gut) + 48px)}
+  .globe-wrap{position:relative;right:auto;top:auto;transform:none;justify-self:center;width:min(72vw,360px,38svh)}
+  .hero-main{padding-top:0}
   .hero-foot{grid-template-columns:1fr 1fr}.hero-foot .c{display:none}
   .hl{max-width:none}
 }
@@ -140,7 +152,7 @@ em{font:italic 1.04em/1 var(--ser);letter-spacing:0}
 /* skills ledger */
 .ledger{border-top:1px solid var(--line)}
 .row{position:relative;isolation:isolate;display:grid;grid-template-columns:64px 1fr 1.1fr;gap:12px 28px;padding:28px 0;border-bottom:1px solid var(--line);align-items:start;transition:color .3s}
-.row::before{content:"";position:absolute;inset:0 calc(var(--gut) * -1);background:var(--ink);transform:scaleY(0);transform-origin:bottom;transition:transform .4s cubic-bezier(.2,.7,.2,1);z-index:-1}
+.row::before{content:"";position:absolute;inset:0 calc(var(--gut) * -1);background:rgba(65,255,138,.07);transform:scaleY(0);transform-origin:bottom;transition:transform .4s cubic-bezier(.2,.7,.2,1);z-index:-1}
 .row:hover::before{transform:scaleY(1);transform-origin:top}
 .row:hover{color:var(--bone)}
 .row:hover .n,.row:hover .what,.row:hover .tools{color:#B8B3AA}
@@ -162,7 +174,7 @@ em{font:italic 1.04em/1 var(--ser);letter-spacing:0}
 .tl .prog{position:absolute;left:0;top:6px;width:1px;height:calc(100% - 6px);background:var(--acc);transform:scaleY(0);transform-origin:top}
 .ent{position:relative;padding-bottom:44px}
 .ent:last-child{padding-bottom:0}
-.ent::before{content:"";position:absolute;left:-40px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink)}
+.ent::before{content:"";position:absolute;left:-40px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--ink);border:1.5px solid var(--acc)}
 .ent .when{font:500 12.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
 .ent h3{font:500 clamp(22px,2.4vw,30px)/1.1 var(--disp);letter-spacing:-.025em;margin-top:8px}
 .ent .org{color:var(--mute);margin-top:4px;font-size:15.5px}
@@ -199,6 +211,14 @@ em{font:italic 1.04em/1 var(--ser);letter-spacing:0}
 .work.hz .panel.pr{width:min(58vw,720px,calc((100vh - 300px) * 2.15))}
 .work.hz .panel.pt{width:min(42vw,520px)}
 .work.hz .panel .ph{flex-direction:row;justify-content:space-between;align-items:flex-end;gap:28px}
+/* short laptop screens: compact gallery header so the image rows fit under it */
+@media (min-width:900px) and (max-height:940px){
+  .work.hz .whead{padding-top:calc(var(--gut) + 40px)}
+  .work.hz .st{font-size:clamp(28px,3.4vw,46px);max-width:none}
+  .work.hz .sd{display:none}
+  .work.hz .wprog{margin-top:14px}
+  .work.hz .track{padding-block:12px}
+}
 .g{display:grid;gap:12px}
 .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -206,6 +226,9 @@ em{font:italic 1.04em/1 var(--ser);letter-spacing:0}
 .g figure{min-width:0}
 .g img{width:100%;border-radius:2px;background:var(--ink-2)}
 .g figcaption{font:400 11.5px/1.35 var(--mono);color:var(--mute);margin-top:8px;letter-spacing:.02em}
+.g figure[data-poster]:not(.hv){cursor:zoom-in}
+.g figure[data-poster]:not(.hv) img{transition:transform .35s,opacity .35s}
+.g figure[data-poster]:not(.hv):hover img{opacity:.85}
 .hv{cursor:pointer}
 .hv .media{position:relative;overflow:hidden;border-radius:2px;background:var(--ink-2)}
 .hv .media img,.hv .media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0}
@@ -224,7 +247,7 @@ em{font:italic 1.04em/1 var(--ser);letter-spacing:0}
 @media (max-width:899px){
   .g6{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-@media (max-width:480px){.g3{grid-template-columns:1fr 1fr}.g6{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.g3{grid-template-columns:1fr 1fr}.g6{grid-template-columns:1fr 1fr}.g3.gw{grid-template-columns:1fr}}
 
 /* education */
 .eg{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(28px,5vw,80px)}
@@ -245,10 +268,10 @@ em{font:italic 1.04em/1 var(--ser);letter-spacing:0}
 .certs small{display:block;color:var(--mute);font-size:14px;margin-top:3px;line-height:1.4}
 .certs .state{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);padding-top:6px;white-space:nowrap}
 .certs .done .state{color:var(--acc)}
-.certs a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--acc);text-underline-offset:3px;font-weight:500}
+.certs a{color:var(--bone);text-decoration:underline;text-decoration-color:var(--acc);text-underline-offset:3px;font-weight:500}
 @media (max-width:860px){.eg{grid-template-columns:1fr}}
 
-/* deutsch */
+/* germany */
 .dg{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(28px,5vw,80px);align-items:start}
 .de-txt{font:400 clamp(19px,1.9vw,26px)/1.4 var(--disp);letter-spacing:-.01em;max-width:30em;text-wrap:pretty}
 .de-txt strong{font-weight:500;color:var(--acc)}
@@ -256,7 +279,7 @@ em{font:italic 1.04em/1 var(--ser);letter-spacing:0}
 .langs{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .langs li{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);font-size:16px}
 .langs li span{color:var(--mute);text-align:right;font:400 13px var(--mono)}
-.langs li.de span{color:var(--acc)}
+.langs li.de-l span{color:var(--acc)}
 .fiche{margin-top:28px;border:1px solid var(--line);padding:18px 20px}
 .fiche .lab{margin-bottom:12px}
 .fiche dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 18px;font-size:15px}
@@ -305,30 +328,31 @@ footer{border-top:1px solid var(--line-d);padding:22px var(--gut) calc(22px + en
 <body>
 
 <div id="loader" aria-hidden="true">
-  <div class="ld">
-    <div class="ld-name" id="ld-name">Ayoub Braou</div>
-    <div class="ld-bar"><i></i></div>
-    <div class="ld-row"><span>Marrakech → Deutschland</span><span>Portfolio · 2026</span></div>
+  <div class="term">
+    <div class="term-bar"><i></i><i></i><i></i><b>ayoub@braou: ~</b></div>
+    <div class="term-body" id="term-body"></div>
+    <p class="term-skip"><span class="de">Klicken oder Taste drücken zum Überspringen</span><span class="en">Click or press any key to skip</span></p>
   </div>
 </div>
-<div class="grain" aria-hidden="true"></div>
+<canvas id="rain" aria-hidden="true"></canvas>
+<div class="scan" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
   <a class="brand" href="#top">A. Braou</a>
   <ul>
-    <li><a href="#profil"><span class="fr">Profil</span><span class="en">Profile</span></a></li>
-    <li><a href="#competences"><span class="fr">Compétences</span><span class="en">Skills</span></a></li>
-    <li><a href="#experience"><span class="fr">Expérience</span><span class="en">Experience</span></a></li>
-    <li><a href="#realisations"><span class="fr">Réalisations</span><span class="en">Work</span></a></li>
-    <li><a href="#formation"><span class="fr">Formation</span><span class="en">Education</span></a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#profil"><span class="de">Profil</span><span class="en">Profile</span></a></li>
+    <li><a href="#kenntnisse"><span class="de">Kenntnisse</span><span class="en">Skills</span></a></li>
+    <li><a href="#erfahrung"><span class="de">Erfahrung</span><span class="en">Experience</span></a></li>
+    <li><a href="#projekte"><span class="de">Projekte</span><span class="en">Work</span></a></li>
+    <li><a href="#bildung"><span class="de">Bildungsweg</span><span class="en">Education</span></a></li>
+    <li><a href="#kontakt"><span class="de">Kontakt</span><span class="en">Contact</span></a></li>
   </ul>
   <div class="right">
-    <div class="lang" role="group" aria-label="Langue / Language">
-      <button type="button" id="btn-fr" data-set="fr" aria-pressed="true">FR</button>
+    <div class="lang" role="group" aria-label="Sprache / Language">
+      <button type="button" id="btn-de" data-set="de" aria-pressed="true">DE</button>
       <button type="button" id="btn-en" data-set="en" aria-pressed="false">EN</button>
     </div>
-    <a class="cvb" href="cv/CV_Ayoub_Braou_FR.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v12m0 0 4-4m-4 4-4-4M5 20h14"/></svg>CV</a>
+    <a class="cvb" href="cv/Lebenslauf_Ayoub_Braou_DE.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v12m0 0 4-4m-4 4-4-4M5 20h14"/></svg><span class="de">Lebenslauf</span><span class="en">CV</span></a>
   </div>
 </header>
 
@@ -338,30 +362,29 @@ footer{border-top:1px solid var(--line-d);padding:22px var(--gut) calc(22px + en
 <section class="hero ink" id="hero">
   <div class="globe-wrap" aria-hidden="true"><canvas id="globe"></canvas></div>
   <div class="hero-main">
-    <p class="lab"><span class="fr">Ayoub Braou · Marrakech <b>→</b> Deutschland · Ausbildung 2027</span><span class="en">Ayoub Braou · Marrakech <b>→</b> Germany · apprenticeship 2027</span></p>
+    <p class="lab"><span class="de">Ayoub Braou · Marrakesch <b>→</b> Deutschland · Ausbildung 2027</span><span class="en">Ayoub Braou · Marrakech <b>→</b> Germany · apprenticeship 2027</span></p>
     <h1 class="hl">
-      <span class="fr" data-split-hero>Le réseau <em>tient</em>, l'équipe <em>avance</em>, la plateforme <em>reste en ligne</em>.</span>
+      <span class="de" data-split-hero>Das Netzwerk <em>hält</em>, das Team <em>läuft</em>, die Plattform <em>bleibt online</em>.</span>
       <span class="en" data-split-hero>The network <em>holds</em>, the team <em>moves</em>, the platform <em>stays online</em>.</span>
     </h1>
-    <p class="role" data-hero><span class="fr">Technicien en infrastructure digitale &amp; cybersécurité · Chef d'équipe technique à CCL, Marrakech</span><span class="en">Digital infrastructure &amp; cybersecurity technician · Technical team lead at CCL, Marrakech</span></p>
-    <p class="pitch" data-hero><span class="fr">Trois ans de terrain en réseau, support et matériel. Depuis mars 2025, j'encadre <strong>une équipe de dix personnes</strong> qui produit les formations en ligne de CCL. Prochaine étape : une <strong>Ausbildung Fachinformatiker für Systemintegration</strong> en Allemagne.</span><span class="en">Three years of hands-on work in networks, support and hardware. Since March 2025 I lead <strong>a team of ten</strong> that produces CCL's online training. Next step: a <strong>Fachinformatiker für Systemintegration</strong> apprenticeship in Germany.</span></p>
+    <p class="role" data-hero><span class="de">IT-Techniker für digitale Infrastruktur &amp; Cybersicherheit · Technischer Teamleiter bei CCL, Marrakesch</span><span class="en">Digital infrastructure &amp; cybersecurity technician · Technical team lead at CCL, Marrakech</span></p>
+    <p class="pitch" data-hero><span class="de">Drei Jahre Praxis in Netzwerk, Support und Hardware. Seit März 2025 leite ich <strong>ein Team von zehn Personen</strong>, das die Online-Weiterbildungen von CCL produziert. Nächster Schritt: eine <strong>Ausbildung zum Fachinformatiker für Systemintegration</strong> in Deutschland.</span><span class="en">Three years of hands-on work in networks, support and hardware. Since March 2025 I lead <strong>a team of ten</strong> that produces CCL's online training. Next step: a <strong>Fachinformatiker für Systemintegration</strong> apprenticeship in Germany.</span></p>
     <div class="cta" data-hero>
-      <a class="btn primary mag" href="#contact"><span class="fr">Me contacter</span><span class="en">Get in touch</span></a>
-      <a class="btn mag" href="cv/CV_Ayoub_Braou_FR.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v12m0 0 4-4m-4 4-4-4M5 20h14"/></svg><span class="fr">CV français</span><span class="en">CV (French)</span></a>
-      <a class="btn mag" href="cv/Lebenslauf_Ayoub_Braou_DE.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v12m0 0 4-4m-4 4-4-4M5 20h14"/></svg><span>Lebenslauf</span></a>
+      <a class="btn primary mag" href="#kontakt"><span class="de">Kontakt aufnehmen</span><span class="en">Get in touch</span></a>
+      <a class="btn mag" href="cv/Lebenslauf_Ayoub_Braou_DE.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v12m0 0 4-4m-4 4-4-4M5 20h14"/></svg><span class="de">Lebenslauf · PDF</span><span class="en">CV (German) · PDF</span></a>
     </div>
   </div>
   <div class="hero-foot" data-hero>
     <span>31.6295° N · 7.9811° W</span>
-    <span class="c"><span class="fr">Marrakech · </span><span class="en">Marrakech · </span><b id="clock">--:--</b></span>
-    <span class="r"><span class="fr">Défiler ↓</span><span class="en">Scroll ↓</span></span>
+    <span class="c"><span class="de">Marrakesch · </span><span class="en">Marrakech · </span><b id="clock">--:--</b></span>
+    <span class="r"><span class="de">Scrollen ↓</span><span class="en">Scroll ↓</span></span>
   </div>
 </section>
 
 <div class="ticker ink" aria-hidden="true">
   <div class="tk" id="tk">
-    <span><span class="fr">3 ans de terrain IT</span><span class="en">3 years hands-on IT</span></span><span><span class="fr">Équipe de 10 personnes</span><span class="en">Team of 10</span></span><span><span class="fr">7 postes et stages</span><span class="en">7 positions &amp; internships</span></span><span><span class="fr">6 certifications</span><span class="en">6 certifications</span></span><span>Deutsch A2 → B2</span><span>Ausbildung 2027</span><span><span class="fr">Réseau · Support · Matériel</span><span class="en">Network · Support · Hardware</span></span>
-    <span><span class="fr">3 ans de terrain IT</span><span class="en">3 years hands-on IT</span></span><span><span class="fr">Équipe de 10 personnes</span><span class="en">Team of 10</span></span><span><span class="fr">7 postes et stages</span><span class="en">7 positions &amp; internships</span></span><span><span class="fr">6 certifications</span><span class="en">6 certifications</span></span><span>Deutsch A2 → B2</span><span>Ausbildung 2027</span><span><span class="fr">Réseau · Support · Matériel</span><span class="en">Network · Support · Hardware</span></span>
+    <span><span class="de">3 Jahre IT-Praxis</span><span class="en">3 years hands-on IT</span></span><span><span class="de">Team von 10 Personen</span><span class="en">Team of 10</span></span><span><span class="de">7 Stellen und Praktika</span><span class="en">7 positions &amp; internships</span></span><span><span class="de">5 Zertifikate</span><span class="en">5 certifications</span></span><span>Deutsch A2 → B2</span><span>Ausbildung 2027</span><span><span class="de">Netzwerk · Support · Hardware</span><span class="en">Network · Support · Hardware</span></span><span>Windows · Linux · Cisco</span>
+    <span><span class="de">3 Jahre IT-Praxis</span><span class="en">3 years hands-on IT</span></span><span><span class="de">Team von 10 Personen</span><span class="en">Team of 10</span></span><span><span class="de">7 Stellen und Praktika</span><span class="en">7 positions &amp; internships</span></span><span><span class="de">5 Zertifikate</span><span class="en">5 certifications</span></span><span>Deutsch A2 → B2</span><span>Ausbildung 2027</span><span><span class="de">Netzwerk · Support · Hardware</span><span class="en">Network · Support · Hardware</span></span><span>Windows · Linux · Cisco</span>
   </div>
 </div>
 
@@ -370,111 +393,112 @@ footer{border-top:1px solid var(--line-d);padding:22px var(--gut) calc(22px + en
   <div class="wrap">
     <div class="sh" data-rv>
       <span class="idx">01</span>
-      <h2 class="st"><span class="fr" data-split>Un technicien de <em>terrain</em>, pas un profil de papier.</span><span class="en" data-split>A <em>hands-on</em> technician, not a paper profile.</span></h2>
+      <h2 class="st"><span class="de" data-split>Ein Techniker aus der <em>Praxis</em>, kein Profil auf Papier.</span><span class="en" data-split>A <em>hands-on</em> technician, not a paper profile.</span></h2>
     </div>
     <div class="pf">
       <div class="fig" data-rv>
         <div class="ph"><img src="img/ayoub.jpg" alt="Ayoub Braou" id="portrait"></div>
-        <div class="stamp" id="stamp"><span class="fr">Disponible · Ausbildungs&shy;beginn 2027</span><span class="en">Available · apprenticeship start 2027</span></div>
-        <div class="cap"><span>Ayoub Braou</span><span><span class="fr">né en 2002 · Marrakech</span><span class="en">b. 2002 · Marrakech</span></span></div>
+        <div class="stamp" id="stamp"><span class="de">Verfügbar · Ausbildungs&shy;beginn 2027</span><span class="en">Available · apprenticeship start 2027</span></div>
+        <div class="cap"><span>Ayoub Braou</span><span><span class="de">geb. 2002 · Berrechid</span><span class="en">b. 2002 · Berrechid</span></span></div>
       </div>
       <div data-rv>
-        <p class="lede"><span class="fr">Technicien de terrain depuis fin 2022. J'ai commencé par réparer des postes et câbler des réseaux ; aujourd'hui je fais tourner l'infrastructure d'un centre de formation et <em>j'encadre dix personnes</em>.</span><span class="en">Hands-on technician since late 2022. I started by repairing workstations and cabling networks; today I run a training centre's infrastructure and <em>lead ten people</em>.</span></p>
+        <p class="lede"><span class="de">IT-Techniker in der Praxis seit Ende 2022. Angefangen habe ich mit der Reparatur von Rechnern und der Verkabelung von Netzwerken; heute betreue ich die Infrastruktur eines Weiterbildungszentrums und <em>leite zehn Personen</em>.</span><span class="en">Hands-on technician since late 2022. I started by repairing workstations and cabling networks; today I run a training centre's infrastructure and <em>lead ten people</em>.</span></p>
         <div class="txt">
-          <p><span class="fr">À CCL, mes journées mêlent le réseau de l'entreprise, le support direct aux employés, la maintenance du matériel et le suivi d'une équipe qui produit des formations en ligne : capsules, vidéos, voix off, brochures, modération de la plateforme.</span><span class="en">At CCL my days mix the company network, direct staff support, hardware maintenance and the follow-up of a team that produces online training: capsules, videos, voice-overs, brochures, platform moderation.</span></p>
-          <p><span class="fr">Je prépare une Ausbildung Fachinformatiker für Systemintegration en Allemagne : allemand A2 aujourd'hui, Goethe-Zertifikat B2 en préparation, mobile dans toute l'Allemagne dès la prochaine rentrée.</span><span class="en">I am preparing for a Fachinformatiker für Systemintegration apprenticeship in Germany: German A2 today, Goethe-Zertifikat B2 in preparation, mobile anywhere in Germany from the next intake.</span></p>
+          <p><span class="de">Bei CCL verbinde ich im Alltag das Firmennetzwerk, den direkten Support für die Mitarbeitenden, die Hardwarewartung und die Leitung eines Teams, das Online-Weiterbildungen produziert: Lernvideos, Sprachaufnahmen, Broschüren und die Betreuung der Plattform.</span><span class="en">At CCL my days mix the company network, direct staff support, hardware maintenance and the follow-up of a team that produces online training: capsules, videos, voice-overs, brochures, platform moderation.</span></p>
+          <p><span class="de">Mein Ziel ist eine Ausbildung zum Fachinformatiker für Systemintegration in Deutschland: Deutsch heute A2, Vorbereitung auf das Goethe-Zertifikat B2, bundesweit mobil zum nächsten Ausbildungsbeginn.</span><span class="en">I am preparing for a Fachinformatiker für Systemintegration apprenticeship in Germany: German A2 today, Goethe-Zertifikat B2 in preparation, mobile anywhere in Germany from the next intake.</span></p>
         </div>
         <div class="nums">
-          <div class="num"><b data-count="3">3</b><span class="fr">ans de terrain en infrastructure IT</span><span class="en">years hands-on in IT infrastructure</span></div>
-          <div class="num"><b data-count="10">10</b><span class="fr">personnes dans l'équipe que j'encadre</span><span class="en">people on the team I lead</span></div>
-          <div class="num"><b data-count="7">7</b><span class="fr">postes et stages depuis déc. 2022</span><span class="en">positions &amp; internships since Dec 2022</span></div>
-          <div class="num"><b data-count="6">6</b><span class="fr">certifications obtenues, 4 en cours</span><span class="en">certifications earned, 4 in progress</span></div>
+          <div class="num"><b data-count="3">3</b><span class="de">Jahre Praxis in der IT-Infrastruktur</span><span class="en">years hands-on in IT infrastructure</span></div>
+          <div class="num"><b data-count="10">10</b><span class="de">Personen in meinem Team</span><span class="en">people on the team I lead</span></div>
+          <div class="num"><b data-count="7">7</b><span class="de">Stellen und Praktika seit Dez. 2022</span><span class="en">positions &amp; internships since Dec 2022</span></div>
+          <div class="num"><b data-count="5">5</b><span class="de">Zertifikate erworben, 4 laufend</span><span class="en">certifications earned, 4 in progress</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= 02 COMPÉTENCES ================= -->
-<section class="sec paper" id="competences" style="padding-top:0">
+<!-- ================= 02 KENNTNISSE ================= -->
+<section class="sec paper" id="kenntnisse" style="padding-top:0">
   <div class="wrap">
     <div class="sh" data-rv>
       <span class="idx">02</span>
-      <h2 class="st"><span class="fr" data-split>Huit compétences, chacune avec sa <em>preuve</em>.</span><span class="en" data-split>Eight skills, each with its <em>evidence</em>.</span></h2>
-      <p class="sd"><span class="fr">Pas de barres de niveau. Pour chaque compétence : le poste, l'entreprise ou le certificat qui la justifie.</span><span class="en">No skill bars. For each skill: the job, the employer or the certificate that backs it.</span></p>
+      <h2 class="st"><span class="de" data-split>Neun Kompetenzen, jede mit ihrem <em>Nachweis</em>.</span><span class="en" data-split>Nine skills, each with its <em>evidence</em>.</span></h2>
+      <p class="sd"><span class="de">Keine Balken mit Prozentangaben. Zu jeder Kompetenz: die Stelle, der Arbeitgeber oder das Zertifikat, das sie belegt.</span><span class="en">No skill bars. For each skill: the job, the employer or the certificate that backs it.</span></p>
     </div>
     <div class="ledger" data-rv-group>
-      <div class="row"><span class="n">01</span><div><h3><span class="fr">Support IT, 1er et 2e niveau</span><span class="en">IT support, 1st and 2nd level</span></h3><p class="what"><span class="fr">Diagnostic et résolution des incidents, formation des utilisateurs, documentation.</span><span class="en">Incident diagnosis and resolution, user training, documentation.</span></p></div><div class="ev"><b><span class="fr">Preuve</span><span class="en">Evidence</span></b><span class="fr">Support direct des employés de CCL depuis mai 2024 ; support des agents au centre d'appels France Communication.</span><span class="en">Direct support for CCL staff since May 2024; agent support at the France Communication call centre.</span><p class="tools">Microsoft 365 · Google Classroom · CRM · Vicidial</p></div></div>
-      <div class="row"><span class="n">02</span><div><h3><span class="fr">Réseaux et systèmes</span><span class="en">Networks and systems</span></h3><p class="what"><span class="fr">TCP/IP, LAN/WLAN, routage et commutation, pare-feu, Windows Server, Active Directory.</span><span class="en">TCP/IP, LAN/WLAN, routing and switching, firewalls, Windows Server, Active Directory.</span></p></div><div class="ev"><b><span class="fr">Preuve</span><span class="en">Evidence</span></b><span class="fr">Administration du réseau CCL ; serveurs Active Directory et règles de pare-feu à la Commune urbaine de Marrakech ; CCNA 1 et 2 en cours.</span><span class="en">CCL network administration; Active Directory servers and firewall rules at Marrakech city council; CCNA 1 and 2 in progress.</span><p class="tools">Active Directory · Windows Server · Cisco</p></div></div>
-      <div class="row"><span class="n">03</span><div><h3><span class="fr">Matériel</span><span class="en">Hardware</span></h3><p class="what"><span class="fr">Installation, maintenance et réparation de postes, périphériques, caméras, caisses et antivol.</span><span class="en">Installation, maintenance and repair of workstations, peripherals, cameras, tills and anti-theft systems.</span></p></div><div class="ev"><b><span class="fr">Preuve</span><span class="en">Evidence</span></b><span class="fr">Caméras de surveillance installées à CCL ; serveurs HP Z620 maintenus ; caisses et antivol Sensormatic chez AKMS TECH.</span><span class="en">CCTV cameras installed at CCL; HP Z620 servers maintained; tills and Sensormatic anti-theft at AKMS TECH.</span></div></div>
-      <div class="row"><span class="n">04</span><div><h3><span class="fr">Cybersécurité</span><span class="en">Cybersecurity</span></h3><p class="what"><span class="fr">Tests d'intrusion, gestion des risques, forensics, durcissement des systèmes.</span><span class="en">Penetration testing, risk management, forensics, system hardening.</span></p></div><div class="ev"><b><span class="fr">Preuve</span><span class="en">Evidence</span></b><span class="fr">Diplôme Bac+2 option cybersécurité ; Foundations of Cybersecurity (Google, 2026) ; tests d'intrusion OpenClassrooms.</span><span class="en">Bac+2 diploma, cybersecurity option; Foundations of Cybersecurity (Google, 2026); OpenClassrooms penetration testing.</span><p class="tools">Nmap · Nessus · Metasploit</p></div></div>
-      <div class="row"><span class="n">05</span><div><h3><span class="fr">Plateforme e-learning</span><span class="en">E-learning platform</span></h3><p class="what"><span class="fr">Comptes et droits, intégration des cours, quiz, certificats, suivi des apprenants.</span><span class="en">Accounts and rights, course integration, quizzes, certificates, learner tracking.</span></p></div><div class="ev"><b><span class="fr">Preuve</span><span class="en">Evidence</span></b><span class="fr">LearnWorlds et Vimeo administrés pour CCL depuis 2025 ; Google Classroom géré depuis 2024.</span><span class="en">LearnWorlds and Vimeo run for CCL since 2025; Google Classroom managed since 2024.</span><p class="tools">LearnWorlds · Vimeo · WordPress</p></div></div>
-      <div class="row"><span class="n">06</span><div><h3><span class="fr">Vidéo et production</span><span class="en">Video and production</span></h3><p class="what"><span class="fr">Capsules narrées, voix off, tournages, brochures et créatives, avec l'équipe.</span><span class="en">Narrated capsules, voice-overs, shoots, brochures and creatives, with the team.</span></p></div><div class="ev"><b><span class="fr">Preuve</span><span class="en">Evidence</span></b><span class="fr">Extraits de capsules, reels et cours vidéo dans la section Réalisations.</span><span class="en">Capsule excerpts, reels and video courses in the Work section.</span><p class="tools">Premiere Pro · Canva · ElevenLabs</p></div></div>
-      <div class="row"><span class="n">07</span><div><h3><span class="fr">Automatisation et IA</span><span class="en">Automation and AI</span></h3><p class="what"><span class="fr">Campagnes Meta, scénarios WhatsApp reliés au CRM, e-mailing, outils d'IA au quotidien.</span><span class="en">Meta campaigns, WhatsApp scenarios linked to the CRM, emailing, AI tools every day.</span></p></div><div class="ev"><b><span class="fr">Preuve</span><span class="en">Evidence</span></b><span class="fr">Scénarios Make.com en production à CCL ; Gemini, ChatGPT, Claude, DeepSeek, Genspark ; bases n8n.</span><span class="en">Make.com scenarios in production at CCL; Gemini, ChatGPT, Claude, DeepSeek, Genspark; n8n basics.</span><p class="tools">Make.com · n8n · Brevo · Meta Ads</p></div></div>
-      <div class="row"><span class="n">08</span><div><h3><span class="fr">Encadrement d'équipe</span><span class="en">Team leadership</span></h3><p class="what"><span class="fr">Répartition des tâches, suivi de l'avancement de chacun, contrôle qualité, respect des délais.</span><span class="en">Task allocation, tracking each person's progress, quality control, deadlines.</span></p></div><div class="ev"><b><span class="fr">Preuve</span><span class="en">Evidence</span></b><span class="fr">10 personnes encadrées à CCL depuis mars 2025 ; une équipe de maintenance encadrée en stage à l'ISTA.</span><span class="en">10 people led at CCL since March 2025; a maintenance team supervised during the ISTA internship.</span></div></div>
+      <div class="row"><span class="n">01</span><div><h3><span class="de">IT-Support, 1st- und 2nd-Level</span><span class="en">IT support, 1st and 2nd level</span></h3><p class="what"><span class="de">Fehlerdiagnose und Störungsbehebung, Anwenderschulung, Dokumentation.</span><span class="en">Incident diagnosis and resolution, user training, documentation.</span></p></div><div class="ev"><b><span class="de">Nachweis</span><span class="en">Evidence</span></b><span class="de">Direkter Support für die Mitarbeitenden von CCL seit Mai 2024; Support für die Agents im Callcenter France Communication.</span><span class="en">Direct support for CCL staff since May 2024; agent support at the France Communication call centre.</span><p class="tools">Microsoft 365 · Google Classroom · CRM · Vicidial</p></div></div>
+      <div class="row"><span class="n">02</span><div><h3><span class="de">Netzwerk und Systeme</span><span class="en">Networks and systems</span></h3><p class="what"><span class="de">TCP/IP, LAN/WLAN, Routing und Switching, Firewalls, Windows Server und Linux, Active Directory.</span><span class="en">TCP/IP, LAN/WLAN, routing and switching, firewalls, Windows Server and Linux, Active Directory.</span></p></div><div class="ev"><b><span class="de">Nachweis</span><span class="en">Evidence</span></b><span class="de">Administration des CCL-Netzwerks; Active-Directory-Server und Firewall-Regeln bei der Stadtverwaltung Marrakesch; CCNA 1 und 2 laufend.</span><span class="en">CCL network administration; Active Directory servers and firewall rules at Marrakech city council; CCNA 1 and 2 in progress.</span><p class="tools">Active Directory · Windows Server · Linux · Cisco</p></div></div>
+      <div class="row"><span class="n">03</span><div><h3>Linux</h3><p class="what"><span class="de">Installation und Administration von Linux-Servern: Dienste, Benutzer, Netzwerk, Kommandozeile.</span><span class="en">Installing and administering Linux servers: services, users, networking, command line.</span></p></div><div class="ev"><b><span class="de">Nachweis</span><span class="en">Evidence</span></b><span class="de">Vicidial-Server unter Linux im Callcenter France Communication installiert und eingerichtet; Linux-Administration in der Ausbildung an der ISTA NTIC.</span><span class="en">Vicidial server on Linux installed and configured at the France Communication call centre; Linux administration covered during ISTA NTIC training.</span><p class="tools">Linux · Vicidial · SSH</p></div></div>
+      <div class="row"><span class="n">04</span><div><h3>Hardware</h3><p class="what"><span class="de">Installation, Wartung und Reparatur von Rechnern, Peripherie, Kameras, Kassen und Diebstahlsicherung.</span><span class="en">Installation, maintenance and repair of workstations, peripherals, cameras, tills and anti-theft systems.</span></p></div><div class="ev"><b><span class="de">Nachweis</span><span class="en">Evidence</span></b><span class="de">Überwachungskameras bei CCL installiert; HP-Z620-Server bei France Communication gewartet; Kassen und Sensormatic-Diebstahlsicherung bei AKMS TECH.</span><span class="en">CCTV cameras installed at CCL; an HP Z620 server maintained at France Communication; tills and Sensormatic anti-theft at AKMS TECH.</span></div></div>
+      <div class="row"><span class="n">05</span><div><h3><span class="de">IT-Sicherheit</span><span class="en">Cybersecurity</span></h3><p class="what"><span class="de">Penetrationstests, Risikomanagement, Forensik, Systemhärtung.</span><span class="en">Penetration testing, risk management, forensics, system hardening.</span></p></div><div class="ev"><b><span class="de">Nachweis</span><span class="en">Evidence</span></b><span class="de">Diplom Bac+2 mit Schwerpunkt Cybersicherheit; Foundations of Cybersecurity (Google, 2026); Penetrationstest bei OpenClassrooms.</span><span class="en">Bac+2 diploma, cybersecurity option; Foundations of Cybersecurity (Google, 2026); OpenClassrooms penetration testing.</span><p class="tools">Nmap · Nessus · Metasploit</p></div></div>
+      <div class="row"><span class="n">06</span><div><h3><span class="de">E-Learning-Plattform</span><span class="en">E-learning platform</span></h3><p class="what"><span class="de">Nutzer und Rechte, Kursintegration, Quizze, Zertifikate, Lernfortschritt.</span><span class="en">Accounts and rights, course integration, quizzes, certificates, learner tracking.</span></p></div><div class="ev"><b><span class="de">Nachweis</span><span class="en">Evidence</span></b><span class="de">LearnWorlds für CCL betreut seit 2025; Google Classroom seit 2024.</span><span class="en">LearnWorlds run for CCL since 2025; Google Classroom managed since 2024.</span><p class="tools">LearnWorlds · Google Classroom · WordPress</p></div></div>
+      <div class="row"><span class="n">07</span><div><h3><span class="de">Video und Produktion</span><span class="en">Video and production</span></h3><p class="what"><span class="de">Vertonte Lernvideos, Sprachaufnahmen, Drehs, Broschüren und Visuals, gemeinsam mit dem Team.</span><span class="en">Narrated capsules, voice-overs, shoots, brochures and creatives, with the team.</span></p></div><div class="ev"><b><span class="de">Nachweis</span><span class="en">Evidence</span></b><span class="de">Ausschnitte aus Lernvideos, Reels und Videokursen im Bereich Projekte.</span><span class="en">Capsule excerpts, reels and video courses in the Work section.</span><p class="tools">Premiere Pro · Canva · ElevenLabs</p></div></div>
+      <div class="row"><span class="n">08</span><div><h3><span class="de">Automatisierung und KI</span><span class="en">Automation and AI</span></h3><p class="what"><span class="de">Meta-Kampagnen, WhatsApp-Szenarien mit CRM-Anbindung, E-Mail-Marketing, KI-Tools im Alltag.</span><span class="en">Meta campaigns, WhatsApp scenarios linked to the CRM, emailing, AI tools every day.</span></p></div><div class="ev"><b><span class="de">Nachweis</span><span class="en">Evidence</span></b><span class="de">Make.com-Szenarien im Einsatz bei CCL; ChatGPT, Gemini, Claude; Grundkenntnisse in n8n.</span><span class="en">Make.com scenarios in production at CCL; ChatGPT, Gemini, Claude; n8n basics.</span><p class="tools">Make.com · n8n · Brevo · Meta Ads</p></div></div>
+      <div class="row"><span class="n">09</span><div><h3><span class="de">Teamführung</span><span class="en">Team leadership</span></h3><p class="what"><span class="de">Aufgabenverteilung, Fortschrittskontrolle, Qualitätssicherung, Termintreue.</span><span class="en">Task allocation, tracking each person's progress, quality control, deadlines.</span></p></div><div class="ev"><b><span class="de">Nachweis</span><span class="en">Evidence</span></b><span class="de">Seit März 2025 Leitung von 10 Personen bei CCL; Leitung eines Wartungsteams im Praktikum an der ISTA.</span><span class="en">10 people led at CCL since March 2025; a maintenance team supervised during the ISTA internship.</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- ================= 03 EXPÉRIENCE ================= -->
-<section class="sec paper" id="experience" style="padding-top:0">
+<!-- ================= 03 ERFAHRUNG ================= -->
+<section class="sec paper" id="erfahrung" style="padding-top:0">
   <div class="wrap">
     <div class="sh" data-rv>
       <span class="idx">03</span>
-      <h2 class="st"><span class="fr" data-split>Sept postes, un même fil : faire <em>tourner</em> l'informatique.</span><span class="en" data-split>Seven positions, one thread: keeping IT <em>running</em>.</span></h2>
+      <h2 class="st"><span class="de" data-split>Sieben Stationen, ein roter Faden: die IT am <em>Laufen</em> halten.</span><span class="en" data-split>Seven positions, one thread: keeping IT <em>running</em>.</span></h2>
     </div>
     <div class="xg">
       <div class="stick" data-rv>
-        <p class="lab"><span class="fr">Parcours · 2022 → 2026</span><span class="en">Track record · 2022 → 2026</span></p>
-        <p><span class="fr">Tout s'est passé à Marrakech : un institut, une commune, trois entreprises privées, un centre d'appels, puis CCL où je suis passé de technicien à chef d'équipe en dix mois.</span><span class="en">All of it in Marrakech: an institute, a city council, three private companies, a call centre, then CCL where I went from technician to team lead in ten months.</span></p>
-        <p class="lab"><span class="fr">Détails complets dans le CV</span><span class="en">Full details in the CV</span></p>
+        <p class="lab"><span class="de">Werdegang · 2022 → 2026</span><span class="en">Track record · 2022 → 2026</span></p>
+        <p><span class="de">Alles in Marrakesch: ein Institut, eine Stadtverwaltung, zwei Privatunternehmen, ein Callcenter und dann CCL, wo ich in zehn Monaten vom IT-Techniker zum Teamleiter wurde.</span><span class="en">All of it in Marrakech: an institute, a city council, two private companies, a call centre, then CCL where I went from technician to team lead in ten months.</span></p>
+        <p class="lab"><span class="de">Alle Details im Lebenslauf</span><span class="en">Full details in the CV</span></p>
       </div>
       <div class="tl" id="tl">
         <i class="prog" id="tlprog"></i>
         <div class="ent" data-rv>
-          <p class="when"><span class="fr">mai 2024 – aujourd'hui · Marrakech</span><span class="en">May 2024 – present · Marrakech</span></p>
+          <p class="when"><span class="de">Mai 2024 – heute · Marrakesch</span><span class="en">May 2024 – present · Marrakech</span></p>
           <h3>CCL – Centre de Compétences et Leadership</h3>
-          <p class="org"><span class="fr">Formations certifiantes en ligne · deux postes successifs</span><span class="en">Online certified training · two successive positions</span></p>
+          <p class="org"><span class="de">Zertifizierte Online-Weiterbildungen · zwei Positionen nacheinander</span><span class="en">Online certified training · two successive positions</span></p>
           <div class="role-b">
-            <h4><span class="fr">Chef d'équipe technique</span><span class="en">Technical team lead</span><small><span class="fr">mars 2025 – aujourd'hui</span><span class="en">Mar 2025 – present</span></small></h4>
+            <h4><span class="de">Technischer Teamleiter</span><span class="en">Technical team lead</span><small><span class="de">März 2025 – heute</span><span class="en">Mar 2025 – present</span></small></h4>
             <ul>
-              <li><span class="fr">Gestion de l'infrastructure réseau de l'entreprise : administration, sécurité, disponibilité des services.</span><span class="en">Company network management: administration, security, service availability.</span></li>
-              <li><span class="fr">Support technique direct aux employés, du diagnostic à la résolution (1er et 2e niveau).</span><span class="en">Direct technical support for staff, from diagnosis to resolution (1st and 2nd level).</span></li>
-              <li><span class="fr">Maintenance et réparation du matériel : postes, périphériques, caméras, équipements réseau.</span><span class="en">Hardware maintenance and repair: workstations, peripherals, cameras, network equipment.</span></li>
-              <li><span class="fr">Encadrement de 10 personnes : répartition des tâches, suivi de l'avancement, contrôle qualité, dates de mise en ligne.</span><span class="en">Leading 10 people: task allocation, progress tracking, quality control, release dates.</span></li>
-              <li><span class="fr">Administration de la plateforme e-learning (LearnWorlds, Vimeo) : comptes, droits, cours, quiz, certificats.</span><span class="en">E-learning platform administration (LearnWorlds, Vimeo): accounts, rights, courses, quizzes, certificates.</span></li>
-              <li><span class="fr">Production e-learning avec l'équipe : capsules, voix off, tournages, brochures et créatives.</span><span class="en">E-learning production with the team: capsules, voice-overs, shoots, brochures and creatives.</span></li>
-              <li><span class="fr">Campagnes Meta, scénarios WhatsApp sur Make.com reliés au CRM, e-mailing Brevo.</span><span class="en">Meta campaigns, WhatsApp scenarios on Make.com linked to the CRM, Brevo emailing.</span></li>
+              <li><span class="de">Administration und Absicherung des Firmennetzwerks, Verfügbarkeit der Dienste.</span><span class="en">Company network management: administration, security, service availability.</span></li>
+              <li><span class="de">1st-/2nd-Level-Support für die Mitarbeitenden, von der Fehlerdiagnose bis zur Störungsbehebung.</span><span class="en">Direct technical support for staff, from diagnosis to resolution (1st and 2nd level).</span></li>
+              <li><span class="de">Wartung und Reparatur der Hardware: PCs, Peripherie, Kameras, Netzwerkkomponenten.</span><span class="en">Hardware maintenance and repair: workstations, peripherals, cameras, network equipment.</span></li>
+              <li><span class="de">Führung eines zehnköpfigen Teams: Aufgabenverteilung, Fortschrittskontrolle, Qualitätssicherung, Veröffentlichungstermine.</span><span class="en">Leading 10 people: task allocation, progress tracking, quality control, release dates.</span></li>
+              <li><span class="de">Betreuung der E-Learning-Plattform (LearnWorlds): Nutzer, Rechte, Kurse, Quizze, Zertifikate.</span><span class="en">E-learning platform administration (LearnWorlds): accounts, rights, courses, quizzes, certificates.</span></li>
+              <li><span class="de">Produktion von Lernvideos mit dem Team: Videos, Sprachaufnahmen, Drehs, Broschüren und Visuals.</span><span class="en">E-learning production with the team: capsules, voice-overs, shoots, brochures and creatives.</span></li>
+              <li><span class="de">Meta-Kampagnen, WhatsApp-Szenarien in Make.com mit CRM-Anbindung, E-Mail-Marketing mit Brevo.</span><span class="en">Meta campaigns, WhatsApp scenarios on Make.com linked to the CRM, Brevo emailing.</span></li>
             </ul>
           </div>
           <div class="role-b">
-            <h4><span class="fr">Technicien informatique</span><span class="en">IT technician</span><small><span class="fr">mai 2024 – mars 2025</span><span class="en">May 2024 – Mar 2025</span></small></h4>
+            <h4><span class="de">IT-Techniker</span><span class="en">IT technician</span><small><span class="de">Mai 2024 – März 2025</span><span class="en">May 2024 – Mar 2025</span></small></h4>
             <ul>
-              <li><span class="fr">Administration du réseau, résolution des problèmes techniques et support aux employés.</span><span class="en">Network administration, troubleshooting and staff support.</span></li>
-              <li><span class="fr">Installation de caméras de surveillance.</span><span class="en">CCTV camera installation.</span></li>
-              <li><span class="fr">Sites WordPress de l'entreprise, Google Classroom, présentations et vidéos sous Canva.</span><span class="en">Company WordPress sites, Google Classroom, presentations and videos in Canva.</span></li>
+              <li><span class="de">Netzwerkadministration, Störungsbehebung und Support für die Mitarbeitenden.</span><span class="en">Network administration, troubleshooting and staff support.</span></li>
+              <li><span class="de">Installation von Überwachungskameras.</span><span class="en">CCTV camera installation.</span></li>
+              <li><span class="de">WordPress-Websites des Unternehmens, Google Classroom, Präsentationen und Videos mit Canva.</span><span class="en">Company WordPress sites, Google Classroom, presentations and videos in Canva.</span></li>
             </ul>
           </div>
         </div>
-        <div class="ent min" data-rv><p class="when"><span class="fr">avril – mai 2024 · stage</span><span class="en">Apr – May 2024 · internship</span></p><h3><span class="fr">Technicien informatique · France Communication</span><span class="en">IT technician · France Communication</span></h3><p><span class="fr">Centre d'appels · maintenance des serveurs HP Z620, des postes et des casques ; installation de Vicidial ; réseau, CRM, support.</span><span class="en">Call centre · maintenance of HP Z620 servers, workstations and headsets; Vicidial installation; network, CRM, support.</span></p></div>
-        <div class="ent min" data-rv><p class="when"><span class="fr">nov. 2023 – mars 2024</span><span class="en">Nov 2023 – Mar 2024</span></p><h3><span class="fr">Technicien informatique · AKMS TECH</span><span class="en">IT technician · AKMS TECH</span></h3><p><span class="fr">Installation de réseaux et systèmes IT, maintenance des équipements, caisses enregistreuses, antivol Sensormatic.</span><span class="en">Network and IT system installation, equipment maintenance, cash registers, Sensormatic anti-theft systems.</span></p></div>
-        <div class="ent min" data-rv><p class="when"><span class="fr">août – oct. 2023</span><span class="en">Aug – Oct 2023</span></p><h3><span class="fr">Technicien de maintenance informatique · Electro Amine</span><span class="en">IT maintenance technician · Electro Amine</span></h3><p><span class="fr">Maintenance, réinstallation des systèmes, vente d'équipements.</span><span class="en">Maintenance, system reinstalls, equipment sales.</span></p></div>
-        <div class="ent min" data-rv><p class="when"><span class="fr">mai 2023 · stage</span><span class="en">May 2023 · internship</span></p><h3><span class="fr">Technicien informatique · Commune urbaine de Marrakech</span><span class="en">IT technician · Marrakech city council</span></h3><p><span class="fr">Serveurs Active Directory, règles de pare-feu, configuration des postes utilisateurs, maintenance de l'infrastructure.</span><span class="en">Active Directory servers, firewall rules, user workstation setup, infrastructure maintenance.</span></p></div>
-        <div class="ent min" data-rv><p class="when"><span class="fr">déc. 2022 – avril 2023 · stage</span><span class="en">Dec 2022 – Apr 2023 · internship</span></p><h3><span class="fr">Chef d'équipe de maintenance · ISTA NTIC SYBA</span><span class="en">Maintenance team lead · ISTA NTIC SYBA</span></h3><p><span class="fr">Réseaux et incidents, encadrement d'une équipe de maintenance, initiation à l'informatique pour les étudiants de première année.</span><span class="en">Networks and incidents, supervision of a maintenance team, IT basics for first-year students.</span></p></div>
+        <div class="ent min" data-rv><p class="when"><span class="de">April – Mai 2024 · Praktikum</span><span class="en">Apr – May 2024 · internship</span></p><h3><span class="de">IT-Techniker · France Communication</span><span class="en">IT technician · France Communication</span></h3><p><span class="de">Callcenter · Wartung des HP-Z620-Servers, der Arbeitsplatzrechner und Headsets; Installation von Vicidial auf einem Linux-Server; Netzwerk, CRM, Anwendersupport.</span><span class="en">Call centre · maintenance of the HP Z620 server, workstations and headsets; Vicidial installation on a Linux server; network, CRM, user support.</span></p></div>
+        <div class="ent min" data-rv><p class="when"><span class="de">Nov. 2023 – März 2024</span><span class="en">Nov 2023 – Mar 2024</span></p><h3><span class="de">IT-Techniker · AKMS TECH</span><span class="en">IT technician · AKMS TECH</span></h3><p><span class="de">Installation von Netzwerken und IT-Systemen, Gerätewartung, Kassensysteme, Sensormatic-Diebstahlsicherung.</span><span class="en">Network and IT system installation, equipment maintenance, cash registers, Sensormatic anti-theft systems.</span></p></div>
+        <div class="ent min" data-rv><p class="when"><span class="de">Aug. – Okt. 2023</span><span class="en">Aug – Oct 2023</span></p><h3><span class="de">Techniker für IT-Wartung · Electro Amine</span><span class="en">IT maintenance technician · Electro Amine</span></h3><p><span class="de">Wartung und Neuinstallation von Systemen, Verkauf von IT-Geräten.</span><span class="en">Maintenance, system reinstalls, equipment sales.</span></p></div>
+        <div class="ent min" data-rv><p class="when"><span class="de">Mai 2023 · Praktikum</span><span class="en">May 2023 · internship</span></p><h3><span class="de">IT-Techniker · Stadtverwaltung Marrakesch</span><span class="en">IT technician · Marrakech city council</span></h3><p><span class="de">Active-Directory-Server, Firewall-Regeln, Einrichtung der Arbeitsplatzrechner, Wartung der IT-Infrastruktur.</span><span class="en">Active Directory servers, firewall rules, user workstation setup, infrastructure maintenance.</span></p></div>
+        <div class="ent min" data-rv><p class="when"><span class="de">Dez. 2022 – April 2023 · Praktikum</span><span class="en">Dec 2022 – Apr 2023 · internship</span></p><h3><span class="de">IT-Wartung · ISTA NTIC SYBA</span><span class="en">IT maintenance · ISTA NTIC SYBA</span></h3><p><span class="de">Netzwerkadministration und Störungsmanagement, Leitung eines Wartungsteams, IT-Unterricht für Studierende im ersten Jahr.</span><span class="en">Network administration and incident management, led a maintenance team, IT basics for first-year students.</span></p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= 04 RÉALISATIONS ================= -->
-<section class="work ink sec" id="realisations">
+<!-- ================= 04 PROJEKTE ================= -->
+<section class="work ink sec" id="projekte">
   <div class="pin" id="pin">
     <div class="whead">
       <div class="wrap">
         <div class="sh">
           <span class="idx">04</span>
-          <h2 class="st"><span class="fr" data-split>Ce que l'équipe <em>livre</em> sous ma responsabilité.</span><span class="en" data-split>What the team <em>delivers</em> under my responsibility.</span></h2>
-          <p class="sd"><span class="fr">Produit par l'équipe technique et graphique de CCL pour CCL, Schoolaris et Up Skills. Survolez une vidéo pour la lancer, cliquez pour l'agrandir.</span><span class="en">Produced by CCL's technical and design team for CCL, Schoolaris and Up Skills. Hover a video to play it, click to enlarge.</span></p>
+          <h2 class="st"><span class="de" data-split>Was das Team unter meiner Verantwortung <em>liefert</em>.</span><span class="en" data-split>What the team <em>delivers</em> under my responsibility.</span></h2>
+          <p class="sd"><span class="de">Produziert vom Technik- und Grafikteam von CCL für CCL und Partner wie Up Skills, Master Learn und Schoolaris. Mit der Maus über ein Video fahren, um es abzuspielen; Bilder und Videos anklicken, um sie zu vergrößern.</span><span class="en">Produced by CCL's technical and design team for CCL and partners such as Up Skills, Master Learn and Schoolaris. Hover a video to play it; click any image or video to enlarge.</span></p>
         </div>
       </div>
       <div class="wprog"><i id="wprog"></i></div>
@@ -482,141 +506,185 @@ footer{border-top:1px solid var(--line-d);padding:22px var(--gut) calc(22px + en
     <div class="track" id="track">
 
       <article class="panel">
-        <div class="ph"><h3><span class="fr">Capsules narrées</span><span class="en">Narrated capsules</span></h3><p><span class="fr">Montées à partir des slides et des enregistrements des formateurs, vérifiées image et audio avant mise en ligne.</span><span class="en">Cut from the trainers' slides and recordings, picture and audio checked before release.</span></p></div>
+        <div class="ph"><h3><span class="de">Vertonte Lernvideos</span><span class="en">Narrated capsules</span></h3><p><span class="de">Geschnitten aus den Folien und Aufnahmen der Trainer, Bild und Ton vor der Veröffentlichung geprüft.</span><span class="en">Cut from the trainers' slides and recordings, picture and audio checked before release.</span></p></div>
         <div class="g g3">
-          <figure class="hv" tabindex="0" data-video="vid/qhse-capsule1.mp4" data-poster="vid/qhse-capsule1.jpg" data-title="QHSE Data-Driven · capsule 1"><div class="media r169"><img src="vid/qhse-capsule1.jpg" alt="" loading="lazy"><video src="vid/qhse-capsule1.mp4" poster="vid/qhse-capsule1.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">QHSE Data-Driven · capsule 1 · extrait</span><span class="en">QHSE Data-Driven · capsule 1 · excerpt</span></figcaption></figure>
-          <figure class="hv" tabindex="0" data-video="vid/leadership-capsule1.mp4" data-poster="vid/leadership-capsule1.jpg" data-title="Leadership inspirant · capsule 1"><div class="media r169"><img src="vid/leadership-capsule1.jpg" alt="" loading="lazy"><video src="vid/leadership-capsule1.mp4" poster="vid/leadership-capsule1.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Leadership inspirant · capsule 1 · extrait</span><span class="en">Inspiring leadership · capsule 1 · excerpt</span></figcaption></figure>
-          <figure class="hv" tabindex="0" data-video="vid/ccl-intro.mp4" data-poster="vid/ccl-intro.jpg" data-title="Générique CCL E-learning"><div class="media r169"><img src="vid/ccl-intro.jpg" alt="" loading="lazy"><video src="vid/ccl-intro.mp4" poster="vid/ccl-intro.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Générique CCL E-learning · 7 s</span><span class="en">CCL E-learning title sequence · 7 s</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/qhse-capsule1.mp4" data-poster="vid/qhse-capsule1.jpg"><div class="media r169"><img src="vid/qhse-capsule1.jpg" alt="" loading="lazy"><video src="vid/qhse-capsule1.mp4" poster="vid/qhse-capsule1.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="de">QHSE Data-Driven · Lernvideo 1 · Ausschnitt</span><span class="en">QHSE Data-Driven · capsule 1 · excerpt</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/leadership-capsule1.mp4" data-poster="vid/leadership-capsule1.jpg"><div class="media r169"><img src="vid/leadership-capsule1.jpg" alt="" loading="lazy"><video src="vid/leadership-capsule1.mp4" poster="vid/leadership-capsule1.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="de">Inspirierende Führung · Lernvideo 1 · Ausschnitt</span><span class="en">Inspiring leadership · capsule 1 · excerpt</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/ccl-intro.mp4" data-poster="vid/ccl-intro.jpg"><div class="media r169"><img src="vid/ccl-intro.jpg" alt="" loading="lazy"><video src="vid/ccl-intro.mp4" poster="vid/ccl-intro.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="de">Vorspann CCL E-Learning · 7 s</span><span class="en">CCL E-learning title sequence · 7 s</span></figcaption></figure>
         </div>
       </article>
 
       <article class="panel p6">
-        <div class="ph"><h3><span class="fr">Affiches des formations</span><span class="en">Programme posters</span></h3><p><span class="fr">Une affiche par formation, déclinée pour la publicité Meta. Six ici, dix-huit en tout.</span><span class="en">One poster per programme, adapted for Meta ads. Six here, eighteen in total.</span></p></div>
+        <div class="ph"><h3><span class="de">Kursplakate</span><span class="en">Programme posters</span></h3><p><span class="de">Ein Plakat pro Weiterbildung, angepasst für Meta-Werbung. Sechs hier, achtzehn insgesamt.</span><span class="en">One poster per programme, adapted for Meta ads. Six here, eighteen in total.</span></p></div>
         <div class="g g6">
-          <figure><img src="img/ad-immuno.jpg" alt="Immunologie" loading="lazy"><figcaption><span class="fr">Immunologie</span><span class="en">Immunology</span></figcaption></figure>
-          <figure><img src="img/ad-cisa.jpg" alt="Audit SI CISA" loading="lazy"><figcaption>Audit SI · CISA</figcaption></figure>
+          <figure><img src="img/ad-immuno.jpg" alt="Immunologie" loading="lazy"><figcaption><span class="de">Immunologie</span><span class="en">Immunology</span></figcaption></figure>
+          <figure><img src="img/ad-cisa.jpg" alt="IS-Audit CISA" loading="lazy"><figcaption><span class="de">IS-Audit · CISA</span><span class="en">IS audit · CISA</span></figcaption></figure>
           <figure><img src="img/ad-qhse.jpg" alt="QHSE" loading="lazy"><figcaption>QHSE</figcaption></figure>
-          <figure><img src="img/ad-pmp.jpg" alt="Gestion de projet PMP" loading="lazy"><figcaption><span class="fr">Gestion de projet · PMP</span><span class="en">Project management · PMP</span></figcaption></figure>
-          <figure><img src="img/ad-mt1.jpg" alt="Médecine du travail" loading="lazy"><figcaption><span class="fr">Médecine du travail</span><span class="en">Occupational medicine</span></figcaption></figure>
-          <figure><img src="img/ad-echo2.jpg" alt="Échographie Doppler" loading="lazy"><figcaption><span class="fr">Échographie Doppler</span><span class="en">Doppler ultrasound</span></figcaption></figure>
+          <figure><img src="img/ad-pmp.jpg" alt="Projektmanagement PMP" loading="lazy"><figcaption><span class="de">Projektmanagement · PMP</span><span class="en">Project management · PMP</span></figcaption></figure>
+          <figure><img src="img/ad-mt1.jpg" alt="Arbeitsmedizin" loading="lazy"><figcaption><span class="de">Arbeitsmedizin</span><span class="en">Occupational medicine</span></figcaption></figure>
+          <figure><img src="img/ad-echo2.jpg" alt="Doppler-Ultraschall" loading="lazy"><figcaption><span class="de">Doppler-Ultraschall</span><span class="en">Doppler ultrasound</span></figcaption></figure>
         </div>
-        <button type="button" class="btn more mag" data-gallery="posters"><span class="fr">Voir les 18 affiches</span><span class="en">See all 18 posters</span></button>
+        <button type="button" class="btn more mag" data-gallery="posters"><span class="de">Alle 18 Plakate ansehen</span><span class="en">See all 18 posters</span></button>
+      </article>
+
+      <article class="panel">
+        <div class="ph"><h3><span class="de">Markenidentitäten</span><span class="en">Brand identities</span></h3><p><span class="de">Logo, helle und dunkle Variante, Anwendung auf Verpackung, Karten und Drucksachen.</span><span class="en">Logo, light and dark versions, applied to packaging, cards and print.</span></p></div>
+        <div class="g g3 gw">
+          <figure tabindex="0" data-poster="img/work/brand-ccl.jpg"><img src="img/work/brand-ccl.jpg" alt="Markenidentität C.C.L E-Learning" loading="lazy"><figcaption><span class="de">C.C.L E-Learning · Weiterbildung</span><span class="en">C.C.L E-Learning · training</span></figcaption></figure>
+          <figure tabindex="0" data-poster="img/work/brand-mimo.jpg"><img src="img/work/brand-mimo.jpg" alt="Markenidentität MIMO by" loading="lazy"><figcaption><span class="de">MIMO by · Accessoires</span><span class="en">MIMO by · accessories</span></figcaption></figure>
+          <figure tabindex="0" data-poster="img/work/brand-parfum.jpg"><img src="img/work/brand-parfum.jpg" alt="Markenidentität Le Parfum" loading="lazy"><figcaption><span class="de">Le Parfum · Parfümhandel</span><span class="en">Le Parfum · fragrance retail</span></figcaption></figure>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="ph"><h3><span class="de">Kursbanner</span><span class="en">Course banners</span></h3><p><span class="de">Titelbilder für Kurse und Videos, im Stil der jeweiligen Weiterbildung.</span><span class="en">Cover images for courses and videos, styled to each programme.</span></p></div>
+        <div class="g g4">
+          <figure tabindex="0" data-poster="img/work/ban-lead1.jpg"><img src="img/work/ban-lead1.jpg" alt="Banner Strategische Führung" loading="lazy"><figcaption><span class="de">Strategische Führung · v1</span><span class="en">Strategic leadership · v1</span></figcaption></figure>
+          <figure tabindex="0" data-poster="img/work/ban-lead2.jpg"><img src="img/work/ban-lead2.jpg" alt="Banner Strategische Führung, Variante 2" loading="lazy"><figcaption><span class="de">Strategische Führung · v2</span><span class="en">Strategic leadership · v2</span></figcaption></figure>
+          <figure tabindex="0" data-poster="img/work/ban-projets.jpg"><img src="img/work/ban-projets.jpg" alt="Banner Projektstrukturierung" loading="lazy"><figcaption><span class="de">Projektstrukturierung</span><span class="en">Project structuring</span></figcaption></figure>
+          <figure tabindex="0" data-poster="img/work/ban-audit.jpg"><img src="img/work/ban-audit.jpg" alt="Banner Bankprüfungsbericht" loading="lazy"><figcaption><span class="de">Bankprüfungsbericht</span><span class="en">Bank audit report</span></figcaption></figure>
+        </div>
+      </article>
+
+      <article class="panel p6">
+        <div class="ph"><h3><span class="de">Social-Media-Designs</span><span class="en">Social media designs</span></h3><p><span class="de">Beiträge für CCL, Up Skills, Master Learn, Vision Academy und Schoolaris: Ankündigungen, Events, Zitate, Kampagnen.</span><span class="en">Posts for CCL, Up Skills, Master Learn, Vision Academy and Schoolaris: announcements, events, quotes, campaigns.</span></p></div>
+        <div class="g g6">
+          <figure tabindex="0" data-poster="img/work/ccl-excuses.jpg"><img src="img/work/ccl-excuses.jpg" alt="" loading="lazy"><figcaption><span class="de">CCL · Motivation</span><span class="en">CCL · motivation</span></figcaption></figure>
+          <figure tabindex="0" data-poster="img/work/ccl-qhse.jpg"><img src="img/work/ccl-qhse.jpg" alt="" loading="lazy"><figcaption><span class="de">CCL · Mastère QHSE</span><span class="en">CCL · QHSE master's</span></figcaption></figure>
+          <figure tabindex="0" data-poster="img/work/up-humain.jpg"><img src="img/work/up-humain.jpg" alt="" loading="lazy"><figcaption><span class="de">Up Skills · HR</span><span class="en">Up Skills · HR</span></figcaption></figure>
+          <figure tabindex="0" data-poster="img/work/ml-mba.jpg"><img src="img/work/ml-mba.jpg" alt="" loading="lazy"><figcaption><span class="de">Master Learn · MBA</span><span class="en">Master Learn · MBA</span></figcaption></figure>
+          <figure tabindex="0" data-poster="img/work/va-sites.jpg"><img src="img/work/va-sites.jpg" alt="" loading="lazy"><figcaption><span class="de">Vision Academy · Abitur</span><span class="en">Vision Academy · exams</span></figcaption></figure>
+          <figure tabindex="0" data-poster="img/work/ccl-temoignages.jpg"><img src="img/work/ccl-temoignages.jpg" alt="" loading="lazy"><figcaption><span class="de">CCL · Erfolgsgeschichten</span><span class="en">CCL · success stories</span></figcaption></figure>
+        </div>
+        <button type="button" class="btn more mag" data-gallery="social"><span class="de">Alle 38 Designs ansehen</span><span class="en">See all 38 designs</span></button>
       </article>
 
       <article class="panel p3">
-        <div class="ph"><h3><span class="fr">Système de trois posts</span><span class="en">Three-post system</span></h3><p><span class="fr">Annonce, preuve sociale, relance : la même formation déclinée en trois publications.</span><span class="en">Announcement, social proof, reminder: one programme in three posts.</span></p></div>
+        <div class="ph"><h3><span class="de">Drei-Post-System</span><span class="en">Three-post system</span></h3><p><span class="de">Ankündigung, Social Proof, Erinnerung: eine Weiterbildung in drei Beiträgen.</span><span class="en">Announcement, social proof, reminder: one programme in three posts.</span></p></div>
         <div class="g g3">
-          <figure><img src="img/camp-lead.jpg" alt="Post 1, annonce" loading="lazy"><figcaption><span class="fr">1 · Annonce</span><span class="en">1 · Announcement</span></figcaption></figure>
-          <figure><img src="img/ccl-lead2.jpg" alt="Post 2, preuve sociale" loading="lazy"><figcaption><span class="fr">2 · Preuve sociale</span><span class="en">2 · Social proof</span></figcaption></figure>
-          <figure><img src="img/ccl-lead3.jpg" alt="Post 3, relance" loading="lazy"><figcaption><span class="fr">3 · Relance</span><span class="en">3 · Reminder</span></figcaption></figure>
+          <figure><img src="img/camp-lead.jpg" alt="Post 1, Ankündigung" loading="lazy"><figcaption><span class="de">1 · Ankündigung</span><span class="en">1 · Announcement</span></figcaption></figure>
+          <figure><img src="img/ccl-lead2.jpg" alt="Post 2, Social Proof" loading="lazy"><figcaption><span class="de">2 · Social Proof</span><span class="en">2 · Social proof</span></figcaption></figure>
+          <figure><img src="img/ccl-lead3.jpg" alt="Post 3, Erinnerung" loading="lazy"><figcaption><span class="de">3 · Erinnerung</span><span class="en">3 · Reminder</span></figcaption></figure>
         </div>
       </article>
 
       <article class="panel pr">
-        <div class="ph"><h3><span class="fr">Reels verticaux</span><span class="en">Vertical reels</span></h3><p><span class="fr">Deux vidéos animées par formation, programme et débouchés, plus le reel de lancement de Schoolaris.</span><span class="en">Two animated videos per programme, syllabus and careers, plus the Schoolaris launch reel.</span></p></div>
+        <div class="ph"><h3><span class="de">Vertikale Reels</span><span class="en">Vertical reels</span></h3><p><span class="de">Zwei animierte Videos pro Weiterbildung, Programm und Berufsaussichten, dazu das Launch-Reel von Schoolaris.</span><span class="en">Two animated videos per programme, syllabus and careers, plus the Schoolaris launch reel.</span></p></div>
         <div class="g g4">
-          <figure class="hv" tabindex="0" data-video="vid/ccl-gyn.mp4" data-poster="vid/ccl-gyn.jpg" data-title="Échographie gynécologique · programme"><div class="media r916"><img src="vid/ccl-gyn.jpg" alt="" loading="lazy"><video src="vid/ccl-gyn.mp4" poster="vid/ccl-gyn.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Échographie gynéco · programme</span><span class="en">Obstetric ultrasound · syllabus</span></figcaption></figure>
-          <figure class="hv" tabindex="0" data-video="vid/ccl-lead.mp4" data-poster="vid/ccl-lead.jpg" data-title="Leadership stratégique · débouchés"><div class="media r916"><img src="vid/ccl-lead.jpg" alt="" loading="lazy"><video src="vid/ccl-lead.mp4" poster="vid/ccl-lead.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Leadership stratégique · débouchés</span><span class="en">Strategic leadership · careers</span></figcaption></figure>
-          <figure class="hv" tabindex="0" data-video="vid/ccl-ifrs.mp4" data-poster="vid/ccl-ifrs.jpg" data-title="Normes IFRS · programme"><div class="media r916"><img src="vid/ccl-ifrs.jpg" alt="" loading="lazy"><video src="vid/ccl-ifrs.mp4" poster="vid/ccl-ifrs.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Normes IFRS · programme</span><span class="en">IFRS standards · syllabus</span></figcaption></figure>
-          <figure class="hv" tabindex="0" data-video="vid/sc-reel.mp4" data-poster="vid/sc-reel.jpg" data-title="Schoolaris · reel de lancement"><div class="media r916"><img src="vid/sc-reel.jpg" alt="" loading="lazy"><video src="vid/sc-reel.mp4" poster="vid/sc-reel.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Schoolaris · reel de lancement</span><span class="en">Schoolaris · launch reel</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/ccl-gyn.mp4" data-poster="vid/ccl-gyn.jpg"><div class="media r916"><img src="vid/ccl-gyn.jpg" alt="" loading="lazy"><video src="vid/ccl-gyn.mp4" poster="vid/ccl-gyn.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="de">Gynäkologischer Ultraschall · Programm</span><span class="en">Obstetric ultrasound · syllabus</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/ccl-lead.mp4" data-poster="vid/ccl-lead.jpg"><div class="media r916"><img src="vid/ccl-lead.jpg" alt="" loading="lazy"><video src="vid/ccl-lead.mp4" poster="vid/ccl-lead.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="de">Strategische Führung · Berufsaussichten</span><span class="en">Strategic leadership · careers</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/ccl-ifrs.mp4" data-poster="vid/ccl-ifrs.jpg"><div class="media r916"><img src="vid/ccl-ifrs.jpg" alt="" loading="lazy"><video src="vid/ccl-ifrs.mp4" poster="vid/ccl-ifrs.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="de">IFRS-Standards · Programm</span><span class="en">IFRS standards · syllabus</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/sc-reel.mp4" data-poster="vid/sc-reel.jpg"><div class="media r916"><img src="vid/sc-reel.jpg" alt="" loading="lazy"><video src="vid/sc-reel.mp4" poster="vid/sc-reel.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="de">Schoolaris · Launch-Reel</span><span class="en">Schoolaris · launch reel</span></figcaption></figure>
         </div>
-        <button type="button" class="btn more mag" data-gallery="reels"><span class="fr">Voir les 8 vidéos</span><span class="en">See all 8 videos</span></button>
+        <button type="button" class="btn more mag" data-gallery="reels"><span class="de">Alle 8 Videos ansehen</span><span class="en">See all 8 videos</span></button>
+      </article>
+
+      <article class="panel p6">
+        <div class="ph"><h3><span class="de">Broschüre</span><span class="en">Brochure</span></h3><p><span class="de">Executive MBA von EXEC Toulouse: zehn Seiten von der Titelseite bis zur Zulassung.</span><span class="en">EXEC Toulouse Executive MBA: ten pages, from the cover to admissions.</span></p></div>
+        <div class="g g6">
+          <figure tabindex="0" data-poster="img/work/exec-cover.jpg"><img src="img/work/exec-cover.jpg" alt="" loading="lazy"><figcaption><span class="de">Titelseite</span><span class="en">Cover</span></figcaption></figure>
+          <figure tabindex="0" data-poster="img/work/exec-presentation.jpg"><img src="img/work/exec-presentation.jpg" alt="" loading="lazy"><figcaption><span class="de">Vorstellung</span><span class="en">About</span></figcaption></figure>
+          <figure tabindex="0" data-poster="img/work/exec-directrice.jpg"><img src="img/work/exec-directrice.jpg" alt="" loading="lazy"><figcaption><span class="de">Wort der Direktorin</span><span class="en">Director's word</span></figcaption></figure>
+          <figure tabindex="0" data-poster="img/work/exec-objectifs.jpg"><img src="img/work/exec-objectifs.jpg" alt="" loading="lazy"><figcaption><span class="de">Lernziele</span><span class="en">Objectives</span></figcaption></figure>
+          <figure tabindex="0" data-poster="img/work/exec-programme.jpg"><img src="img/work/exec-programme.jpg" alt="" loading="lazy"><figcaption><span class="de">Programm</span><span class="en">Programme</span></figcaption></figure>
+          <figure tabindex="0" data-poster="img/work/exec-admission.jpg"><img src="img/work/exec-admission.jpg" alt="" loading="lazy"><figcaption><span class="de">Zulassung</span><span class="en">Admissions</span></figcaption></figure>
+        </div>
+        <button type="button" class="btn more mag" data-gallery="brochure"><span class="de">Alle 10 Seiten ansehen</span><span class="en">See all 10 pages</span></button>
       </article>
 
       <article class="panel">
-        <div class="ph"><h3><span class="fr">Présentations</span><span class="en">Presentations</span></h3><p><span class="fr">Conçues slide par slide avant d'être narrées. Exemple : « Gestion des talents », 35 slides, pour Up Skills.</span><span class="en">Designed slide by slide before narration. Example: "Talent management", 35 slides, for Up Skills.</span></p></div>
+        <div class="ph"><h3><span class="de">Präsentationen</span><span class="en">Presentations</span></h3><p><span class="de">Folie für Folie gestaltet, bevor sie vertont werden. Beispiel: „Talentmanagement“, 35 Folien, für Up Skills.</span><span class="en">Designed slide by slide before narration. Example: "Talent management", 35 slides, for Up Skills.</span></p></div>
         <div class="g g4">
-          <figure><img src="img/slide-1.jpg" alt="Gestion des talents, couverture" loading="lazy"><figcaption><span class="fr">Couverture</span><span class="en">Cover</span></figcaption></figure>
-          <figure><img src="img/slide-2.jpg" alt="Plan du cours" loading="lazy"><figcaption><span class="fr">Plan du cours</span><span class="en">Course outline</span></figcaption></figure>
-          <figure><img src="img/slide-10.jpg" alt="Cartographie des métiers" loading="lazy"><figcaption><span class="fr">Cartographie des métiers</span><span class="en">Job mapping</span></figcaption></figure>
-          <figure><img src="img/slide-23.jpg" alt="Rétention des talents" loading="lazy"><figcaption><span class="fr">Rétention des talents</span><span class="en">Talent retention</span></figcaption></figure>
+          <figure><img src="img/slide-1.jpg" alt="Talentmanagement, Titelfolie" loading="lazy"><figcaption><span class="de">Titelfolie</span><span class="en">Cover</span></figcaption></figure>
+          <figure><img src="img/slide-2.jpg" alt="Kursübersicht" loading="lazy"><figcaption><span class="de">Kursübersicht</span><span class="en">Course outline</span></figcaption></figure>
+          <figure><img src="img/slide-10.jpg" alt="Berufslandkarte" loading="lazy"><figcaption><span class="de">Berufslandkarte</span><span class="en">Job mapping</span></figcaption></figure>
+          <figure><img src="img/slide-23.jpg" alt="Talentbindung" loading="lazy"><figcaption><span class="de">Talentbindung</span><span class="en">Talent retention</span></figcaption></figure>
         </div>
       </article>
 
       <article class="panel">
-        <div class="ph"><h3><span class="fr">Cours vidéo narrés</span><span class="en">Narrated video courses</span></h3><p><span class="fr">Les mêmes présentations transformées en cours vidéo avec voix off IA, pour CCL et Up Skills.</span><span class="en">The same presentations turned into video courses with AI voice-over, for CCL and Up Skills.</span></p></div>
+        <div class="ph"><h3><span class="de">Vertonte Videokurse</span><span class="en">Narrated video courses</span></h3><p><span class="de">Dieselben Präsentationen als Videokurse mit KI-Sprecherstimme, für CCL und Up Skills.</span><span class="en">The same presentations turned into video courses with AI voice-over, for CCL and Up Skills.</span></p></div>
         <div class="g g3">
-          <figure class="hv" tabindex="0" data-video="vid/up-talents.mp4" data-poster="vid/up-talents.jpg" data-title="Gestion des talents"><div class="media r169"><img src="vid/up-talents.jpg" alt="" loading="lazy"><video src="vid/up-talents.mp4" poster="vid/up-talents.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Gestion des talents</span><span class="en">Talent management</span></figcaption></figure>
-          <figure class="hv" tabindex="0" data-video="vid/up-bi.mp4" data-poster="vid/up-bi.jpg" data-title="Panorama des outils BI"><div class="media r169"><img src="vid/up-bi.jpg" alt="" loading="lazy"><video src="vid/up-bi.mp4" poster="vid/up-bi.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Panorama des outils BI</span><span class="en">BI tools overview</span></figcaption></figure>
-          <figure class="hv" tabindex="0" data-video="vid/up-ia.mp4" data-poster="vid/up-ia.jpg" data-title="Le rôle de l'IA et du machine learning"><div class="media r169"><img src="vid/up-ia.jpg" alt="" loading="lazy"><video src="vid/up-ia.mp4" poster="vid/up-ia.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Le rôle de l'IA et du machine learning</span><span class="en">The role of AI and machine learning</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/up-talents.mp4" data-poster="vid/up-talents.jpg"><div class="media r169"><img src="vid/up-talents.jpg" alt="" loading="lazy"><video src="vid/up-talents.mp4" poster="vid/up-talents.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="de">Talentmanagement</span><span class="en">Talent management</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/up-bi.mp4" data-poster="vid/up-bi.jpg"><div class="media r169"><img src="vid/up-bi.jpg" alt="" loading="lazy"><video src="vid/up-bi.mp4" poster="vid/up-bi.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="de">Überblick über BI-Tools</span><span class="en">BI tools overview</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/up-ia.mp4" data-poster="vid/up-ia.jpg"><div class="media r169"><img src="vid/up-ia.jpg" alt="" loading="lazy"><video src="vid/up-ia.mp4" poster="vid/up-ia.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="de">Die Rolle von KI und Machine Learning</span><span class="en">The role of AI and machine learning</span></figcaption></figure>
         </div>
       </article>
 
       <article class="panel">
-        <div class="ph"><h3><span class="fr">Les outils derrière</span><span class="en">The tools behind it</span></h3><p><span class="fr">Un workflow n8n qui transforme les supports de cours en capsules narrées, et un générateur de cours assisté par IA. Captures floutées par confidentialité.</span><span class="en">An n8n workflow that turns course materials into narrated capsules, and an AI-assisted course generator. Screenshots blurred for confidentiality.</span></p></div>
+        <div class="ph"><h3><span class="de">Die Werkzeuge dahinter</span><span class="en">The tools behind it</span></h3><p><span class="de">Ein n8n-Workflow, der Kursunterlagen in vertonte Lernvideos verwandelt, und ein KI-gestützter Kursgenerator. Screenshots aus Vertraulichkeitsgründen unscharf.</span><span class="en">An n8n workflow that turns course materials into narrated capsules, and an AI-assisted course generator. Screenshots blurred for confidentiality.</span></p></div>
         <div class="g g4">
-          <figure><img src="img/auto-capsules.jpg" alt="Workflow n8n, flouté" loading="lazy"><figcaption><span class="fr">Workflow n8n · flouté</span><span class="en">n8n workflow · blurred</span></figcaption></figure>
-          <figure class="hv" tabindex="0" data-video="vid/capsule-budget.mp4" data-poster="vid/capsule-budget.jpg" data-title="Capsule générée · Contraintes budgétaires"><div class="media r169"><img src="vid/capsule-budget.jpg" alt="" loading="lazy"><video src="vid/capsule-budget.mp4" poster="vid/capsule-budget.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Capsule générée · Contraintes budgétaires</span><span class="en">Generated capsule · Budget constraints</span></figcaption></figure>
-          <figure class="hv" tabindex="0" data-video="vid/capsule-pilotage.mp4" data-poster="vid/capsule-pilotage.jpg" data-title="Capsule générée · Pilotage stratégique territorial"><div class="media r169"><img src="vid/capsule-pilotage.jpg" alt="" loading="lazy"><video src="vid/capsule-pilotage.mp4" poster="vid/capsule-pilotage.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="fr">Capsule générée · Pilotage stratégique</span><span class="en">Generated capsule · Strategic management</span></figcaption></figure>
-          <figure><img src="img/auto-generator.jpg" alt="Générateur de cours, flouté" loading="lazy"><figcaption><span class="fr">Générateur de cours · flouté</span><span class="en">Course generator · blurred</span></figcaption></figure>
+          <figure><img src="img/auto-capsules.jpg" alt="n8n-Workflow, unscharf" loading="lazy"><figcaption><span class="de">n8n-Workflow · unscharf</span><span class="en">n8n workflow · blurred</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/capsule-budget.mp4" data-poster="vid/capsule-budget.jpg"><div class="media r169"><img src="vid/capsule-budget.jpg" alt="" loading="lazy"><video src="vid/capsule-budget.mp4" poster="vid/capsule-budget.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="de">Generiertes Lernvideo · Budgetvorgaben</span><span class="en">Generated capsule · Budget constraints</span></figcaption></figure>
+          <figure class="hv" tabindex="0" data-video="vid/capsule-pilotage.mp4" data-poster="vid/capsule-pilotage.jpg"><div class="media r169"><img src="vid/capsule-pilotage.jpg" alt="" loading="lazy"><video src="vid/capsule-pilotage.mp4" poster="vid/capsule-pilotage.jpg" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption><span class="de">Generiertes Lernvideo · Strategische Steuerung</span><span class="en">Generated capsule · Strategic management</span></figcaption></figure>
+          <figure><img src="img/auto-generator.jpg" alt="Kursgenerator, unscharf" loading="lazy"><figcaption><span class="de">Kursgenerator · unscharf</span><span class="en">Course generator · blurred</span></figcaption></figure>
         </div>
       </article>
 
       <article class="panel pt">
-        <p class="lab" style="margin-bottom:14px"><span class="fr">Crédits</span><span class="en">Credits</span></p>
-        <p><span class="fr">Visuels, vidéos et outils produits par l'équipe technique et graphique de CCL, dont je suis l'avancement. Les contenus appartiennent à CCL, Schoolaris et Up Skills.</span><span class="en">Visuals, videos and tools produced by CCL's technical and design team, whose progress I track. The content belongs to CCL, Schoolaris and Up Skills.</span></p>
-        <p><span class="fr">Extraits courts, aucun chiffre interne. Les captures d'outils sont floutées.</span><span class="en">Short excerpts, no internal figures. Tool screenshots are blurred.</span></p>
+        <p class="lab" style="margin-bottom:14px"><span class="de">Hinweise</span><span class="en">Credits</span></p>
+        <p><span class="de">Visuals, Videos und Tools vom Technik- und Grafikteam von CCL, dessen Fortschritt ich verfolge. Die Inhalte gehören den jeweiligen Marken: CCL, Schoolaris, Up Skills, Master Learn, Vision Academy, EXEC Toulouse, MIMO by und Le Parfum.</span><span class="en">Visuals, videos and tools produced by CCL's technical and design team, whose progress I track. The content belongs to the respective brands: CCL, Schoolaris, Up Skills, Master Learn, Vision Academy, EXEC Toulouse, MIMO by and Le Parfum.</span></p>
+        <p><span class="de">Kurze Ausschnitte, keine internen Zahlen. Screenshots von Tools sind unscharf gemacht.</span><span class="en">Short excerpts, no internal figures. Tool screenshots are blurred.</span></p>
       </article>
 
     </div>
   </div>
 </section>
 
-<!-- ================= 05 FORMATION ================= -->
-<section class="sec paper" id="formation">
+<!-- ================= 05 BILDUNGSWEG ================= -->
+<section class="sec paper" id="bildung">
   <div class="wrap">
     <div class="sh" data-rv>
       <span class="idx">05</span>
-      <h2 class="st"><span class="fr" data-split>Un diplôme en infrastructure, des certificats <em>vérifiables</em>.</span><span class="en" data-split>An infrastructure diploma, <em>verifiable</em> certificates.</span></h2>
+      <h2 class="st"><span class="de" data-split>Ein Diplom in IT-Infrastruktur, <em>überprüfbare</em> Zertifikate.</span><span class="en" data-split>An infrastructure diploma, <em>verifiable</em> certificates.</span></h2>
     </div>
     <div class="eg">
       <div class="dip" data-rv>
         <p class="big">Bac<em>+2</em></p>
-        <h3><span class="fr">Technicien Spécialisé en infrastructure digitale, option cybersécurité</span><span class="en">Specialised technician in digital infrastructure, cybersecurity option</span></h3>
-        <p>ISTA NTIC SYBA, Marrakech · 2021 – 2023</p>
-        <div class="sub"><b><span class="fr">Baccalauréat, Sciences de la Vie et de la Terre</span><span class="en">Baccalaureate, life and earth sciences</span></b><span>Lycée Fatima El Mernissi, Marrakech · 2020</span></div>
-        <div class="sub"><b><span class="fr">Titres de compétences</span><span class="en">Competency titles</span></b><span><span class="fr">Administrateur réseaux et systèmes · Concepteur de contenus visuels et vidéos · Technicien informatique polyvalent</span><span class="en">Network and systems administrator · Visual and video content designer · All-round IT technician</span></span></div>
+        <h3><span class="de">Diplom „Technicien Spécialisé“, digitale Infrastruktur mit Schwerpunkt Cybersicherheit</span><span class="en">Specialised technician in digital infrastructure, cybersecurity option</span></h3>
+        <p><span class="de">ISTA NTIC SYBA, Marrakesch · 2021 – 2023 · zweijährige staatliche Fachausbildung nach dem Abitur</span><span class="en">ISTA NTIC SYBA, Marrakech · 2021 – 2023 · two-year state technical programme after the baccalaureate</span></p>
+        <div class="sub"><b><span class="de">Baccalauréat (marokkanisches Abitur), Bio- und Geowissenschaften</span><span class="en">Baccalaureate, life and earth sciences</span></b><span><span class="de">Lycée Fatima El Mernissi, Marrakesch · 2020</span><span class="en">Lycée Fatima El Mernissi, Marrakech · 2020</span></span></div>
+        <div class="sub"><b><span class="de">Kompetenznachweise</span><span class="en">Competency titles</span></b><span><span class="de">Netzwerk- und Systemadministrator · Gestalter visueller Inhalte und Videos · IT-Allround-Techniker</span><span class="en">Network and systems administrator · Visual and video content designer · All-round IT technician</span></span></div>
       </div>
       <ul class="certs" data-rv-group>
-        <li class="done"><i></i><div><b>Foundations of Cybersecurity</b><small>Google × Coursera · <span class="fr">avril 2026 · cours 1 du Google Cybersecurity Professional Certificate · </span><span class="en">April 2026 · course 1 of the Google Cybersecurity Professional Certificate · </span><a href="https://coursera.org/verify/PL68AKP0NBTF" target="_blank" rel="noopener"><span class="fr">vérifier</span><span class="en">verify</span></a></small></div><span class="state"><span class="fr">obtenu</span><span class="en">earned</span></span></li>
-        <li class="done"><i></i><div><b>PCAP – Programming Essentials in Python</b><small>Cisco Networking Academy · <span class="fr">février 2023</span><span class="en">February 2023</span></small></div><span class="state"><span class="fr">obtenu</span><span class="en">earned</span></span></li>
-        <li class="done"><i></i><div><b><span class="fr">Découvrir le monde de la cybersécurité · Réaliser un test d'intrusion · HTML &amp; CSS</span><span class="en">Discovering cybersecurity · Running a penetration test · HTML &amp; CSS</span></b><small>OpenClassrooms</small></div><span class="state"><span class="fr">obtenus</span><span class="en">earned</span></span></li>
-        <li class="done"><i></i><div><b>Microsoft Office Word</b><small>Microsoft</small></div><span class="state"><span class="fr">obtenu</span><span class="en">earned</span></span></li>
-        <li><i></i><div><b>CCNA 1 – Introduction to Networks · CCNA 2 – Switching, Routing, and Wireless Essentials</b><small>Cisco Networking Academy</small></div><span class="state"><span class="fr">en cours</span><span class="en">in progress</span></span></li>
-        <li><i></i><div><b>Google Cybersecurity Professional Certificate</b><small>Coursera × Google</small></div><span class="state"><span class="fr">en cours</span><span class="en">in progress</span></span></li>
-        <li><i></i><div><b>Goethe-Zertifikat B2 · Deutsch</b><small>Goethe-Institut · <span class="fr">niveau actuel A2</span><span class="en">current level A2</span></small></div><span class="state"><span class="fr">en préparation</span><span class="en">preparing</span></span></li>
+        <li class="done"><i></i><div><b>Foundations of Cybersecurity</b><small>Google × Coursera · <span class="de">April 2026 · Kurs 1 des Google Cybersecurity Professional Certificate · </span><span class="en">April 2026 · course 1 of the Google Cybersecurity Professional Certificate · </span><a href="https://coursera.org/verify/PL68AKP0NBTF" target="_blank" rel="noopener"><span class="de">prüfen</span><span class="en">verify</span></a></small></div><span class="state"><span class="de">erworben</span><span class="en">earned</span></span></li>
+        <li class="done"><i></i><div><b>PCAP – Programming Essentials in Python</b><small>Cisco Networking Academy · <span class="de">Februar 2023</span><span class="en">February 2023</span></small></div><span class="state"><span class="de">erworben</span><span class="en">earned</span></span></li>
+        <li class="done"><i></i><div><b><span class="de">Einführung in die Cybersicherheit · Durchführung eines Penetrationstests · HTML &amp; CSS</span><span class="en">Discovering cybersecurity · Running a penetration test · HTML &amp; CSS</span></b><small>OpenClassrooms</small></div><span class="state"><span class="de">erworben</span><span class="en">earned</span></span></li>
+        <li><i></i><div><b>CCNA 1 – Introduction to Networks · CCNA 2 – Switching, Routing, and Wireless Essentials</b><small>Cisco Networking Academy</small></div><span class="state"><span class="de">laufend</span><span class="en">in progress</span></span></li>
+        <li><i></i><div><b>Google Cybersecurity Professional Certificate</b><small>Coursera × Google</small></div><span class="state"><span class="de">laufend</span><span class="en">in progress</span></span></li>
+        <li><i></i><div><b>Goethe-Zertifikat B2 · Deutsch</b><small>Goethe-Institut · <span class="de">aktuelles Niveau A2</span><span class="en">current level A2</span></small></div><span class="state"><span class="de">in Vorbereitung</span><span class="en">preparing</span></span></li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ================= 06 DEUTSCH ================= -->
-<section class="sec ink" id="deutsch">
+<!-- ================= 06 DEUTSCHLAND ================= -->
+<section class="sec ink" id="deutschland">
   <div class="wrap">
     <div class="sh" data-rv>
       <span class="idx">06</span>
-      <h2 class="st"><span class="fr" data-split>Kurz auf <em>Deutsch</em>.</span><span class="en" data-split>Kurz auf <em>Deutsch</em>.</span></h2>
-      <p class="sd"><span class="fr">Pour un recruteur ou un Ausbilder en Allemagne : l'essentiel en quelques lignes, et le Lebenslauf au format allemand.</span><span class="en">For a recruiter or Ausbilder in Germany: the essentials in a few lines, and the Lebenslauf in German format.</span></p>
+      <h2 class="st"><span class="de" data-split>Bereit für die <em>Ausbildung</em> in Deutschland.</span><span class="en" data-split>Ready for an <em>apprenticeship</em> in Germany.</span></h2>
+      <p class="sd"><span class="de">Für Ausbildungsbetriebe und Ausbilder: Sprachen, Verfügbarkeit und Lebenslauf auf einen Blick.</span><span class="en">For training companies and Ausbilder: languages, availability and the CV at a glance.</span></p>
     </div>
     <div class="dg">
       <div data-rv>
-        <p class="de-txt" lang="de">IT-Techniker für digitale Infrastruktur mit Schwerpunkt Cybersicherheit, drei Jahre Praxis in Netzwerk, Support und Hardware. Seit März 2025 <strong>technischer Teamleiter bei CCL</strong> in Marrakesch mit zehn Mitarbeitenden: Firmennetzwerk, 1st- und 2nd-Level-Support, Hardware, E-Learning-Plattform. Ziel: <strong>Ausbildung zum Fachinformatiker für Systemintegration</strong>. Deutsch A2, Vorbereitung auf das Goethe-Zertifikat B2. Verfügbar zum nächsten Ausbildungsbeginn, bundesweit mobil.</p>
-        <a class="btn primary mag" href="cv/Lebenslauf_Ayoub_Braou_DE.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v12m0 0 4-4m-4 4-4-4M5 20h14"/></svg><span>Lebenslauf auf Deutsch · PDF</span></a>
+        <p class="de-txt"><span class="de">IT-Techniker mit drei Jahren Praxis in Netzwerkadministration, Windows Server, Active Directory, Linux, Firewalls, Anwendersupport und Hardwarewartung. Seit März 2025 <strong>technischer Teamleiter bei CCL</strong> in Marrakesch mit zehn Mitarbeitenden. Ziel: <strong>Ausbildung zum Fachinformatiker für Systemintegration</strong>. Deutsch A2, Vorbereitung auf das Goethe-Zertifikat B2. Verfügbar zum nächsten Ausbildungsbeginn, bundesweit mobil.</span><span class="en">IT technician with three years of hands-on work in network administration, Windows Server, Active Directory, Linux, firewalls, user support and hardware maintenance. Since March 2025 <strong>technical team lead at CCL</strong> in Marrakech with ten staff. Goal: <strong>Fachinformatiker für Systemintegration apprenticeship</strong>. German A2, preparing for the Goethe-Zertifikat B2. Available from the next intake, mobile anywhere in Germany.</span></p>
+        <a class="btn primary mag" href="cv/Lebenslauf_Ayoub_Braou_DE.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v12m0 0 4-4m-4 4-4-4M5 20h14"/></svg><span class="de">Lebenslauf · PDF</span><span class="en">CV in German · PDF</span></a>
       </div>
       <div data-rv>
         <ul class="langs">
-          <li><b><span class="fr">Arabe</span><span class="en">Arabic</span></b><span><span class="fr">langue maternelle</span><span class="en">native</span></span></li>
-          <li><b><span class="fr">Français</span><span class="en">French</span></b><span><span class="fr">courant · études et travail</span><span class="en">fluent · study and work</span></span></li>
-          <li><b><span class="fr">Anglais</span><span class="en">English</span></b><span><span class="fr">intermédiaire · technique</span><span class="en">intermediate · technical</span></span></li>
-          <li class="de"><b><span class="fr">Allemand</span><span class="en">German</span></b><span>A2 → Goethe B2</span></li>
+          <li><b><span class="de">Arabisch</span><span class="en">Arabic</span></b><span><span class="de">Muttersprache</span><span class="en">native</span></span></li>
+          <li><b><span class="de">Französisch</span><span class="en">French</span></b><span><span class="de">fließend · Ausbildungs- und Arbeitssprache</span><span class="en">fluent · language of study and work</span></span></li>
+          <li><b><span class="de">Englisch</span><span class="en">English</span></b><span><span class="de">gute Kenntnisse · technisches Englisch</span><span class="en">good · technical English</span></span></li>
+          <li class="de-l"><b><span class="de">Deutsch</span><span class="en">German</span></b><span>A2 → Goethe B2</span></li>
         </ul>
         <div class="fiche">
-          <p class="lab"><span class="fr">Fiche mobilité</span><span class="en">Mobility sheet</span></p>
+          <p class="lab"><span class="de">Mobilität</span><span class="en">Mobility</span></p>
           <dl>
-            <dt><span class="fr">Objectif</span><span class="en">Goal</span></dt><dd>Ausbildung Fachinformatiker/-in für Systemintegration</dd>
-            <dt><span class="fr">Début</span><span class="en">Start</span></dt><dd><span class="fr">Prochaine rentrée, partout en Allemagne</span><span class="en">Next intake, anywhere in Germany</span></dd>
-            <dt>Visa</dt><dd><span class="fr">§ 16a AufenthG, demandé dès la promesse de contrat</span><span class="en">§ 16a AufenthG, applied for on contract offer</span></dd>
-            <dt><span class="fr">Documents</span><span class="en">Documents</span></dt><dd><span class="fr">Diplômes et certificats avec traduction assermentée</span><span class="en">Diplomas and certificates with sworn translation</span></dd>
+            <dt><span class="de">Ziel</span><span class="en">Goal</span></dt><dd>Ausbildung Fachinformatiker für Systemintegration</dd>
+            <dt><span class="de">Beginn</span><span class="en">Start</span></dt><dd><span class="de">Nächster Ausbildungsbeginn, bundesweit mobil</span><span class="en">Next intake, anywhere in Germany</span></dd>
+            <dt><span class="de">Visum</span><span class="en">Visa</span></dt><dd><span class="de">Visum zur Berufsausbildung (§ 16a AufenthG) nach Zusage</span><span class="en">Vocational training visa (§ 16a AufenthG) after an offer</span></dd>
+            <dt><span class="de">Unterlagen</span><span class="en">Documents</span></dt><dd><span class="de">Übersetzungen auf Anfrage</span><span class="en">Translations on request</span></dd>
           </dl>
         </div>
       </div>
@@ -624,20 +692,20 @@ footer{border-top:1px solid var(--line-d);padding:22px var(--gut) calc(22px + en
   </div>
 </section>
 
-<!-- ================= 07 CONTACT ================= -->
-<section class="ct ink" id="contact">
+<!-- ================= 07 KONTAKT ================= -->
+<section class="ct ink" id="kontakt">
   <div class="wrap">
     <div class="sh" data-rv>
       <span class="idx">07</span>
-      <h2 class="st"><span class="fr" data-split>Parlons réseau, plateforme ou <em>Ausbildung</em>.</span><span class="en" data-split>Let's talk network, platform or <em>Ausbildung</em>.</span></h2>
-      <p class="sd"><span class="fr">Je réponds en français, en anglais ou en arabe, et en allemand pour l'essentiel.</span><span class="en">I reply in French, English or Arabic, and in German for the essentials.</span></p>
+      <h2 class="st"><span class="de" data-split>Sprechen wir über Netzwerk, Plattform oder <em>Ausbildung</em>.</span><span class="en" data-split>Let's talk network, platform or <em>Ausbildung</em>.</span></h2>
+      <p class="sd"><span class="de">Ich antworte auf Englisch, Französisch oder Arabisch und auf Deutsch für das Wesentliche.</span><span class="en">I reply in English, French or Arabic, and in German for the essentials.</span></p>
     </div>
     <div data-rv>
       <a class="mail" href="mailto:braouayoub@gmail.com">braouayoub@gmail.com</a>
       <div class="cg">
-        <div><span class="lab"><span class="fr">Téléphone</span><span class="en">Phone</span></span><b>+212 775 330 704 <button type="button" class="copy" data-copy="+212775330704"><span class="fr">Copier</span><span class="en">Copy</span></button></b></div>
+        <div><span class="lab"><span class="de">Telefon</span><span class="en">Phone</span></span><b>+212 775 330 704 <button type="button" class="copy" data-copy="+212775330704"><span class="de">Kopieren</span><span class="en">Copy</span></button></b></div>
         <div><span class="lab">LinkedIn</span><b><a href="https://www.linkedin.com/in/ayoub-braou-949150253/" target="_blank" rel="noopener">Braou Ayoub</a></b></div>
-        <div><span class="lab"><span class="fr">Ville · disponibilité</span><span class="en">City · availability</span></span><b><span class="fr">Marrakech · prochaine rentrée, sur place ou à distance</span><span class="en">Marrakech · next intake, on site or remote</span></b></div>
+        <div><span class="lab"><span class="de">Ort · Verfügbarkeit</span><span class="en">City · availability</span></span><b><span class="de">Marrakesch · zum nächsten Ausbildungsbeginn</span><span class="en">Marrakech · from the next intake</span></b></div>
       </div>
     </div>
   </div>
@@ -646,13 +714,13 @@ footer{border-top:1px solid var(--line-d);padding:22px var(--gut) calc(22px + en
 
 <footer class="ink">
   <span>© 2026 Ayoub Braou</span>
-  <span><span class="fr">Portfolio et CV mis à jour en octobre 2026</span><span class="en">Portfolio and CV updated October 2026</span></span>
+  <span><span class="de">Portfolio und Lebenslauf aktualisiert im Oktober 2026</span><span class="en">Portfolio and CV updated October 2026</span></span>
 </footer>
 
 <div id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
   <div class="lb-top">
     <span class="lb-title" id="lb-title"></span>
-    <div class="acts"><button type="button" class="lb-btn lb-back" hidden><span class="fr">← Retour</span><span class="en">← Back</span></button><button type="button" class="lb-btn lb-close"><span class="fr">Fermer</span><span class="en">Close</span></button></div>
+    <div class="acts"><button type="button" class="lb-btn lb-back" hidden><span class="de">← Zurück</span><span class="en">← Back</span></button><button type="button" class="lb-btn lb-close"><span class="de">Schließen</span><span class="en">Close</span></button></div>
   </div>
   <div class="lb-body">
     <div class="lb-single" hidden><video controls playsinline preload="metadata"></video><img alt="" hidden></div>
@@ -676,20 +744,20 @@ footer{border-top:1px solid var(--line-d);padding:22px var(--gut) calc(22px + en
   var splits=[], heroSplit=null;
   function setLang(l,first){
     root.setAttribute('data-lang',l); root.lang=l;
-    document.getElementById('btn-fr').setAttribute('aria-pressed',l==='fr');
+    document.getElementById('btn-de').setAttribute('aria-pressed',l==='de');
     document.getElementById('btn-en').setAttribute('aria-pressed',l==='en');
     try{localStorage.setItem('ab-lang',l)}catch(e){}
     if(!first && G){ rebuildSplits(true); ScrollTrigger.refresh(); }
   }
-  var start='fr';
-  try{var s=localStorage.getItem('ab-lang'); if(s==='en'||s==='fr') start=s}catch(e){}
-  if(location.hash==='#en') start='en'; if(location.hash==='#fr') start='fr';
+  var start='de';
+  try{var s=localStorage.getItem('ab-lang'); if(s==='en'||s==='de') start=s}catch(e){}
+  if(location.hash==='#en') start='en'; if(location.hash==='#de') start='de';
   setLang(start,true);
   document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click',function(){ setLang(b.dataset.set) }) });
 
   /* ---------- clock (Marrakech) ---------- */
   var ck=document.getElementById('clock');
-  function tick(){ try{ ck.textContent=new Intl.DateTimeFormat('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Africa/Casablanca'}).format(new Date()) }catch(e){ ck.textContent='' } }
+  function tick(){ try{ ck.textContent=new Intl.DateTimeFormat('de-DE',{hour:'2-digit',minute:'2-digit',timeZone:'Africa/Casablanca'}).format(new Date()) }catch(e){ ck.textContent='' } }
   tick(); setInterval(tick,20000);
 
   /* ---------- copy buttons ---------- */
@@ -700,17 +768,53 @@ footer{border-top:1px solid var(--line-d);padding:22px var(--gut) calc(22px + en
     });
   });
 
+  /* ---------- background rain: network terms falling behind the page ---------- */
+  (function(){
+    var cv=document.getElementById('rain');
+    if(RM||!cv||!cv.getContext){ if(cv) cv.remove(); return; }
+    var ctx=cv.getContext('2d'), W=0, H=0, drops=[], last=0, CH='01TCPIPLANVLANDNSDHCPADGPOCCNASSHVPNLINUXWINSERVER';
+    function size(){
+      var s=Math.min(devicePixelRatio||1,2); W=innerWidth; H=innerHeight;
+      cv.width=W*s; cv.height=H*s; cv.style.width=W+'px'; cv.style.height=H+'px'; ctx.setTransform(s,0,0,s,0,0);
+      drops=[]; for(var i=0;i<Math.ceil(W/18);i++) drops.push(Math.random()*H/18);
+    }
+    size(); addEventListener('resize',size,{passive:true});
+    // ~30 fps is plenty for this and leaves room for the globe
+    function loop(t){
+      requestAnimationFrame(loop);
+      if(document.hidden||t-last<33) return; last=t;
+      ctx.fillStyle='rgba(2,7,4,.2)'; ctx.fillRect(0,0,W,H);
+      ctx.fillStyle='rgba(65,255,138,.42)'; ctx.font='14px monospace';
+      for(var i=0;i<drops.length;i++){
+        ctx.fillText(CH[Math.random()*CH.length|0],i*18,drops[i]*18);
+        if(drops[i]*18>H&&Math.random()>.975) drops[i]=0;
+        drops[i]+=.64;
+      }
+    }
+    requestAnimationFrame(loop);
+  })();
+
   /* ---------- hover video + lightbox (single + grid) ---------- */
-  var POSTERS=[['immuno','Immunologie','Immunology'],['cisa','Audit SI · CISA','IS audit · CISA'],['qhse','QHSE','QHSE'],['pmp','Gestion de projet · PMP','Project management · PMP'],['mt1','Médecine du travail','Occupational medicine'],['echo2','Échographie Doppler','Doppler ultrasound'],['qualite','Management de la qualité','Quality management'],['cg','Contrôle de gestion 2.0','Management control 2.0'],['banque','Techniques bancaires','Banking techniques'],['rh','RH & audit social','HR & social audit'],['dialogue','Dialogue et influence','Dialogue & influence'],['bi','Excel & Power BI','Excel & Power BI'],['quali','Analyse qualitative','Qualitative analysis'],['urg1',"Échographie d'urgence",'Emergency ultrasound'],['urg3',"Échographie d'urgence · v2",'Emergency ultrasound · v2'],['gp1','Gestion de projet','Project management'],['erp2','Maîtrise des ERP','ERP mastery'],['mt3','Médecine du travail · v2','Occupational medicine · v2']];
-  var REELS=[['ccl-gyn','Échographie gynécologique · programme','Obstetric ultrasound · syllabus'],['ccl-lead','Leadership stratégique · débouchés','Strategic leadership · careers'],['ccl-ifrs','Normes IFRS · programme','IFRS standards · syllabus'],['sc-reel','Schoolaris · reel de lancement','Schoolaris · launch reel'],['ccl-doppler','Échographie Doppler · programme','Doppler ultrasound · syllabus'],['ccl-pmp','Gestion de projet PMP · programme','PMP project management · syllabus'],['ccl-geo','Géotechnique routière · débouchés','Road geotechnics · careers'],['ccl-nutri','Nutrition clinique · programme','Clinical nutrition · syllabus']];
+  var POSTERS=[['immuno','Immunologie','Immunology'],['cisa','IS-Audit · CISA','IS audit · CISA'],['qhse','QHSE','QHSE'],['pmp','Projektmanagement · PMP','Project management · PMP'],['mt1','Arbeitsmedizin','Occupational medicine'],['echo2','Doppler-Ultraschall','Doppler ultrasound'],['qualite','Qualitätsmanagement','Quality management'],['cg','Controlling 2.0','Management control 2.0'],['banque','Bankwesen','Banking techniques'],['rh','HR & Sozialaudit','HR & social audit'],['dialogue','Dialog und Einfluss','Dialogue & influence'],['bi','Excel & Power BI','Excel & Power BI'],['quali','Qualitative Analyse','Qualitative analysis'],['urg1','Notfall-Ultraschall','Emergency ultrasound'],['urg3','Notfall-Ultraschall · v2','Emergency ultrasound · v2'],['gp1','Projektmanagement','Project management'],['erp2','ERP-Systeme','ERP mastery'],['mt3','Arbeitsmedizin · v2','Occupational medicine · v2']];
+  var REELS=[['ccl-gyn','Gynäkologischer Ultraschall · Programm','Obstetric ultrasound · syllabus'],['ccl-lead','Strategische Führung · Berufsaussichten','Strategic leadership · careers'],['ccl-ifrs','IFRS-Standards · Programm','IFRS standards · syllabus'],['sc-reel','Schoolaris · Launch-Reel','Schoolaris · launch reel'],['ccl-doppler','Doppler-Ultraschall · Programm','Doppler ultrasound · syllabus'],['ccl-pmp','PMP-Projektmanagement · Programm','PMP project management · syllabus'],['ccl-geo','Straßengeotechnik · Berufsaussichten','Road geotechnics · careers'],['ccl-nutri','Klinische Ernährung · Programm','Clinical nutrition · syllabus']];
+  var SOCIAL=[['ccl-excuses','CCL · Motivation','CCL · motivation'],['ccl-btp','CCL · Webinar BTP 2035','CCL · BTP 2035 webinar'],['ccl-apprendre','CCL · Zitat','CCL · quote'],['ccl-temoignages','CCL · Erfolgsgeschichten','CCL · success stories'],['ccl-conference','CCL × ESC Annecy · Konferenz','CCL × ESC Annecy · conference'],['ccl-carriere','CCL · Lernplattform','CCL · learning platform'],['ccl-rejoignez','CCL · Jetzt anmelden','CCL · join now'],['ccl-qhse','CCL · Mastère QHSE','CCL · QHSE master\'s'],['ccl-construction','CCL · Nachhaltiges Bauen','CCL · sustainable construction'],['ccl-miniers','CCL · Bergbauprojekte','CCL · mining projects'],['ccl-kinshasa','CCL · Konferenz Kinshasa','CCL · Kinshasa conference'],['ccl-eid','CCL · Eid Mubarak','CCL · Eid Mubarak'],['ccl-erreurs','CCL · 5 Karrierefehler','CCL · 5 career mistakes'],['ccl-terrain','CCL · Zitat','CCL · quote'],['ccl-talents','CCL · Vertrieb','CCL · sales team'],['ccl-grad-story','CCL · Abschlussfeier · Story','CCL · graduation · story'],['ccl-grad-banner','CCL · Abschlussfeier · Banner','CCL · graduation · banner'],
+    ['up-app','Up Skills · App','Up Skills · app'],['up-competences','Up Skills · Kompetenzen','Up Skills · skills'],['up-talents','Up Skills · Talente','Up Skills · talent'],['up-offres','Up Skills · Unternehmertum','Up Skills · entrepreneurship'],['up-humain','Up Skills · HR','Up Skills · HR'],['up-formations','Up Skills · Weiterbildungen','Up Skills · programmes'],['up-temps','Up Skills · Online lernen','Up Skills · online learning'],['up-entrepreneuriat','Up Skills · Geschäftsideen','Up Skills · business ideas'],
+    ['ml-excellence','Master Learn · Exzellenz','Master Learn · excellence'],['ml-bachelor','Master Learn · Bachelor','Master Learn · bachelor'],['ml-empowerment','Master Learn · Empowerment','Master Learn · empowerment'],['ml-dba','Master Learn · DBA','Master Learn · DBA'],['ml-adaptability','Master Learn · Anpassungsfähigkeit','Master Learn · adaptability'],['ml-mba','Master Learn · MBA','Master Learn · MBA'],
+    ['sc-bac','Schoolaris · Abitur-Angebot','Schoolaris · baccalaureate offer'],['va-examen','Vision Academy · Probeprüfung','Vision Academy · mock exam'],['va-prof','Vision Academy · Lehrkraft','Vision Academy · teacher'],['va-langues','Vision Academy · Sprachkurse','Vision Academy · language courses'],['va-sites','Vision Academy · 5 Lernseiten','Vision Academy · 5 study sites'],['va-eco','Vision Academy · Wirtschaft','Vision Academy · economics'],['va-regional','Vision Academy · Regionalprüfung','Vision Academy · regional exam']];
+  var BROCHURE=[['exec-cover','Titelseite','Cover'],['exec-presentation','Vorstellung','About'],['exec-directrice','Wort der Direktorin','Director\'s word'],['exec-public','Zielgruppe','Who it is for'],['exec-objectifs','Lernziele','Objectives'],['exec-programme','Programm','Programme'],['exec-admission','Zulassung','Admissions'],['exec-debouches','Berufsaussichten','Careers'],['exec-raisons','3 Gründe','3 reasons'],['exec-emba','Das EMBA','The EMBA']];
+  function imgs(list){ return list.map(function(p){ return {img:'img/work/'+p[0]+'.jpg',cap:['',p[1],p[2]]} }) }
   var GAL={
-    posters:{cls:'g6',title:['','Affiches des formations CCL · 18','CCL programme posters · 18'],items:POSTERS.map(function(p){return {img:'img/ad-'+p[0]+'.jpg',cap:['',p[1],p[2]]}})},
-    reels:{cls:'g4',title:['','Reels et vidéos verticales · 8','Reels and vertical videos · 8'],items:REELS.map(function(r){return {video:'vid/'+r[0]+'.mp4',img:'vid/'+r[0]+'.jpg',cap:['',r[1],r[2]]}})}
+    social:{cls:'g6',title:['','Social-Media-Designs · '+SOCIAL.length,'Social media designs · '+SOCIAL.length],items:imgs(SOCIAL)},
+    brochure:{cls:'g6',title:['','Broschüre EXEC Toulouse · 10 Seiten','EXEC Toulouse brochure · 10 pages'],items:imgs(BROCHURE)},
+    posters:{cls:'g6',title:['','Kursplakate von CCL · 18','CCL programme posters · 18'],items:POSTERS.map(function(p){return {img:'img/ad-'+p[0]+'.jpg',cap:['',p[1],p[2]]}})},
+    reels:{cls:'g4',title:['','Reels und vertikale Videos · 8','Reels and vertical videos · 8'],items:REELS.map(function(r){return {video:'vid/'+r[0]+'.mp4',img:'vid/'+r[0]+'.jpg',cap:['',r[1],r[2]]}})}
   };
   var lb=document.getElementById('lb'), lbT=document.getElementById('lb-title'), lbBack=lb.querySelector('.lb-back'), lbClose=lb.querySelector('.lb-close'),
       lbS=lb.querySelector('.lb-single'), lbV=lbS.querySelector('video'), lbI=lbS.querySelector('img'), lbGrid=lb.querySelector('.lb-grid');
   var fromGrid=false, gridKey=null, lastFocus=null;
   function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;') }
+  // lightbox title = the card's caption in the language currently shown
+  function capOf(c){ var f=c.querySelector('figcaption'); return f?f.innerText.trim():'' }
   function showLb(){
     if(!lb.hidden) return;
     lastFocus=document.activeElement; lb.hidden=false; body.style.overflow='hidden';
@@ -725,15 +829,15 @@ footer{border-top:1px solid var(--line-d);padding:22px var(--gut) calc(22px + en
     if(G&&!lb.hidden) gsap.fromTo(lbS,{autoAlpha:0,y:12},{autoAlpha:1,y:0,duration:.35,ease:'power2.out'});
     showLb();
   }
-  function openCard(c){ fromGrid=false; single(c.dataset.video||c.dataset.poster, c.dataset.poster, c.dataset.title, !!c.dataset.video); }
+  function openCard(c){ fromGrid=false; single(c.dataset.video||c.dataset.poster, c.dataset.poster, capOf(c), !!c.dataset.video); }
   function openGrid(key){
     var d=GAL[key]; gridKey=key; var l=L();
     lbGrid.className='lb-grid '+d.cls;
     lbGrid.innerHTML=d.items.map(function(it){
-      if(it.video) return '<figure class="hv" tabindex="0" data-video="'+it.video+'" data-poster="'+it.img+'" data-title="'+esc(it.cap[l])+'"><div class="media r916"><img src="'+it.img+'" alt="" loading="lazy"><video src="'+it.video+'" poster="'+it.img+'" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption>'+esc(it.cap[l])+'</figcaption></figure>';
-      return '<figure tabindex="0" data-poster="'+it.img+'" data-title="'+esc(it.cap[l])+'"><img src="'+it.img+'" alt="'+esc(it.cap[l])+'" loading="lazy"><figcaption>'+esc(it.cap[l])+'</figcaption></figure>';
+      if(it.video) return '<figure class="hv" tabindex="0" data-video="'+it.video+'" data-poster="'+it.img+'"><div class="media r916"><img src="'+it.img+'" alt="" loading="lazy"><video src="'+it.video+'" poster="'+it.img+'" muted loop playsinline preload="none"></video><span class="play"></span></div><figcaption>'+esc(it.cap[l])+'</figcaption></figure>';
+      return '<figure tabindex="0" data-poster="'+it.img+'"><img src="'+it.img+'" alt="'+esc(it.cap[l])+'" loading="lazy"><figcaption>'+esc(it.cap[l])+'</figcaption></figure>';
     }).join('');
-    bindCards(lbGrid,function(c){ fromGrid=true; single(c.dataset.video||c.dataset.poster, c.dataset.poster, c.dataset.title, !!c.dataset.video); });
+    bindCards(lbGrid,function(c){ fromGrid=true; single(c.dataset.video||c.dataset.poster, c.dataset.poster, capOf(c), !!c.dataset.video); });
     stopV(); lbS.hidden=true; lbGrid.hidden=false; lbBack.hidden=true; lbT.textContent=d.title[l];
     showLb();
     if(G) gsap.from(lbGrid.children,{autoAlpha:0,y:16,duration:.5,stagger:.03,ease:'power2.out',clearProps:'all'});
@@ -770,10 +874,6 @@ footer{border-top:1px solid var(--line-d);padding:22px var(--gut) calc(22px + en
   gsap.set('.hl',{autoAlpha:0});
   gsap.set('#globe',{autoAlpha:0,scale:.82,transformOrigin:'50% 50%'});
 
-  // preloader letters
-  var ln=document.getElementById('ld-name'); ln.innerHTML=ln.textContent.split('').map(function(ch){ return '<span class="ch">'+(ch===' '?'&nbsp;':ch)+'</span>' }).join('');
-  gsap.set('#loader .ch',{yPercent:110});
-
   function heroIn(){
     var h=[].slice.call(document.querySelectorAll('[data-split-hero]')).filter(visible)[0];
     var tl=gsap.timeline();
@@ -783,19 +883,40 @@ footer{border-top:1px solid var(--line-d);padding:22px var(--gut) calc(22px + en
       .to('#globe',{autoAlpha:1,scale:1,duration:1.6,ease:'expo.out'},.1);
     return tl;
   }
-  function boot(){
-    var tl=gsap.timeline({defaults:{ease:ease}});
-    tl.to('#loader .ch',{yPercent:0,duration:.7,stagger:.035,ease:'power3.out'})
-      .to('#loader .ld-bar i',{scaleX:1,duration:.6,ease:'power2.inOut'},'-=.35')
-      .to('#loader',{yPercent:-100,duration:.9,ease:'expo.inOut',onComplete:function(){ loader.remove(); ScrollTrigger.refresh(); }},'+=.05')
+  // terminal boot: type each line character by character, then slide the terminal away
+  var BOOT={
+    de:['ayoub@marrakesch:~$ ./portfolio --start','[✓] Netzwerk verbunden · Marrakesch → Deutschland','[✓] Lebenslauf geladen · Fachinformatiker für Systemintegration','[✓] Projekte und Zertifikate geladen','','System bereit. Willkommen.'],
+    en:['ayoub@marrakech:~$ ./portfolio --start','[✓] Network connected · Marrakech → Germany','[✓] CV loaded · Fachinformatiker für Systemintegration','[✓] Projects and certificates loaded','','System ready. Welcome.']
+  };
+  var fontsReady=new Promise(function(r){ if(document.fonts&&document.fonts.ready) document.fonts.ready.then(r); setTimeout(r,2500); });
+  var tb=document.getElementById('term-body'), curEl=document.createElement('span'), lines=BOOT[L()===2?'en':'de'];
+  curEl.className='term-cur'; curEl.textContent='_';
+  var typing=null, typed=false, exited=false;
+  function exitLoader(){
+    if(exited) return; exited=true;
+    removeEventListener('keydown',skip); loader.removeEventListener('click',skip);
+    gsap.timeline()
+      .to('#loader',{yPercent:-100,duration:.9,ease:'expo.inOut',onComplete:function(){ loader.remove(); ScrollTrigger.refresh(); }})
       .add(heroIn(),'-=.55');
   }
-  var booted=false; function bootOnce(){ if(!booted){ booted=true; boot(); } }
-  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(bootOnce); setTimeout(bootOnce,2200);
+  function typed_(wait){ typed=true; setTimeout(function(){ fontsReady.then(exitLoader) },wait); }
+  function typeLine(i){
+    if(i>=lines.length) return typed_(700);
+    var p=document.createElement('p'), txt=document.createTextNode(''), s=lines[i], k=0;
+    p.appendChild(txt); p.appendChild(curEl); tb.appendChild(p);
+    (function ch(){
+      if(k<s.length){ txt.data+=s[k++]; typing=setTimeout(ch,10); }
+      else typing=setTimeout(function(){ typeLine(i+1) },100);
+    })();
+  }
+  function skip(){
+    if(typed) return; clearTimeout(typing);
+    tb.innerHTML=''; lines.forEach(function(s){ var p=document.createElement('p'); p.textContent=s; tb.appendChild(p); });
+    tb.lastChild.appendChild(curEl); typed_(250);
+  }
+  addEventListener('keydown',skip); loader.addEventListener('click',skip);
+  typeLine(0);
 
-  // nav hide/show
-  var nav=document.getElementById('nav');
-  ScrollTrigger.create({start:'top -80',onUpdate:function(self){ nav.classList.toggle('hide',self.direction===1&&self.scroll()>240) }});
 
   // ticker
   gsap.to('#tk',{xPercent:-50,duration:30,ease:'none',repeat:-1});
@@ -837,7 +958,7 @@ footer{border-top:1px solid var(--line-d);padding:22px var(--gut) calc(22px + en
   // horizontal gallery (desktop only)
   var mm=gsap.matchMedia();
   mm.add('(min-width: 900px)',function(){
-    var track=document.getElementById('track'), pin=document.getElementById('pin'), work=document.getElementById('realisations');
+    var track=document.getElementById('track'), pin=document.getElementById('pin'), work=document.getElementById('projekte');
     work.classList.add('hz');
     var dist=function(){ return Math.max(0,track.scrollWidth-document.documentElement.clientWidth) };
     var tween=gsap.to(track,{x:function(){ return -dist() },ease:'none',scrollTrigger:{trigger:pin,start:'top top',end:function(){ return '+='+dist() },pin:true,scrub:.7,anticipatePin:1,invalidateOnRefresh:true,onUpdate:function(s){ gsap.set('#wprog',{scaleX:s.progress}) }}});
@@ -851,6 +972,14 @@ footer{border-top:1px solid var(--line-d);padding:22px var(--gut) calc(22px + en
     gsap.utils.toArray('#track .panel').forEach(function(p){
       gsap.from(p,{autoAlpha:0,y:30,duration:.9,ease:ease,scrollTrigger:{trigger:p,start:'top 90%',once:true}});
     });
+  });
+
+  // sticky nav: highlight the link of the section in view (created after the gallery pin so positions include its spacer)
+  var navLinks=document.querySelectorAll('.nav ul a');
+  navLinks.forEach(function(a,i){
+    var sec=document.querySelector(a.getAttribute('href')); if(!sec) return;
+    // the last section can't scroll up to mid-screen, so it stays active to the end of the page
+    ScrollTrigger.create({trigger:sec,start:'top 50%',end:i===navLinks.length-1?function(){ return ScrollTrigger.maxScroll(window)+1 }:'bottom 50%',onToggle:function(s){ if(s.isActive) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); }});
   });
 
   // globe follows the hero on scroll and sleeps when out of view
@@ -872,7 +1001,8 @@ footer{border-top:1px solid var(--line-d);padding:22px var(--gut) calc(22px + en
 </script>
 
 <script type="module">
-/* Three.js globe: a dotted sphere with the Marrakech → Deutschland arc, packets travelling along it. */
+/* Three.js network: a three-tier topology (internet → firewall → core → distribution → access → clients)
+   with packets travelling up and down the links, a broadcast pulse on the core and a polar grid floor. */
 import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.170.0/three.module.min.js';
 const cv=document.getElementById('globe');
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -880,61 +1010,83 @@ let renderer;
 try{ renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true,powerPreference:'high-performance'}); }catch(e){ cv.remove(); throw e; }
 renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));
 const scene=new THREE.Scene();
-const cam=new THREE.PerspectiveCamera(30,1,.1,20); cam.position.set(0,.15,3.6); cam.lookAt(0,0,0);
+const cam=new THREE.PerspectiveCamera(32,1,.1,30); cam.position.set(0,.55,4.9); cam.lookAt(0,-.02,0);
 const g=new THREE.Group(); scene.add(g);
-const R=1, ACC=0xff4d1c, BONE=0xece7dd;
+const ACC=0x41ff8a, BONE=0xeafff1, DIM=0x6fa585, V=THREE.Vector3;
 
-// fibonacci point cloud
-const N=2800, pos=new Float32Array(N*3);
-for(let i=0;i<N;i++){ const y=1-(i/(N-1))*2, r=Math.sqrt(1-y*y), th=i*2.399963; pos[i*3]=Math.cos(th)*r*R; pos[i*3+1]=y*R; pos[i*3+2]=Math.sin(th)*r*R; }
-const pg=new THREE.BufferGeometry(); pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
-g.add(new THREE.Points(pg,new THREE.PointsMaterial({color:0x9a958d,size:.012,sizeAttenuation:true,transparent:true,opacity:.7})));
-// faint wire + halo
-g.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(R*1.002,2)),new THREE.LineBasicMaterial({color:BONE,transparent:true,opacity:.06})));
-g.add(new THREE.Mesh(new THREE.SphereGeometry(R*.985,48,48),new THREE.MeshBasicMaterial({color:0x0e0f12,transparent:true,opacity:.92})));
-scene.add(new THREE.Mesh(new THREE.SphereGeometry(R*1.06,48,48),new THREE.MeshBasicMaterial({color:BONE,transparent:true,opacity:.035,side:THREE.BackSide})));
-// equator + a couple of meridians
-const ringMat=new THREE.LineBasicMaterial({color:BONE,transparent:true,opacity:.12});
-const circle=(n)=>{ const pts=[]; for(let i=0;i<=n;i++){ const a=i/n*Math.PI*2; pts.push(new THREE.Vector3(Math.cos(a)*R,0,Math.sin(a)*R)); } return new THREE.BufferGeometry().setFromPoints(pts); };
-const eq=new THREE.Line(circle(128),ringMat); g.add(eq);
-for(const rot of [0,Math.PI/3,2*Math.PI/3]){ const m=new THREE.Line(circle(128),ringMat); m.rotation.x=Math.PI/2; m.rotation.y=rot; g.add(m); }
+// ---- topology ----
+const nodes=[];
+const add=(kind,pos,parent)=>{ const n={kind,pos,parent}; nodes.push(n); return n; };
+const ringPts=(n,r,y,off)=>Array.from({length:n},(_,i)=>{ const a=off+i/n*Math.PI*2; return new V(Math.cos(a)*r,y,Math.sin(a)*r); });
+const inet=add('inet',new V(0,1.2,0),null);
+const fw=add('fw',new V(0,.82,0),inet);
+const core=add('core',new V(0,.44,0),fw);
+const dist=ringPts(2,.46,.02,0).map(p=>add('dist',p,core));
+// access switches sit between the two distribution switches; each is dual-homed (second, dimmer uplink)
+const acc=ringPts(4,.92,-.4,Math.PI/4).map((p,i)=>add('acc',p,dist[(i===1||i===2)?1:0]));
+const ends=[];
+acc.forEach((a,i)=>{ const base=Math.PI/4+i*Math.PI/2; for(let k=0;k<4;k++){ const an=base+(k-1.5)*.27; ends.push(add('end',new V(Math.cos(an)*1.38,-.84,Math.sin(an)*1.38),a)); } });
 
-// lat/lon → vector
-const ll=(lat,lon,r=R)=>{ const p=(90-lat)*Math.PI/180, t=(lon+180)*Math.PI/180; return new THREE.Vector3(-r*Math.sin(p)*Math.cos(t), r*Math.cos(p), r*Math.sin(p)*Math.sin(t)); };
-const A=ll(31.63,-7.98), B=ll(51.1,10.4);
-const mid=A.clone().add(B).multiplyScalar(.5).normalize().multiplyScalar(R*1.38);
-const curve=new THREE.QuadraticBezierCurve3(A,mid,B);
-g.add(new THREE.Mesh(new THREE.TubeGeometry(curve,80,.0055,6,false),new THREE.MeshBasicMaterial({color:ACC})));
-const dot=(v,s)=>{ const m=new THREE.Mesh(new THREE.SphereGeometry(s,16,16),new THREE.MeshBasicMaterial({color:ACC})); m.position.copy(v); g.add(m); return m; };
-dot(A,.02); dot(B,.02);
-const ring=new THREE.Mesh(new THREE.RingGeometry(.03,.036,40),new THREE.MeshBasicMaterial({color:ACC,transparent:true,opacity:.8,side:THREE.DoubleSide}));
-ring.position.copy(B); ring.lookAt(B.clone().multiplyScalar(2)); g.add(ring);
-const ringA=ring.clone(); ringA.position.copy(A); ringA.lookAt(A.clone().multiplyScalar(2)); ringA.material=ring.material.clone(); g.add(ringA);
-const packets=[0,.33,.66].map(o=>{ const m=dot(A,.013); m.userData.o=o; return m; });
+// ---- links ----
+const seg=(a,b,arr)=>arr.push(a.x,a.y,a.z,b.x,b.y,b.z);
+const main=[], backup=[];
+nodes.forEach(n=>{ if(n.parent) seg(n.pos,n.parent.pos,main); });
+acc.forEach((a,i)=>seg(a.pos,dist[(i===1||i===2)?0:1].pos,backup));
+seg(dist[0].pos,dist[1].pos,backup);
+const lines=(arr,color,op)=>{ const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(arr,3)); return new THREE.LineSegments(geo,new THREE.LineBasicMaterial({color,transparent:true,opacity:op})); };
+g.add(lines(main,BONE,.32)); g.add(lines(backup,DIM,.16));
 
-// orient so the arc faces the camera
-const m2=mid.clone().normalize();
-const ry=-Math.atan2(m2.x,m2.z); g.rotation.y=ry;
-const v=m2.clone().applyAxisAngle(new THREE.Vector3(0,1,0),ry);
-const rx=Math.atan2(v.y,v.z)*.72; g.rotation.x=rx;
-const base={x:rx,y:ry};
+// ---- devices ----
+const solid=(c,o=1)=>new THREE.MeshBasicMaterial({color:c,transparent:o<1,opacity:o});
+const boxed=(w,h,d,edge,fill)=>{ const geo=new THREE.BoxGeometry(w,h,d), m=new THREE.Mesh(geo,solid(fill,.92)); m.add(new THREE.LineSegments(new THREE.EdgesGeometry(geo),new THREE.LineBasicMaterial({color:edge}))); return m; };
+const place=(m,p)=>{ m.position.copy(p); g.add(m); return m; };
+const cloud=place(new THREE.Mesh(new THREE.IcosahedronGeometry(.13,1),new THREE.MeshBasicMaterial({color:BONE,wireframe:true,transparent:true,opacity:.45})),inet.pos);
+place(boxed(.24,.07,.17,ACC,0x0a2a18),fw.pos);
+place(new THREE.Mesh(new THREE.OctahedronGeometry(.1),solid(ACC)),core.pos);
+dist.forEach(d=>place(boxed(.2,.055,.14,ACC,0x06150d),d.pos));
+acc.forEach(a=>place(boxed(.17,.045,.12,DIM,0x06150d),a.pos));
+const endMeshes=ends.map(e=>place(new THREE.Mesh(new THREE.SphereGeometry(.032,16,12),solid(BONE,.85)),e.pos));
 
+// broadcast pulse on the core and a polar grid floor for depth
+const pulse=new THREE.Mesh(new THREE.RingGeometry(.14,.152,48),new THREE.MeshBasicMaterial({color:ACC,transparent:true,side:THREE.DoubleSide}));
+pulse.rotation.x=-Math.PI/2; pulse.position.copy(core.pos); g.add(pulse);
+const floor=new THREE.PolarGridHelper(1.75,16,6,64,DIM,DIM);
+floor.material.transparent=true; floor.material.opacity=.14; floor.position.y=-.98; g.add(floor);
+
+// ---- packets: client ↔ internet along the tree ----
+const pathOf=e=>{ const p=[]; for(let n=e;n;n=n.parent) p.push(n.pos); return p; };
+const packets=Array.from({length:14},(_,i)=>{
+  const m=new THREE.Mesh(new THREE.SphereGeometry(.02,10,8),solid(ACC)); g.add(m);
+  const pk={m,path:[],u:0,speed:0,end:-1};
+  const reset=()=>{ pk.end=Math.random()*ends.length|0; const p=pathOf(ends[pk.end]); pk.path=Math.random()<.5?p:p.reverse(); pk.u=0; pk.speed=1.2+Math.random()*1.1; };
+  reset(); pk.u=Math.random()*(pk.path.length-1); pk.reset=reset; return pk;
+});
+const flash=new Float32Array(ends.length);
+
+g.rotation.x=.12;
 let tgt={x:0,y:0}, cur={x:0,y:0}, scroll=0, active=true;
 window.__globe={ set active(b){ active=b }, set scroll(p){ scroll=p } };
 addEventListener('pointermove',e=>{ tgt.x=e.clientX/innerWidth-.5; tgt.y=e.clientY/innerHeight-.5; },{passive:true});
 function size(){ const w=cv.clientWidth||600, h=cv.clientHeight||600; renderer.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); }
 size(); addEventListener('resize',size);
 
-const clock=new THREE.Clock();
+const clock=new THREE.Clock(); let last=0;
+// draw one still frame now, but hold the animation until the boot terminal is gone so typing stays smooth
+renderer.render(scene,cam);
 function frame(){
-  if(active && !document.hidden){
-    const t=clock.getElapsedTime();
+  if(active && !document.hidden && !document.getElementById('loader')){
+    const t=clock.getElapsedTime(), dt=Math.min(t-last,.05); last=t;
     cur.x+=(tgt.x-cur.x)*.05; cur.y+=(tgt.y-cur.y)*.05;
-    g.rotation.y=base.y+Math.sin(t*.16)*.26+cur.x*.35+scroll*1.1;
-    g.rotation.x=base.x+cur.y*.18+scroll*.35;
-    packets.forEach(m=>{ const u=(t*.11+m.userData.o)%1; m.position.copy(curve.getPointAt(u)); m.scale.setScalar(.6+.5*Math.sin(u*Math.PI)); });
-    const s=1+.3*(.5+.5*Math.sin(t*2.4)); ring.scale.setScalar(s); ring.material.opacity=.9-.7*((s-1)/.3);
-    const s2=1+.3*(.5+.5*Math.sin(t*2.4+Math.PI)); ringA.scale.setScalar(s2); ringA.material.opacity=.9-.7*((s2-1)/.3);
+    g.rotation.y=t*.12+cur.x*.5+scroll*1.2;
+    g.rotation.x=.12+cur.y*.15+scroll*.25;
+    cloud.rotation.y=t*.4;
+    packets.forEach(pk=>{
+      pk.u+=dt*pk.speed;
+      if(pk.u>=pk.path.length-1){ if(pk.path[0]===inet.pos) flash[pk.end]=1; pk.reset(); }
+      const i=Math.floor(pk.u), f=pk.u-i; pk.m.position.lerpVectors(pk.path[i],pk.path[i+1],f);
+    });
+    endMeshes.forEach((m,i)=>{ flash[i]*=.93; m.scale.setScalar(1+flash[i]*.9); m.material.color.setHex(flash[i]>.15?ACC:BONE); });
+    const p=(t*.6)%1; pulse.scale.setScalar(1+p*2.6); pulse.material.opacity=.7*(1-p);
     renderer.render(scene,cam);
   }
   requestAnimationFrame(frame);

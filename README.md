@@ -5,7 +5,7 @@ Objectif : Ausbildung Fachinformatiker für Systemintegration en Allemagne.
 
 - Site statique : `index.html` + `img/`, `vid/`, `cv/`
 - Animations : GSAP 3.13 (ScrollTrigger, SplitText) · 3D : Three.js 0.170 (globe Marrakech → Deutschland)
-- Bilingue FR / EN (bouton dans la barre de navigation)
-- CV : `cv/CV_Ayoub_Braou_FR.pdf` · `cv/Lebenslauf_Ayoub_Braou_DE.pdf`
+- Bilingue DE / EN, allemand par défaut (bouton dans la barre de navigation)
+- CV : `cv/Lebenslauf_Ayoub_Braou_DE.pdf`
 
 Les visuels et vidéos de la section Réalisations sont produits par l'équipe technique et graphique de CCL ; les contenus appartiennent à CCL, Schoolaris et Up Skills.
